@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- mybatis-generator:generate  -->
+<generatorConfiguration>
+
+	<!-- 配置mysql 驱动jar包路径.用了绝对路径 -->
+	<classPathEntry
+		location="D:\JavaSoft\apache-tomcat-8.0.33\webapps\basic-web2.0\WEB-INF\lib\mysql-connector-java-5.1.38.jar" />
+
+	<context id="yihaomen_mysql_tables" targetRuntime="MyBatis3">
+
+		<!-- 为了防止生成的代码中有很多注释，比较难看，加入下面的配置控制 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+		<!-- 注释控制完毕 -->
+
+		<!-- 数据库连接 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/mybatis?characterEncoding=utf8"
+			userId="root" password="">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- 数据表对应的model 层 -->
+		<javaModelGenerator targetPackage="org.haozf.mybatis.model"
+			targetProject="mybatis">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- sql mapper 隐射配置文件 -->
+		<sqlMapGenerator targetPackage="org.haozf.mybatis.mapper"
+			targetProject="mybatis">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- 在ibatis2 中是dao层，但在mybatis3中，其实就是mapper接口 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="org.haozf.mybatis.mapper" targetProject="mybatis">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<!-- 要对那些数据表进行生成操作，必须要有一个. -->
+		 <table schema="" tableName="user" domainObjectName="User">
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+	</context>
+</generatorConfiguration>
