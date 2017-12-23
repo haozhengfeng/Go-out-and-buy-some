@@ -10,7 +10,8 @@
   	<modules>
 		<module>buysome-back</module>
 		<module>buysome-web</module>
-	</modules>
+		<module>buysome-data</module>
+  	</modules>
   
   <dependencies>
 		<dependency>
