@@ -3,6 +3,9 @@
 <mapper namespace="org.haozf.mybatis.mapper.UserMapper">
   <resultMap id="BaseResultMap" type="org.haozf.mybatis.model.User">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userName" jdbcType="VARCHAR" property="userName" />
+    <result column="userAge" jdbcType="INTEGER" property="userAge" />
+    <result column="userAddress" jdbcType="VARCHAR" property="userAddress" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="password" jdbcType="VARCHAR" property="password" />
   </resultMap>
@@ -65,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, password
+    id, userName, userAge, userAddress, name, password
   </sql>
   <select id="selectByExample" parameterType="org.haozf.mybatis.model.UserExample" resultMap="BaseResultMap">
     select
@@ -98,12 +101,23 @@
     </if>
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.haozf.mybatis.model.User" useGeneratedKeys="true">
-    insert into user (name, password)
-    values (#{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
+    insert into user (userName, userAge, userAddress, 
+      name, password)
+    values (#{userName,jdbcType=VARCHAR}, #{userAge,jdbcType=INTEGER}, #{userAddress,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.haozf.mybatis.model.User" useGeneratedKeys="true">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userName != null">
+        userName,
+      </if>
+      <if test="userAge != null">
+        userAge,
+      </if>
+      <if test="userAddress != null">
+        userAddress,
+      </if>
       <if test="name != null">
         name,
       </if>
@@ -112,6 +126,15 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userAge != null">
+        #{userAge,jdbcType=INTEGER},
+      </if>
+      <if test="userAddress != null">
+        #{userAddress,jdbcType=VARCHAR},
+      </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
@@ -132,6 +155,15 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.userName != null">
+        userName = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAge != null">
+        userAge = #{record.userAge,jdbcType=INTEGER},
+      </if>
+      <if test="record.userAddress != null">
+        userAddress = #{record.userAddress,jdbcType=VARCHAR},
+      </if>
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
@@ -146,6 +178,9 @@
   <update id="updateByExample" parameterType="map">
     update user
     set id = #{record.id,jdbcType=INTEGER},
+      userName = #{record.userName,jdbcType=VARCHAR},
+      userAge = #{record.userAge,jdbcType=INTEGER},
+      userAddress = #{record.userAddress,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -155,6 +190,15 @@
   <update id="updateByPrimaryKeySelective" parameterType="org.haozf.mybatis.model.User">
     update user
     <set>
+      <if test="userName != null">
+        userName = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userAge != null">
+        userAge = #{userAge,jdbcType=INTEGER},
+      </if>
+      <if test="userAddress != null">
+        userAddress = #{userAddress,jdbcType=VARCHAR},
+      </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
@@ -166,7 +210,10 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="org.haozf.mybatis.model.User">
     update user
-    set name = #{name,jdbcType=VARCHAR},
+    set userName = #{userName,jdbcType=VARCHAR},
+      userAge = #{userAge,jdbcType=INTEGER},
+      userAddress = #{userAddress,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

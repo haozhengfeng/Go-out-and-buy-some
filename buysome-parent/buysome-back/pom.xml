@@ -5,11 +5,18 @@
     <artifactId>buysome-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>org.haozf.buysome</groupId>
   <artifactId>buysome-back</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>buysome-back</name>
   <description>出去买点后台</description>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>org.haozf.buysome</groupId>
+  		<artifactId>buysome-data</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
+  
   <build/>
 </project>
