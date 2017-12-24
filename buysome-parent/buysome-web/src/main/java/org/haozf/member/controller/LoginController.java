@@ -21,7 +21,7 @@ public class LoginController extends BaseController{
         if(securityManager.getSubject()!=null){
             return "redirect:/";
         }
-        return "login";
+        return "member/login";
     }
     
     @RequestMapping("member/login")
