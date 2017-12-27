@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.haozf.common.BaseController;
-import org.haozf.member.service.MemberService;
+import org.haozf.mybatis.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,10 +18,9 @@ public class IndexController extends BaseController{
     @Autowired
     MemberService memberService;
     
-    
     @RequestMapping(value={"","index"})
     public String index(){
-        System.out.println(memberService.getUser());
+        System.out.println(memberService.listMember());
         return "index";
     }
     
