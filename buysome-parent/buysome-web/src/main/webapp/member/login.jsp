@@ -60,5 +60,14 @@
     </span>
 </label>
 <a class="weui-btn weui-btn_primary" href="login?name=123&password=123" id="showTooltips">确定</a>
+<c:choose>
+	<c:when test="${empty sessionScope._SESSION_MEMBER_ID_ }">
+		<a href="member/toLogin" class="weui-btn weui-btn_primary">登录</a>
+	</c:when>
+	<c:otherwise>
+		${sessionScope._SESSION_MEMBER_.name }
+		<a href="member/logout" class="weui-btn weui-btn_primary">退出</a>
+	</c:otherwise>
+</c:choose>
 </body>
 </html>

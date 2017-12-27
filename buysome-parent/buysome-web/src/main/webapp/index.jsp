@@ -9,28 +9,132 @@
 <title>首页</title>
 <link rel="stylesheet" href="style/weui.css"/>
 <link rel="stylesheet" href="example/example.css"/>
+<script type="text/javascript" src="example/zepto.min.js"></script>
 </head>
 <body>
 <div class="container" id="container">
-<div class="page tabbar js_show">
+<div class="page tabbar searchbar flex js_show">
     <div class="page__bd" style="height: 100%;">
+    	<!-- 外部框架 -->
         <div class="weui-tab">
+        	
             <div class="weui-tab__panel">
-            	<div class="page__bd page__bd_spacing">
-			        <div class="weui-flex">
-			            <div><div class="placeholder">weui</div></div>
-			            <div class="weui-flex__item"><div class="placeholder">weui</div></div>
+            	<!-- 首页内容 -->
+            	<!-- 搜索 -->
+            	<div class="page__bd">
+			        <div class="weui-search-bar" id="searchBar">
+			            <form class="weui-search-bar__form">
+			                <div class="weui-search-bar__box">
+			                    <i class="weui-icon-search"></i>
+			                    <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+			                    <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+			                </div>
+			                <label class="weui-search-bar__label" id="searchText">
+			                    <i class="weui-icon-search"></i>
+			                    <span>搜索</span>
+			                </label>
+			            </form>
+			            <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+			        </div>
+			        <div class="weui-cells searchbar-result" id="searchResult">
+			            <div class="weui-cell weui-cell_access">
+			                <div class="weui-cell__bd weui-cell_primary">
+			                    <p>实时搜索文本</p>
+			                </div>
+			            </div>
 			        </div>
 			    </div>
-				<c:choose>
-					<c:when test="${empty sessionScope._SESSION_MEMBER_ID_ }">
-						<a href="member/toLogin" class="weui-btn weui-btn_primary">登录</a>
-					</c:when>
-					<c:otherwise>
-						${sessionScope._SESSION_MEMBER_.name }
-						<a href="member/logout" class="weui-btn weui-btn_primary">退出</a>
-					</c:otherwise>
-				</c:choose>
+			    
+			    <div class="page__bd">
+	            	<div class="weui-navbar">
+		                <div class="weui-navbar__item weui-bar__item_on">
+							推荐
+		                </div>
+		                <div class="weui-navbar__item">
+		                   	服饰
+		                </div>
+		                <div class="weui-navbar__item">
+		                  	百货
+		                </div>
+		            </div>
+	            </div>
+	            <!-- 首页内容  -->
+	            
+	            <div class="weui-panel weui-panel_access">
+			            <div class="weui-panel__hd">最新商品</div>
+			            <div class="weui-panel__bd">
+			                <div class="weui-media-box weui-media-box_text">
+			                    <h4 class="weui-media-box__title">红米5 plus 正式发布</h4>
+			                    <div class="weui-media-box_appmsg">
+			                        <img class="weui-media-box__thumb" src="//i1.mifile.cn/a4/xmad_1513304443358_gzjfM.jpg" srcset="//i1.mifile.cn/a4/xmad_15133044464271_MtLzl.jpg 2x">
+			                    </div>			                    			                    
+			                    <p class="weui-media-box_appmsg">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+			                </div>
+			                <div class="weui-media-box weui-media-box_text">
+			                    <h4 class="weui-media-box__title">标题二</h4>
+			                    <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+			                </div>
+			            </div>
+			            <div class="weui-panel__ft">
+			                <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+			                    <div class="weui-cell__bd">查看更多</div>
+			                    <span class="weui-cell__ft"></span>
+			                </a>    
+			            </div>
+			        </div>
+				    
+				    
+			        <div class="weui-panel">
+			            <div class="weui-panel__hd">热门商品</div>
+			            <div class="weui-panel__bd">
+			                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+			                    <div class="weui-media-box__hd">
+			                    	<img class="weui-media-box__thumb" alt="小米MIX 2全系赠音箱" src="//i1.mifile.cn/a4/xmad_1496643954435_EcHtv.png" srcset="//i1.mifile.cn/a4/xmad_1496643954435_EcHtv.png 2x">
+			                    </div>
+			                    <div class="weui-media-box__bd">
+			                        <h4 class="weui-media-box__title">标题一</h4>
+			                        <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+			                    </div>
+			                </a>
+			                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+			                    <div class="weui-media-box__hd">
+			                    	<img class="weui-media-box__thumb" alt="小米MIX 2全系赠音箱" src="//i1.mifile.cn/a4/xmad_1496643954435_EcHtv.png" srcset="//i1.mifile.cn/a4/xmad_1496643954435_EcHtv.png 2x">
+			                    </div>
+			                    <div class="weui-media-box__bd">
+			                        <h4 class="weui-media-box__title">标题二</h4>
+			                        <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+			                    </div>
+			                </a>
+			            </div>
+			            <div class="weui-panel__ft">
+			                <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+			                    <div class="weui-cell__bd">查看更多</div>
+			                    <span class="weui-cell__ft"></span>
+			                </a>    
+			            </div>
+			        </div>
+			    <!-- 加载 -->
+			    <div class="page__bd">
+			        <div class="weui-loadmore">
+			            <i class="weui-loading"></i>
+			            <span class="weui-loadmore__tips">正在加载</span>
+			        </div>
+			    </div>
+			    <div class="page__bd page__bd_spacing">
+			        <div class="weui-footer">
+			            <p class="weui-footer__links">
+			                <a href="javascript:void(0);" class="weui-footer__link">底部链接</a>
+			                <a href="javascript:void(0);" class="weui-footer__link">底部链接</a>
+			            </p>
+			            <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+			        </div>
+			        <div class="weui-footer weui-footer_fixed-bottom">
+			            <p class="weui-footer__links">
+			                <a href="javascript:home();" class="weui-footer__link">WeUI首页</a>
+			            </p>
+			            <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+			        </div>
+			    </div>
             </div>
             <div class="weui-tabbar">
                 <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
@@ -64,7 +168,55 @@
         $('.weui-tabbar__item').on('click', function () {
             $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
         });
-    });</script></div>
+    });
+</script>
+
+<script type="text/javascript" class="searchbar js_show">
+    $(function(){
+        var $searchBar = $('#searchBar'),
+            $searchResult = $('#searchResult'),
+            $searchText = $('#searchText'),
+            $searchInput = $('#searchInput'),
+            $searchClear = $('#searchClear'),
+            $searchCancel = $('#searchCancel');
+
+        function hideSearchResult(){
+            $searchResult.hide();
+            $searchInput.val('');
+        }
+        function cancelSearch(){
+            hideSearchResult();
+            $searchBar.removeClass('weui-search-bar_focusing');
+            $searchText.show();
+        }
+
+        $searchText.on('click', function(){
+            $searchBar.addClass('weui-search-bar_focusing');
+            $searchInput.focus();
+        });
+        $searchInput
+            .on('blur', function () {
+                if(!this.value.length) cancelSearch();
+            })
+            .on('input', function(){
+                if(this.value.length) {
+                    $searchResult.show();
+                } else {
+                    $searchResult.hide();
+                }
+            })
+        ;
+        $searchClear.on('click', function(){
+            hideSearchResult();
+            $searchInput.focus();
+        });
+        $searchCancel.on('click', function(){
+            cancelSearch();
+            $searchInput.blur();
+        });
+    });
+</script>
+</div>
 
 
 

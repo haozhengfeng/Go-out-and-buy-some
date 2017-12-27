@@ -1231,7 +1231,7 @@ i.weui-tabbar__icon,
   display:-webkit-box;
   display:-webkit-flex;
   display:flex;
-  position:absolute;
+  /* position:absolute; */
   z-index:500;
   top:0;
   width:100%;
@@ -1261,7 +1261,7 @@ i.weui-tabbar__icon,
   -webkit-box-flex:1;
   -webkit-flex:1;
           flex:1;
-  padding:13px 0;
+  padding:6px 0;
   text-align:center;
   font-size:15px;
   -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
@@ -1279,7 +1279,7 @@ i.weui-tabbar__icon,
   top:0;
   width:1px;
   bottom:0;
-  border-right:1px solid #CCCCCC;
+  /* border-right:1px solid #CCCCCC; */
   color:#CCCCCC;
   -webkit-transform-origin:100% 0;
           transform-origin:100% 0;
