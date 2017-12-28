@@ -18,7 +18,7 @@
     	<!-- 外部框架 -->
         <div class="weui-tab">
         	
-            <div class="weui-tab__panel">
+            <div class="weui-tab__panel weui-tab__scoll">
             	<!-- 首页内容 -->
             	<!-- 搜索 -->
             	<div class="page__bd">
@@ -46,7 +46,7 @@
 			    </div>
 			    
 			    <div class="page__bd">
-	            	<div class="weui-navbar">
+	            	<div class="weui-navbar weui-navbar_scoll">
 		                <div class="weui-navbar__item weui-bar__item_on">
 							推荐
 		                </div>
@@ -56,6 +56,25 @@
 		                <div class="weui-navbar__item">
 		                  	百货
 		                </div>
+		                <div class="weui-navbar__item">
+		                  	百货
+		                </div>
+		                <div class="weui-navbar__item">
+		                  	百货
+		                </div>
+		                <div class="weui-navbar__item">
+		                  	百货
+		                </div>
+		                <div class="weui-navbar__item">
+		                  	百货
+		                </div>
+		                <div class="weui-navbar__item">
+		                  	百货
+		                </div>
+		                <div class="weui-navbar__item">
+		                  	百货
+		                </div>
+		                
 		            </div>
 	            </div>
 	            <!-- 首页内容  -->
@@ -69,6 +88,9 @@
 			                        <img class="weui-media-box__thumb" src="//i1.mifile.cn/a4/xmad_1513304443358_gzjfM.jpg" srcset="//i1.mifile.cn/a4/xmad_15133044464271_MtLzl.jpg 2x">
 			                    </div>			                    			                    
 			                    <p class="weui-media-box_appmsg">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+			                    <p class="weui-media-box__desc">
+			                    	<a href="javascript:void(0);" class="weui-cell_access weui-cell_link">小米官网</a>
+			                    </p>
 			                </div>
 			                <div class="weui-media-box weui-media-box_text">
 			                    <h4 class="weui-media-box__title">标题二</h4>
@@ -120,21 +142,6 @@
 			            <span class="weui-loadmore__tips">正在加载</span>
 			        </div>
 			    </div>
-			    <div class="page__bd page__bd_spacing">
-			        <div class="weui-footer">
-			            <p class="weui-footer__links">
-			                <a href="javascript:void(0);" class="weui-footer__link">底部链接</a>
-			                <a href="javascript:void(0);" class="weui-footer__link">底部链接</a>
-			            </p>
-			            <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
-			        </div>
-			        <div class="weui-footer weui-footer_fixed-bottom">
-			            <p class="weui-footer__links">
-			                <a href="javascript:home();" class="weui-footer__link">WeUI首页</a>
-			            </p>
-			            <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
-			        </div>
-			    </div>
             </div>
             <div class="weui-tabbar">
                 <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
@@ -142,11 +149,11 @@
                         <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
                         <span class="weui-badge" style="position: absolute;top: -2px;right: -13px;">8</span>
                     </span>
-                    <p class="weui-tabbar__label">微信</p>
+                    <p class="weui-tabbar__label">首页</p>
                 </a>
                 <a href="javascript:;" class="weui-tabbar__item">
                     <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
-                    <p class="weui-tabbar__label">通讯录</p>
+                    <p class="weui-tabbar__label">分类</p>
                 </a>
                 <a href="javascript:;" class="weui-tabbar__item">
                     <span style="display: inline-block;position: relative;">
@@ -157,7 +164,7 @@
                 </a>
                 <a href="javascript:;" class="weui-tabbar__item">
                     <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
-                    <p class="weui-tabbar__label">我</p>
+                    <p class="weui-tabbar__label">我的</p>
                 </a>
             </div>
         </div>
