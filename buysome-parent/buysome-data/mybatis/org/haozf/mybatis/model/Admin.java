@@ -1,6 +1,7 @@
 package org.haozf.mybatis.model;
 
-public class Admin {
+public class Admin implements Serializable{
+	
     private Integer id;
 
     private String username;

@@ -35,6 +35,25 @@
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">侧边栏切换按钮</span>
       </a>
+      
+      <ul class="nav navbar-nav">
+        <li class="dropdown user user-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="hidden-xs">Admin</span>
+          </a>
+        </li>
+        <li class="dropdown user user-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="hidden-xs">Admin</span>
+          </a>
+        </li>
+        <li class="dropdown user user-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="hidden-xs">Admin</span>
+          </a>
+        </li>
+      </ul>
+      
       <!-- 导航栏 右侧菜单 -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
@@ -80,7 +99,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="admin/logout" class="btn btn-default btn-flat">退出</a>
                 </div>
               </li>
             </ul>

@@ -1,9 +1,9 @@
-package org.haozf.member.controller;
+package org.haozf.admin.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.haozf.common.BaseController;
-import org.haozf.member.model.Member;
+import org.haozf.mybatis.model.Admin;
 import org.haozf.security.manager.SecurityManager;
 import org.haozf.security.model.Realm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,28 +16,39 @@ public class LoginController extends BaseController{
     @Autowired
     SecurityManager<Realm> securityManager;
     
-    @RequestMapping("member/toLogin")
+    @RequestMapping("admin/toLogin")
     public String toLogin(HttpServletRequest request){
         if(securityManager.getSubject()!=null){
             return "redirect:/";
         }
-        return "login";
+        return "admin/login";
     }
     
-    @RequestMapping("member/login")
-    public String login(Member member,HttpServletRequest request){
+    @RequestMapping("admin/login")
+    public String login(Admin admin,HttpServletRequest request){
+    	log.info(admin.getUsername()+"管理员登录");
+    	
         //验证用户名密码
-        if("123".equals(member.getName())&&"123".equals(member.getPassword())){
-            member.setId("123");
-            securityManager.login(member);
+        if("123".equals(admin.getUsername())&&"123".equals(admin.getPassword())){
+        	admin.setId(123);
+        	Realm realm = new Realm();
+        	realm.setMember(admin);
+            securityManager.login(realm);
             return "redirect:/";
         }
         
         return "redirect:toLogin";
     }
     
-    @RequestMapping("member/logout")
+    @RequestMapping("admin/logout")
     public String logout(HttpServletRequest request){
+    	if(securityManager.getSubject()==null){
+            return "redirect:/";
+        }
+    	
+    	Admin admin = (Admin)securityManager.getSubject().getMember();
+    	log.info(admin.getUsername()+"退出系统");
+    	
         //TODO 清除session
         securityManager.logout();
         return "redirect:/";

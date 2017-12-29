@@ -100,5 +100,15 @@
 		<property name="maxUploadSize" value="10485760" />
 		</bean>
 	-->
+	
+	<mvc:interceptors>    
+	    <mvc:interceptor>    
+	        <mvc:mapping path="/" />
+	        <mvc:exclude-mapping path="/adminr/logout"/>
+	        <mvc:exclude-mapping path="/admin/login"/>
+	        <mvc:exclude-mapping path="/admin/toLogin"/>
+	        <bean class="org.haozf.security.interceptor.AdminInterceptor"></bean>    
+	    </mvc:interceptor>  
+	</mvc:interceptors>  
 
 </beans>
