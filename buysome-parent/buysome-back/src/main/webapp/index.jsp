@@ -13,12 +13,10 @@
   <link rel="stylesheet" href="AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="AdminLTE-2.4.2/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="AdminLTE-2.4.2/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="AdminLTE-2.4.2/dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="AdminLTE-2.4.2/dist/css/skins/_all-skins.min.css">
-
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -36,52 +34,9 @@
         <span class="sr-only">侧边栏切换按钮</span>
       </a>
       
-      <ul class="nav navbar-nav">
-        <li class="dropdown user user-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="hidden-xs">Admin</span>
-          </a>
-        </li>
-        <li class="dropdown user user-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="hidden-xs">Admin</span>
-          </a>
-        </li>
-        <li class="dropdown user user-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="hidden-xs">Admin</span>
-          </a>
-        </li>
-      </ul>
-      
       <!-- 导航栏 右侧菜单 -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">2</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">您有2个提醒</li>
-              <li>
-                <ul class="menu">
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                      page and may cause design problems
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="footer"><a href="#">View all</a></li>
-            </ul>
-          </li>
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="AdminLTE-2.4.2/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
@@ -130,114 +85,56 @@
         </div>
       </form>
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
+        <li class="header">菜单</li>
         <li class="active treeview menu-open">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <i class="fa fa-dashboard"></i> <span>系统设置</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i>管理员管理</a></li>
+            <li><a href="index.html"><i class="fa fa-circle-o"></i>菜单管理</a></li>
           </ul>
         </li>
         <li class="treeview">
-          <a href="#">
+          <a href="index.html">
             <i class="fa fa-files-o"></i>
-            <span>Layout Options</span>
+            <span>店铺管理</span>
             <span class="pull-right-container">
               <span class="label label-primary pull-right">4</span>
             </span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-          </ul>
         </li>
         <li>
-          <a href="pages/widgets.html">
-            <i class="fa fa-th"></i> <span>Widgets</span>
+          <a href="index.html">
+            <i class="fa fa-th"></i> 
+            <span>商品管理</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>
             </span>
           </a>
         </li>
         <li>
-          <a href="pages/calendar.html">
-            <i class="fa fa-calendar"></i> <span>Calendar</span>
+          <a href="index.html">
+            <i class="fa fa-calendar"></i> 
+            <span>会员管理</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red">3</small>
               <small class="label pull-right bg-blue">17</small>
             </span>
           </a>
         </li>
-        <li>
-          <a href="pages/mailbox/mailbox.html">
-            <i class="fa fa-envelope"></i> <span>Mailbox</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-yellow">12</small>
-              <small class="label pull-right bg-green">16</small>
-              <small class="label pull-right bg-red">5</small>
-            </span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Level One
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                <li class="treeview">
-                  <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-          </ul>
-        </li>
       </ul>
     </section>
   </aside>
-
   <div class="content-wrapper">
-    <section class="content-header">
-      <h1>
-        Dashboard
-        <small>Version 2.0</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
-    </section>
-    <section class="content">
-    </section>
+	<!-- <iframe name="mainFrame" id="mainFrame" src="" frameborder="0" scrolling="auto" width="100%" style="height: -webkit-fill-available;"></iframe> -->
+	<div id="iframe">
+	</div>
   </div>
 </div>
-<!-- ./wrapper -->
 
 <!-- jQuery 3 -->
 <script src="AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
@@ -247,7 +144,10 @@
 <script src="AdminLTE-2.4.2/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="AdminLTE-2.4.2/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="AdminLTE-2.4.2/dist/js/pages/dashboard2.js"></script>
+<script type="text/javascript">
+$.get("admin/list.jsp",function(data){ //初始將a.html include div#iframe
+　　　　$("#iframe").html(data);
+}); 
+</script>
 </body>
 </html>
