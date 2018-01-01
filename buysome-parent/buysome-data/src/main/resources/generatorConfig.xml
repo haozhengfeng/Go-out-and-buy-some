@@ -7,7 +7,7 @@
 
 	<!-- 配置mysql 驱动jar包路径.用了绝对路径 -->
 	<classPathEntry
-		location="D:\j2ee\apache-tomcat-8.0.28\webapps\basic-web2.0\WEB-INF\lib\mysql-connector-java-5.1.38.jar" />
+		location="D:\JavaSoft\apache-tomcat-8.0.33\webapps\buysome-back\WEB-INF\lib\mysql-connector-java-5.1.38.jar" />
 
 	<context id="yihaomen_mysql_tables" targetRuntime="MyBatis3">
 
@@ -48,7 +48,32 @@
 		</javaClientGenerator>
 
 		<!-- 要对那些数据表进行生成操作，必须要有一个. -->
-		 <table schema="" tableName="user" domainObjectName="User">
+		<table schema="" tableName="admin" domainObjectName="Admin"
+        	enableCountByExample="true" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="true"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table schema="" tableName="goods" domainObjectName="Goods"
+        	
+        	enableCountByExample="true" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="true"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table schema="" tableName="member" domainObjectName="Member"
+        	enableCountByExample="true" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="true"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table schema="" tableName="shop" domainObjectName="Shop"
+        	enableCountByExample="true" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="true"
+            selectByExampleQueryId="false">
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>

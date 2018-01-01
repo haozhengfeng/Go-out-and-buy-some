@@ -8,6 +8,9 @@ import org.haozf.mybatis.model.AdminExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+
 @Service
 public class AdminService {
     
@@ -16,7 +19,9 @@ public class AdminService {
     
     public List<Admin> listAdmin(){
         AdminExample example = new AdminExample();
-        return adminMapper.selectByExample(example);
+        example.setOrderByClause(" id desc ");
+        List<Admin> admins = adminMapper.selectByExample(example);
+        return admins;
     }
     
     public Admin getAdmin(int id){
@@ -34,5 +39,7 @@ public class AdminService {
     public int updateAdmin(Admin admin){
         return adminMapper.updateByPrimaryKey(admin);
     }
+    
+    
 
 }

@@ -8,6 +8,16 @@
   <title>后台管理系统 | 欢迎使用</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../AdminLTE-2.4.2/bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../AdminLTE-2.4.2/dist/css/AdminLTE.css">
+  <link rel="stylesheet" href="../AdminLTE-2.4.2/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../AdminLTE-2.4.2/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 </head>
 <body>
 
@@ -20,146 +30,89 @@
 <section class="content">
       <div class="row">
         <div class="col-xs-12">
-          <!-- /.box -->
           <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
-            </div>
-            <!-- /.box-header -->
             <div class="box-body">
               <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+              
+              <form action="list">
               <div class="row">
-	              <div class="col-sm-6">
-		              <div class="dataTables_length" id="example1_length">
-			              <label>
-			              	Show 
-			              	<select name="example1_length" aria-controls="example1" class="form-control input-sm">
-			              		<option value="10">10</option>
-			              		<option value="25">25</option>
-			              		<option value="50">50</option>
-			              		<option value="100">100</option>
-			              	</select> 
-			              	entries
-			              </label>
-		              </div>
-	              </div>
-		       		<div class="col-sm-6">
-			       		<div id="example1_filter" class="dataTables_filter">
-			       			<label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label>
-			       		</div>
+	       		<div class="col-sm-12">
+		       		<div id="example1_filter" class="dataTables_filter">
+		       			<label>Search:<input type="search" class="form-control input-sm" placeholder="搜索" aria-controls="example1"></label>
 		       		</div>
+	       		</div>
        		</div>
+       		
+       		<div class="row">
+	       		<div class="col-sm-12">
+		       		<div id="example1_filter" class="dataTables_filter">
+		       			<button type="button" class="btn btn-success"  onclick="window.location.href='edit.jsp'">添加</button>
+		       		</div>
+	       		</div>
+       		</div>
+       		
        		<div class="row">
 	       		<div class="col-sm-12">
 	              <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
 	                <thead>
 	                <tr role="row">
-	                	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 197px;">Rendering engine</th>
-	                	<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 242px;">Browser</th>
-	                	<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 216px;">Platform(s)</th>
-	                	<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 169px;">Engine version</th>
-	                	<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">CSS grade</th></tr>
+	                	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 197px;">id</th>
+	                	<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 242px;">名称</th>
+	                	<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 216px;">操作</th>
 	                </thead>
 	                <tbody>
-	                <tr role="row" class="odd">
-	                  <td class="sorting_1">Gecko</td>
-	                  <td>Firefox 1.0</td>
-	                  <td>Win 98+ / OSX.2+</td>
-	                  <td>1.7</td>
-	                  <td>A</td>
-	                </tr><tr role="row" class="even">
-	                  <td class="sorting_1">Gecko</td>
-	                  <td>Firefox 1.5</td>
-	                  <td>Win 98+ / OSX.2+</td>
-	                  <td>1.8</td>
-	                  <td>A</td>
-	                </tr><tr role="row" class="odd">
-	                  <td class="sorting_1">Gecko</td>
-	                  <td>Firefox 2.0</td>
-	                  <td>Win 98+ / OSX.2+</td>
-	                  <td>1.8</td>
-	                  <td>A</td>
-	                </tr><tr role="row" class="even">
-	                  <td class="sorting_1">Gecko</td>
-	                  <td>Firefox 3.0</td>
-	                  <td>Win 2k+ / OSX.3+</td>
-	                  <td>1.9</td>
-	                  <td>A</td>
-	                </tr><tr role="row" class="odd">
-	                  <td class="sorting_1">Gecko</td>
-	                  <td>Camino 1.0</td>
-	                  <td>OSX.2+</td>
-	                  <td>1.8</td>
-	                  <td>A</td>
-	                </tr><tr role="row" class="even">
-	                  <td class="sorting_1">Gecko</td>
-	                  <td>Camino 1.5</td>
-	                  <td>OSX.3+</td>
-	                  <td>1.8</td>
-	                  <td>A</td>
-	                </tr><tr role="row" class="odd">
-	                  <td class="sorting_1">Gecko</td>
-	                  <td>Netscape 7.2</td>
-	                  <td>Win 95+ / Mac OS 8.6-9.2</td>
-	                  <td>1.7</td>
-	                  <td>A</td>
-	                </tr><tr role="row" class="even">
-	                  <td class="sorting_1">Gecko</td>
-	                  <td>Netscape Browser 8</td>
-	                  <td>Win 98SE+</td>
-	                  <td>1.7</td>
-	                  <td>A</td>
-	                </tr><tr role="row" class="odd">
-	                  <td class="sorting_1">Gecko</td>
-	                  <td>Netscape Navigator 9</td>
-	                  <td>Win 98+ / OSX.2+</td>
-	                  <td>1.8</td>
-	                  <td>A</td>
-	                </tr><tr role="row" class="even">
-	                  <td class="sorting_1">Gecko</td>
-	                  <td>Mozilla 1.0</td>
-	                  <td>Win 95+ / OSX.1+</td>
-	                  <td>1</td>
-	                  <td>A</td>
-	                </tr></tbody>
+	                
+	                <c:forEach items="${admins }" var="a" >
+	                	<tr role="row" class="odd">
+		                  <td class="sorting_1">${a.id }</td>
+		                  <td>${a.username }</td>
+		                  <td></td>
+		                </tr>
+	                </c:forEach>
+	                
+	               </tbody>
 	              </table>
 	              </div>
               </div>
               <div class="row">
+              	
               	<div class="col-sm-5">
-              		<div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+              		<div class="dataTables_length" id="example1_length">
+					 <label>
+					 	Show 
+					 	<select id="pageSize" name="pageSize" aria-controls="example1" class="form-control input-sm">
+					 		<option value="1" ${page.pageSize==1?'selected':''}>1</option>
+					 		<option value="2" ${page.pageSize==2?'selected':''}>2</option>
+					 		<option value="10" ${page.pageSize==10?'selected':''}>10</option>
+					 	</select> 
+					 	entries
+					 </label>
+					</div>
               	</div>
               	<div class="col-sm-7">
               		<div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
               			<ul class="pagination">
-              				<li class="paginate_button previous disabled" id="example1_previous">
-              					<a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a>
-              				</li>
-              				<li class="paginate_button active">
-              					<a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a>
-              				</li>
-              				<li class="paginate_button ">
-              					<a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">2</a>
-              				</li>
-              				<li class="paginate_button ">
-              					<a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0">3</a>
-              				</li>
-              				<li class="paginate_button ">
-              					<a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0">4</a>
-              				</li>
-              				<li class="paginate_button ">
-              					<a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0">5</a>
-              				</li>
-              				<li class="paginate_button ">
-              					<a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0">6</a>
-              				</li>
-              				<li class="paginate_button next" id="example1_next">
-              					<a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a>
-              				</li>
+	              			<c:forEach var="p" begin="1" end="${page.pages}" step="1"> 
+	              				<c:if test="${p==1 }">
+	              					<li class="paginate_button previous <c:if test="${page.pageNum==1 }">disabled</c:if>" id="example1_previous">
+		              					<a href="#" aria-controls="example1" data-dt-idx="Previous" tabindex="0">Previous</a>
+		              				</li>
+	              				</c:if>
+	              				<li class="paginate_button <c:if test="${p==page.pageNum }">active</c:if>">
+	              					<a href="#" aria-controls="example1" data-dt-idx="${p}" tabindex="0">${p}</a>
+	              				</li>
+	              				<c:if test="${p==page.pages }">
+		              				<li class="paginate_button next <c:if test="${page.pageNum==page.pages }">disabled</c:if>" id="example1_next">
+		              					<a href="#" aria-controls="example1" data-dt-idx="Next" tabindex="0">Next</a>
+		              				</li>
+	              				</c:if>
+							</c:forEach>
            				</ul>
+           				<input type="hidden" name="pageNum" id="pageNum" value="${page.pageNum }"/>
       				</div>
    				</div>
       				</div>
+      				</form>
    				</div>
             </div>
             <!-- /.box-body -->
@@ -170,5 +123,42 @@
       </div>
       <!-- /.row -->
 </section>
+
+<!-- jQuery 3 -->
+<script src="../AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../AdminLTE-2.4.2/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../AdminLTE-2.4.2/bower_components/fastclick/lib/fastclick.js"></script>
+<script src="../AdminLTE-2.4.2/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../AdminLTE-2.4.2/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../AdminLTE-2.4.2/dist/js/adminlte.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	$("#pageSize").change(function(){
+		$("#pageNum").val(1);
+		$("form:last").submit();
+	});
+	
+	$(".pagination li a").click(function(){
+		if(!parseInt($(this).attr("data-dt-idx"))){
+			if($(this).attr("data-dt-idx")=="Previous"){
+				if($("#pageNum").val()==1) return;
+				$("#pageNum").val(parseInt($("#pageNum").val())-1);								
+			}else if($(this).attr("data-dt-idx")=="Next"){
+				if($("#pageNum").val()==${page.pages}) return;
+				$("#pageNum").val(parseInt($("#pageNum").val())+1);	
+			}else{
+				return;	
+			}
+		}else{
+			$("#pageNum").val($(this).attr("data-dt-idx"));	
+		}
+		$("form:last").submit();
+	});
+});
+</script>
 </body>
 </html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.haozf.admin.mapper.BackAdminMapper">
+
+  <resultMap id="ResultMap" extends="org.haozf.mybatis.mapper.AdminMapper.BaseResultMap" type="org.haozf.mybatis.model.Admin">
+  </resultMap>
+
+  <select id="listAdmin" parameterType="org.haozf.mybatis.model.Admin" resultMap="ResultMap">
+    select * from admin  
+    where (1=1)
+    order by id desc
+  </select>
+  
+  
+</mapper>

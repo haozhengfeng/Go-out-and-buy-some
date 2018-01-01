@@ -1,14 +1,7 @@
 package org.haozf.mybatis.model;
 
-import java.io.Serializable;
-
-public class Admin implements Serializable{
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = -8121001554333998373L;
-
-	private Integer id;
+public class Admin {
+    private Integer id;
 
     private String username;
 

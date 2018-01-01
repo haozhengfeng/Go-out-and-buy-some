@@ -13,16 +13,15 @@
   <link rel="stylesheet" href="AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="AdminLTE-2.4.2/bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="AdminLTE-2.4.2/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="AdminLTE-2.4.2/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="AdminLTE-2.4.2/dist/css/AdminLTE.css">
   <link rel="stylesheet" href="AdminLTE-2.4.2/dist/css/skins/_all-skins.min.css">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-green-light sidebar-mini">
 <div class="wrapper">
   <header class="main-header">
     <!-- Logo -->
-    <a href="index.html" class="logo">
+    <a href="#" class="logo">
       <span class="logo-mini"><b>后台</b></span>
       <span class="logo-lg"><b>后台管理系统</b></span>
     </a>
@@ -74,7 +73,7 @@
           <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
         </div>
       </div>
-      <form action="#" method="get" class="sidebar-form">
+      <!-- <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
           <span class="input-group-btn">
@@ -83,7 +82,7 @@
                 </button>
               </span>
         </div>
-      </form>
+      </form> -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">菜单</li>
         <li class="active treeview menu-open">
@@ -94,12 +93,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i>管理员管理</a></li>
-            <li><a href="index.html"><i class="fa fa-circle-o"></i>菜单管理</a></li>
+            <li class="active"><a href="javascript:void(0);" href-url="admin/list"><i class="fa fa-circle-o"></i>管理员管理</a></li>
+            <!-- <li><a href="index.html"><i class="fa fa-circle-o"></i>菜单管理</a></li> -->
           </ul>
         </li>
         <li class="treeview">
-          <a href="index.html">
+          <a href="javascript:void(0);" href-url="admin/list">
             <i class="fa fa-files-o"></i>
             <span>店铺管理</span>
             <span class="pull-right-container">
@@ -108,7 +107,7 @@
           </a>
         </li>
         <li>
-          <a href="index.html">
+          <a href="javascript:void(0);" href-url="admin/list">
             <i class="fa fa-th"></i> 
             <span>商品管理</span>
             <span class="pull-right-container">
@@ -117,7 +116,7 @@
           </a>
         </li>
         <li>
-          <a href="index.html">
+          <a href="javascript:void(0);" href-url="admin/list">
             <i class="fa fa-calendar"></i> 
             <span>会员管理</span>
             <span class="pull-right-container">
@@ -129,11 +128,12 @@
       </ul>
     </section>
   </aside>
+  
   <div class="content-wrapper">
-	<!-- <iframe name="mainFrame" id="mainFrame" src="" frameborder="0" scrolling="auto" width="100%" style="height: -webkit-fill-available;"></iframe> -->
-	<div id="iframe">
-	</div>
+  	<iframe name="mainFrame" id="mainFrame"  src="" frameborder="0" scrolling="auto" width="100%"></iframe>
   </div>
+	<!-- <div id="iframe"></div> -->
+  
 </div>
 
 <!-- jQuery 3 -->
@@ -143,11 +143,7 @@
 <!-- FastClick -->
 <script src="AdminLTE-2.4.2/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="AdminLTE-2.4.2/dist/js/adminlte.min.js"></script>
-<script type="text/javascript">
-$.get("admin/list.jsp",function(data){ //初始將a.html include div#iframe
-　　　　$("#iframe").html(data);
-}); 
-</script>
+<script src="AdminLTE-2.4.2/dist/js/adminlte.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

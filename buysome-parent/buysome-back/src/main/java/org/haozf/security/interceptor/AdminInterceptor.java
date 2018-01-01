@@ -21,9 +21,9 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		if (securityManager.getSubject() == null) { // 判断用户是否存在，不存在返回登录界面，继续拦截，存在通过拦截，放行到访问页面
 			if (request.getHeader("x-requested-with") != null && request.getHeader("x-requested-with").equalsIgnoreCase("XMLHttpRequest")) {
-				return true;
+				return false;
 			} else {
-				response.sendRedirect("admin/toLogin");
+				response.sendRedirect(request.getContextPath()+"/admin/toLogin");
 			}
 			return false;
 		} else {

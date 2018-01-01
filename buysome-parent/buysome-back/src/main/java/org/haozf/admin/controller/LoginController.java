@@ -2,6 +2,7 @@ package org.haozf.admin.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.haozf.admin.service.BackAdminService;
 import org.haozf.common.BaseController;
 import org.haozf.mybatis.model.Admin;
 import org.haozf.security.manager.SecurityManager;
@@ -16,6 +17,9 @@ public class LoginController extends BaseController{
     @Autowired
     SecurityManager<Realm> securityManager;
     
+    @Autowired
+    BackAdminService backAdminService;
+    
     @RequestMapping("admin/toLogin")
     public String toLogin(HttpServletRequest request){
         if(securityManager.getSubject()!=null){
@@ -27,10 +31,9 @@ public class LoginController extends BaseController{
     @RequestMapping("admin/login")
     public String login(Admin admin,HttpServletRequest request){
     	log.info(admin.getUsername()+"管理员登录");
-    	
+    	admin = backAdminService.check(admin);
         //验证用户名密码
-        if("123".equals(admin.getUsername())&&"123".equals(admin.getPassword())){
-        	admin.setId(123);
+        if(admin != null){
         	Realm realm = new Realm();
         	realm.setMember(admin);
             securityManager.login(realm);

@@ -65,12 +65,15 @@
 		</property>
 	</bean>
 	
-	<!-- 静态资源 
-		<mvc:resources mapping="/css/**" location="/css/" />
-		<mvc:resources mapping="/images/**" location="/images/" />
-		<mvc:resources mapping="/include/**" location="/include/" />
-		<mvc:resources mapping="/js/**" location="/js/" />
-	-->
+	<mvc:default-servlet-handler/>
+	
+	<!-- 静态资源 -->
+	<!-- <mvc:resources mapping="/AdminLTE-2.4.2/**" location="/AdminLTE-2.4.2/" />
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/images/**" location="/images/" />
+	<mvc:resources mapping="/include/**" location="/include/" />
+	<mvc:resources mapping="/js/**" location="/js/" /> -->
+	
 
 	<!-- html文件 
 		<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
@@ -103,8 +106,8 @@
 	
 	<mvc:interceptors>    
 	    <mvc:interceptor>    
-	        <mvc:mapping path="/" />
-	        <mvc:exclude-mapping path="/adminr/logout"/>
+	        <mvc:mapping path="/**" />
+	        <mvc:exclude-mapping path="/admin/logout"/>
 	        <mvc:exclude-mapping path="/admin/login"/>
 	        <mvc:exclude-mapping path="/admin/toLogin"/>
 	        <bean class="org.haozf.security.interceptor.AdminInterceptor"></bean>    

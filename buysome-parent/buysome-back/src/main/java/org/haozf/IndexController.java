@@ -20,7 +20,6 @@ public class IndexController extends BaseController{
     
     @RequestMapping(value={"","index"})
     public String index(){
-//        System.out.println(memberService.listMember());
         return "index";
     }
     
