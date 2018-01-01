@@ -1,6 +1,7 @@
 package org.haozf.admin.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.haozf.admin.service.BackAdminService;
 import org.haozf.common.BaseController;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -32,6 +34,14 @@ public class BackAdminController extends BaseController{
         model.addAttribute("page", pageInfo);
         model.addAttribute("admins", admins);
         return "admin/list";
+    }
+    
+    
+    @RequestMapping(value = "admin/edit")
+    @ResponseBody
+    public Map edit(Admin admin, Model model) {
+        
+        return null;
     }
 
 }

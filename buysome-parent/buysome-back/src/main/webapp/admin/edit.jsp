@@ -32,15 +32,15 @@
             <div class="box-header with-border">
               <h3 class="box-title">添加管理员</h3>
             </div>
-            <form role="form">
+            <form role="form" action="edit" method="post">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1"></label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                  <label for="exampleInputEmail1">用户名</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="用户名">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  <label for="exampleInputPassword1">密码</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="密码">
                 </div>
               </div>
               <div class="box-footer">

@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BackAdminService{
+public class BackAdminService extends AdminService{
     
     @Autowired
     AdminMapper adminMapper;
@@ -39,5 +39,19 @@ public class BackAdminService{
             return admins.get(0);
         }
     }
+
+    @Override
+    public int addAdmin(Admin admin) {
+        // TODO Auto-generated method stub
+        return super.addAdmin(admin);
+    }
+
+    @Override
+    public int updateAdmin(Admin admin) {
+        // TODO Auto-generated method stub
+        return super.updateAdmin(admin);
+    }
+    
+    
 
 }
