@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class LoginController extends BaseController{
-    
-    @Autowired
+
+	@Autowired
     SecurityManager<Realm> securityManager;
     
     @RequestMapping("member/toLogin")

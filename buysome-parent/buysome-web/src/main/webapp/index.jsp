@@ -56,25 +56,6 @@
 		                <div class="weui-navbar__item">
 		                  	百货
 		                </div>
-		                <div class="weui-navbar__item">
-		                  	百货
-		                </div>
-		                <div class="weui-navbar__item">
-		                  	百货
-		                </div>
-		                <div class="weui-navbar__item">
-		                  	百货
-		                </div>
-		                <div class="weui-navbar__item">
-		                  	百货
-		                </div>
-		                <div class="weui-navbar__item">
-		                  	百货
-		                </div>
-		                <div class="weui-navbar__item">
-		                  	百货
-		                </div>
-		                
 		            </div>
 	            </div>
 	            <!-- 首页内容  -->
@@ -153,7 +134,7 @@
                 </a>
                 <a href="javascript:;" class="weui-tabbar__item">
                     <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
-                    <p class="weui-tabbar__label">分类</p>
+                    <p class="weui-tabbar__label">店铺</p>
                 </a>
                 <a href="javascript:;" class="weui-tabbar__item">
                     <span style="display: inline-block;position: relative;">
@@ -164,7 +145,7 @@
                 </a>
                 <a href="javascript:;" class="weui-tabbar__item">
                     <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
-                    <p class="weui-tabbar__label">我的</p>
+                    <p class="weui-tabbar__label">关于</p>
                 </a>
             </div>
         </div>
