@@ -1,7 +1,9 @@
+简介
+平台主要针对个人或个体户（没能力加入淘宝等平台的），用户可以通过平台发布商品或服务信息，首页主要展示附近、推荐的商品或服务，平台目的是为了方便用户在微信朋友圈等推广
+
 前台
-1、管理员角色(Admin[0超级管机员1管理员2用户])
-1、用户有自己一个店铺(Shop)，店铺详情页
-2、商品(Goods)信息，商品详情页
+1、每个管理员(Admin[0超级管机员1管理员2用户])都有自己一个店铺(Shop)，店铺详情页，店铺有图片，店铺有位置信息
+2、店铺下边有多个商品(Goods)，商品详情页，商品有图片
 3、商品有分类(Category)
 
 后台
@@ -14,5 +16,33 @@
 7、管理员可以管理（添加、修改、停用）店铺信息
 8、管理员可以管理（添加、修改、停用）商品信息
 9、管理员可以管理（添加、修改、停用）分类信息
+10、店铺图片、商品图片需要限制个数;限制商品个数
+
+admin:
+id username cellphone qq weixin weibo password roleid[0超级管机员1管理员2用户] shopid status[0停用1启用] isdelete[0未删除1已删除] addtime
+
+shop:
+id key name shopcover description adminid lon[经度] lat[纬度] location status[0停用1启用] isdelete[0未删除1已删除] addtime goodsnum[10] picnum[9] 
+
+shop_pic
+id shopid picpath picurl addtime
+
+goods:
+id title goodscover description categoryid shopid hasgoods[0无货1有货] status[0停用1启用] isdelete[0未删除1已删除] addtime picnum[9]
+
+goods_pic 
+id goodsid picpath picurl addtime
+
+category:
+id name status[0停用1启用] isdelete[0未删除1已删除] addtime
+
+
+
+
+
+
+
+
+
 
 

@@ -6,29 +6,37 @@ import org.haozf.mybatis.mapper.ShopMapper;
 import org.haozf.mybatis.model.Shop;
 import org.haozf.mybatis.model.ShopExample;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ShopService {
     @Autowired
-    ShopMapper ShopMapper;
+    ShopMapper shopMapper;
     
     public List<Shop> listShop(){
         ShopExample example = new ShopExample();
-        return ShopMapper.selectByExample(example);
+        return shopMapper.selectByExample(example);
     }
     
+    public List<Shop> listShop(Shop shop) {
+		ShopExample example = new ShopExample();
+		List<Shop> shops = shopMapper.selectByExample(example);
+		return shops;
+	}
+    
     public Shop getShop(int id){
-        return ShopMapper.selectByPrimaryKey(id);
+        return shopMapper.selectByPrimaryKey(id);
     }
     
     public int addShop(Shop Shop){
-        return ShopMapper.insertSelective(Shop);
+        return shopMapper.insertSelective(Shop);
     }
     
     public void deleteShop(int id){
-        ShopMapper.deleteByPrimaryKey(id);
+    	shopMapper.deleteByPrimaryKey(id);
     }
     
     public int updateShop(Shop Shop){
-        return ShopMapper.updateByPrimaryKey(Shop);
+        return shopMapper.updateByPrimaryKey(Shop);
     }
 }

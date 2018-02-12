@@ -16,6 +16,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="AdminLTE-2.4.2/dist/css/AdminLTE.css">
   <link rel="stylesheet" href="AdminLTE-2.4.2/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body class="hold-transition skin-green-light sidebar-mini">
 <div class="wrapper">
@@ -25,14 +26,12 @@
       <span class="logo-mini"><b>后台</b></span>
       <span class="logo-lg"><b>后台管理系统</b></span>
     </a>
-
     <!-- 头部导航栏 -->
     <nav class="navbar navbar-static-top">
       <!-- 侧边栏切换按钮-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">侧边栏切换按钮</span>
       </a>
-      
       <!-- 导航栏 右侧菜单 -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
@@ -73,19 +72,9 @@
           <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
         </div>
       </div>
-      <!-- <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form> -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">菜单</li>
-        <li class="active treeview menu-open">
+        <!-- <li class="active treeview menu-open">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>系统设置</span>
             <span class="pull-right-container">
@@ -94,11 +83,16 @@
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="javascript:void(0);" href-url="admin/list"><i class="fa fa-circle-o"></i>管理员管理</a></li>
-            <!-- <li><a href="index.html"><i class="fa fa-circle-o"></i>菜单管理</a></li> -->
+            <li><a href="index.html"><i class="fa fa-circle-o"></i>菜单管理</a></li>
           </ul>
-        </li>
-        <li class="treeview">
+        </li> -->
+        <li class="active">
           <a href="javascript:void(0);" href-url="admin/list">
+            <i class="fa fa-circle-o"></i><span>管理员管理</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0);" href-url="shop/list">
             <i class="fa fa-files-o"></i>
             <span>店铺管理</span>
             <span class="pull-right-container">
@@ -107,7 +101,7 @@
           </a>
         </li>
         <li>
-          <a href="javascript:void(0);" href-url="admin/list">
+          <a href="javascript:void(0);" href-url="goods/list">
             <i class="fa fa-th"></i> 
             <span>商品管理</span>
             <span class="pull-right-container">
@@ -116,9 +110,9 @@
           </a>
         </li>
         <li>
-          <a href="javascript:void(0);" href-url="admin/list">
+          <a href="javascript:void(0);" href-url="category/list">
             <i class="fa fa-calendar"></i> 
-            <span>会员管理</span>
+            <span>分类管理</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red">3</small>
               <small class="label pull-right bg-blue">17</small>
@@ -128,12 +122,10 @@
       </ul>
     </section>
   </aside>
-  
   <div class="content-wrapper">
   	<iframe name="mainFrame" id="mainFrame"  src="" frameborder="0" scrolling="auto" width="100%"></iframe>
   </div>
 	<!-- <div id="iframe"></div> -->
-  
 </div>
 
 <!-- jQuery 3 -->

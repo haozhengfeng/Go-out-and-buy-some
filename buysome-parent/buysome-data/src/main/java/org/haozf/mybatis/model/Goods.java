@@ -1,13 +1,32 @@
 package org.haozf.mybatis.model;
 
-public class Goods {
+import java.io.Serializable;
+import java.util.Date;
+
+public class Goods implements Serializable {
     private Integer id;
 
     private String title;
 
-    private String desc;
+    private String goodscover;
+
+    private String description;
+
+    private Integer categoryid;
+
+    private Integer shopid;
+
+    private Integer hasgoods;
 
     private Integer status;
+
+    private Integer isdelete;
+
+    private Date addtime;
+
+    private Integer picnum;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -25,12 +44,44 @@ public class Goods {
         this.title = title == null ? null : title.trim();
     }
 
-    public String getDesc() {
-        return desc;
+    public String getGoodscover() {
+        return goodscover;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setGoodscover(String goodscover) {
+        this.goodscover = goodscover == null ? null : goodscover.trim();
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
+    }
+
+    public Integer getCategoryid() {
+        return categoryid;
+    }
+
+    public void setCategoryid(Integer categoryid) {
+        this.categoryid = categoryid;
+    }
+
+    public Integer getShopid() {
+        return shopid;
+    }
+
+    public void setShopid(Integer shopid) {
+        this.shopid = shopid;
+    }
+
+    public Integer getHasgoods() {
+        return hasgoods;
+    }
+
+    public void setHasgoods(Integer hasgoods) {
+        this.hasgoods = hasgoods;
     }
 
     public Integer getStatus() {
@@ -39,5 +90,29 @@ public class Goods {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getIsdelete() {
+        return isdelete;
+    }
+
+    public void setIsdelete(Integer isdelete) {
+        this.isdelete = isdelete;
+    }
+
+    public Date getAddtime() {
+        return addtime;
+    }
+
+    public void setAddtime(Date addtime) {
+        this.addtime = addtime;
+    }
+
+    public Integer getPicnum() {
+        return picnum;
+    }
+
+    public void setPicnum(Integer picnum) {
+        this.picnum = picnum;
     }
 }

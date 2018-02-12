@@ -24,7 +24,7 @@
 
 <section class="content-header">
   <h1>
-    <small>管理员管理</small>
+    <small>商品管理</small>
   </h1>
 </section>
 
@@ -63,10 +63,10 @@
 	                </thead>
 	                <tbody>
 	                
-	                <c:forEach items="${admins }" var="a" >
+	                <c:forEach items="${goodss }" var="a" >
 	                	<tr role="row" class="odd">
 		                  <td class="sorting_1">${a.id }</td>
-		                  <td>${a.username }</td>
+		                  <td>${a.title }</td>
 		                  <td></td>
 		                </tr>
 	                </c:forEach>

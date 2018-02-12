@@ -4,8 +4,16 @@
   <resultMap id="BaseResultMap" type="org.haozf.mybatis.model.Admin">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="cellphone" jdbcType="VARCHAR" property="cellphone" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="weixin" jdbcType="VARCHAR" property="weixin" />
+    <result column="weibo" jdbcType="VARCHAR" property="weibo" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="roleid" jdbcType="INTEGER" property="roleid" />
+    <result column="shopid" jdbcType="INTEGER" property="shopid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="isdelete" jdbcType="INTEGER" property="isdelete" />
+    <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
     <result column="auth" jdbcType="VARCHAR" property="auth" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -38,7 +46,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username, password, roleid, auth
+    id, username, cellphone, qq, weixin, weibo, password, roleid, shopid, status, isdelete, 
+    addtime, auth
   </sql>
   <select id="selectByExample" parameterType="org.haozf.mybatis.model.AdminExample" resultMap="BaseResultMap">
     select
@@ -66,10 +75,16 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.haozf.mybatis.model.Admin" useGeneratedKeys="true">
-    insert into admin (username, password, roleid, 
-      auth)
-    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{roleid,jdbcType=INTEGER}, 
-      #{auth,jdbcType=VARCHAR})
+    insert into admin (username, cellphone, qq, 
+      weixin, weibo, password, 
+      roleid, shopid, status, 
+      isdelete, addtime, auth
+      )
+    values (#{username,jdbcType=VARCHAR}, #{cellphone,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, 
+      #{weixin,jdbcType=VARCHAR}, #{weibo,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{roleid,jdbcType=INTEGER}, #{shopid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{isdelete,jdbcType=INTEGER}, #{addtime,jdbcType=TIMESTAMP}, #{auth,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.haozf.mybatis.model.Admin" useGeneratedKeys="true">
     insert into admin
@@ -77,11 +92,35 @@
       <if test="username != null">
         username,
       </if>
+      <if test="cellphone != null">
+        cellphone,
+      </if>
+      <if test="qq != null">
+        qq,
+      </if>
+      <if test="weixin != null">
+        weixin,
+      </if>
+      <if test="weibo != null">
+        weibo,
+      </if>
       <if test="password != null">
         password,
       </if>
       <if test="roleid != null">
         roleid,
+      </if>
+      <if test="shopid != null">
+        shopid,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="isdelete != null">
+        isdelete,
+      </if>
+      <if test="addtime != null">
+        addtime,
       </if>
       <if test="auth != null">
         auth,
@@ -91,11 +130,35 @@
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>
+      <if test="cellphone != null">
+        #{cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null">
+        #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="weibo != null">
+        #{weibo,jdbcType=VARCHAR},
+      </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
       <if test="roleid != null">
         #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="shopid != null">
+        #{shopid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=TIMESTAMP},
       </if>
       <if test="auth != null">
         #{auth,jdbcType=VARCHAR},
@@ -114,11 +177,35 @@
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
       </if>
+      <if test="cellphone != null">
+        cellphone = #{cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null">
+        weixin = #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="weibo != null">
+        weibo = #{weibo,jdbcType=VARCHAR},
+      </if>
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
       <if test="roleid != null">
         roleid = #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="shopid != null">
+        shopid = #{shopid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        isdelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null">
+        addtime = #{addtime,jdbcType=TIMESTAMP},
       </if>
       <if test="auth != null">
         auth = #{auth,jdbcType=VARCHAR},
@@ -129,8 +216,16 @@
   <update id="updateByPrimaryKey" parameterType="org.haozf.mybatis.model.Admin">
     update admin
     set username = #{username,jdbcType=VARCHAR},
+      cellphone = #{cellphone,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      weixin = #{weixin,jdbcType=VARCHAR},
+      weibo = #{weibo,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       roleid = #{roleid,jdbcType=INTEGER},
+      shopid = #{shopid,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      addtime = #{addtime,jdbcType=TIMESTAMP},
       auth = #{auth,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

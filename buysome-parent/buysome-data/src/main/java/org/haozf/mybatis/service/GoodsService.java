@@ -11,26 +11,32 @@ import org.springframework.stereotype.Service;
 @Service
 public class GoodsService {
     @Autowired
-    GoodsMapper GoodsMapper;
+    GoodsMapper goodsMapper;
     
     public List<Goods> listGoods(){
         GoodsExample example = new GoodsExample();
-        return GoodsMapper.selectByExample(example);
+        return goodsMapper.selectByExample(example);
     }
     
+    public List<Goods> listGoods(Goods goods) {
+		GoodsExample example = new GoodsExample();
+		List<Goods> goodss = goodsMapper.selectByExample(example);
+		return goodss;
+	}
+    
     public Goods getGoods(int id){
-        return GoodsMapper.selectByPrimaryKey(id);
+        return goodsMapper.selectByPrimaryKey(id);
     }
     
     public int addGoods(Goods goods){
-        return GoodsMapper.insertSelective(goods);
+        return goodsMapper.insertSelective(goods);
     }
     
     public void deleteGoods(int id){
-        GoodsMapper.deleteByPrimaryKey(id);
+        goodsMapper.deleteByPrimaryKey(id);
     }
     
     public int updateGoods(Goods goods){
-        return GoodsMapper.updateByPrimaryKey(goods);
+        return goodsMapper.updateByPrimaryKey(goods);
     }
 }

@@ -9,7 +9,9 @@ $(function(){
 			});
 		}else{
 			$(this).find("a").click(function(){
-				 $("#mainFrame").attr('src', $(this).attr("href-url"));
+				 $("#mainFrame").attr("src", $(this).attr("href-url"));
+				 $(".active").removeClass("active");
+				 $(this).parent("li").addClass("active");
 			});
 		}
 	});
