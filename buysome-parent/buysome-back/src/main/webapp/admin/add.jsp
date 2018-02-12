@@ -34,22 +34,17 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="username">用户名</label>
-                  <input id="username" name="username" class="form-control" placeholder="用户名" maxlength="10" value="${username }">
+                  <input id="username" name="username" class="form-control" placeholder="用户名" maxlength="10">
                 </div>
                 <div class="form-group">
                   <label for="password">密码</label>
                   <input id="password" name="password" type="password" class="form-control" placeholder="密码" maxlength="10">
                 </div>
                 <div class="form-group">
-                  <label for="password">确认密码</label>
-                  <input id="confirm" name="confirm" type="password" class="form-control" placeholder="确认密码" maxlength="10">
-                </div>
-                <div class="form-group">
                   <label for="roleid">角色</label>
                   <select id="roleid" name="roleid" class="form-control">
-                  	<option value="0" ${roleid==0?'selected':'' }>超级管理员</option>
-                  	<option value="1" ${roleid==1?'selected':'' }>管理员</option>
-                  	<option value="2" ${roleid==2?'selected':'' }>用户</option>
+                  	<option value="1">管理员</option>
+                  	<option value="2">用户</option>
                   </select>
                 </div>
                 <div class="form-group has-error">
@@ -81,7 +76,7 @@
 $("#myForm").ajaxForm({
     type: "post",  //提交方式  
     dataType: "json", //数据类型  
-    url: "edit", //请求url  
+    url: "add", //请求url  
     success: function (data) { //提交成功的回调函数  
     	if(data.status=='yes'){
     		window.location.href='list';

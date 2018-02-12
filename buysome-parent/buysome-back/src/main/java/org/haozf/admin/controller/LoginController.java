@@ -4,12 +4,15 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.haozf.admin.service.BackAdminService;
 import org.haozf.common.BaseController;
+import org.haozf.common.JsonResult;
 import org.haozf.mybatis.model.Admin;
 import org.haozf.security.manager.SecurityManager;
 import org.haozf.security.model.Realm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class LoginController extends BaseController{
@@ -28,19 +31,28 @@ public class LoginController extends BaseController{
         return "admin/login";
     }
     
-    @RequestMapping("admin/login")
-    public String login(Admin admin,HttpServletRequest request){
-    	log.info(admin.getUsername()+"管理员登录");
+    @RequestMapping(value="admin/login",method=RequestMethod.POST)
+    @ResponseBody
+    public JsonResult login(Admin admin,HttpServletRequest request){
     	admin = backAdminService.check(admin);
+    	if(admin.getStatus()==0){
+    	    result.setStatus("no");
+            result.setMessage("用户已停用，请联系管理员");
+            return result;
+    	}
         //验证用户名密码
         if(admin != null){
         	Realm realm = new Realm();
         	realm.setMember(admin);
             securityManager.login(realm);
-            return "redirect:/";
+            result.setStatus("yes");
+            result.setMessage("登录成功");
+            return result;
         }
         
-        return "redirect:toLogin";
+        result.setStatus("no");
+        result.setMessage("用户名或密码错误");
+        return result;
     }
     
     @RequestMapping("admin/logout")

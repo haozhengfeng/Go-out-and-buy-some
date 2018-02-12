@@ -24,7 +24,7 @@ public class CategoryController {
         if(pagination.getPageSize()==0) pagination.setPageSize(10);
         PageHelper.startPage(pagination.getPageNum(), pagination.getPageSize());
         List<Category> categorys = categoryService.listCategory(category);
-        PageInfo pageInfo=new PageInfo(categorys);  
+        PageInfo<Category> pageInfo=new PageInfo<Category>(categorys);  
         model.addAttribute("page", pageInfo);
         model.addAttribute("categorys", categorys);
         return "category/list";

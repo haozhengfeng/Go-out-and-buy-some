@@ -19,12 +19,15 @@
     <a href="index.html"><b>后台管理系统</b></a>
   </div>
   <div class="login-box-body">
-    <form action="login" method="post">
-      <div class="form-group has-feedback">
+    <form id="myForm">
+      <div class="form-group has-error">
+        <span class="help-block hidden"></span>
+      </div>
+      <div class="form-group">
         <input name="username" class="form-control" placeholder="管理员">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
-      <div class="form-group has-feedback">
+      <div class="form-group">
         <input name="password" type="password" class="form-control" placeholder="密码">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
@@ -42,5 +45,22 @@
 <script src="../AdminLTE-2.4.2/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- iCheck -->
 <script src="../AdminLTE-2.4.2/plugins/iCheck/icheck.min.js"></script>
+<script src="../js/jquery.form.min.js"></script>
+<script type="text/javascript">
+$("#myForm").ajaxForm({
+    type: "post",  //提交方式  
+    dataType: "json", //数据类型  
+    url: "login", //请求url  
+    success: function (data) { //提交成功的回调函数  
+    	if(data.status=='yes'){
+    		window.location.href='';
+    	}else{
+    		$(".help-block").html(data.message);
+    		$(".help-block").removeClass("hidden");
+    	}
+        
+    }
+});
+</script>
 </body>
 </html>
