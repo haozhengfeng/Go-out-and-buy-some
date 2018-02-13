@@ -34,14 +34,13 @@
               <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
               
               <form action="list" role="form">
-              <!-- <div class="row">
+              <div class="row">
 	       		<div class="col-sm-12">
 		       		<div class="dataTables_filter">
 		       			<label><input type="search" class="form-control input-sm" placeholder="搜索" aria-controls="example1"></label>
 		       		</div>
 	       		</div>
-       		</div> -->
-       		
+       		  </div>
        		
        		<c:if test="${sessionAdmin.roleid!=2 }">
 	       		<div class="row">
@@ -91,9 +90,9 @@
 		                  		<c:if test="${sessionAdmin.id==a.id&&empty a.shopid }">
 		                  			<a href="../shop/toadd?id=${a.id }">店</a>
 		                  		</c:if>
-		                  		<c:if test="${sessionAdmin.id==a.id&&!empty a.shopid }">
+		                  		<%-- <c:if test="${sessionAdmin.id==a.id&&!empty a.shopid }">
 		                  			<a href="../shop/toedit?id=${a.shopid }">店</a>
-		                  		</c:if>
+		                  		</c:if> --%>
 		                  	</c:if>
 		                  	
 		                  	<!-- 非超级管理员用户允许修改 -->
@@ -128,7 +127,7 @@
 					 </label>
 					</div>
               	</div> --%>
-              	<div class="col-sm-7">
+              	<div class="col-sm-12">
               		<div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
               			<ul class="pagination">
 	              			<c:forEach var="p" begin="1" end="${page.pages}" step="1"> 
@@ -137,8 +136,8 @@
 		              					<a href="#" aria-controls="example1" data-dt-idx="Previous" tabindex="0">上一页</a>
 		              				</li>
 	              				</c:if>
-	              				<li class="paginate_button <c:if test="${p==page.pageNum }">active</c:if>">
-	              					<a href="#" aria-controls="example1" data-dt-idx="${p}" tabindex="0">${p}</a>
+	              				<li class="paginate_button">
+	              					<a <c:if test="${p==page.pageNum }">class="bg-green"</c:if> href="#" aria-controls="example1" data-dt-idx="${p}" tabindex="0">${p}</a>
 	              				</li>
 	              				<c:if test="${p==page.pages }">
 		              				<li class="paginate_button next <c:if test="${page.pageNum==page.pages }">disabled</c:if>" id="example1_next">

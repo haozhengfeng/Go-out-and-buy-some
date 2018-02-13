@@ -12,7 +12,7 @@ public class Goods implements Serializable {
 
     private String description;
 
-    private Integer categoryid;
+    private Integer categorycode;
 
     private Integer shopid;
 
@@ -60,12 +60,12 @@ public class Goods implements Serializable {
         this.description = description == null ? null : description.trim();
     }
 
-    public Integer getCategoryid() {
-        return categoryid;
+    public Integer getCategorycode() {
+        return categorycode;
     }
 
-    public void setCategoryid(Integer categoryid) {
-        this.categoryid = categoryid;
+    public void setCategorycode(Integer categorycode) {
+        this.categorycode = categorycode;
     }
 
     public Integer getShopid() {

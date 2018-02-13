@@ -22,7 +22,7 @@
 <body>
 <section class="content-header">
   <h1>
-    <small>管理员管理</small>
+    <small>分类管理</small>
   </h1>
 </section>
 <section class="content">
@@ -30,21 +30,25 @@
       	<div class="col-md-6">
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">添加管理员</h3>
+              <h3 class="box-title">添加分类</h3>
             </div>
-            <form role="form" action="edit" method="post">
+            <form id="myForm" role="form">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">用户名</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="用户名">
+                  <label for="code">分类编号</label>
+                  <input id="code" name="code" class="form-control" placeholder="分类编号" maxlength="10" value="${category.code }"/>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">密码</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="密码">
+                  <label for="name">分类名称</label>
+                  <input id="name" name="name" class="form-control" placeholder="分类名称" maxlength="10" value="${category.name }"/>
                 </div>
+                <div class="form-group has-error">
+			      <span class="help-block hidden"></span>
+			    </div>
               </div>
               <div class="box-footer">
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-success">提交</button>
+                <button type="button" class="btn btn-success"  onclick="window.location.href='list'">返回</button>
               </div>
             </form>
           </div>

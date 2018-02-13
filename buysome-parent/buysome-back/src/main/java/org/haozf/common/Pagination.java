@@ -33,7 +33,7 @@ public class Pagination {
         this.pageCount = pageCount;
     }
   
-    public Pagination handler(PageInfo page) {
+    public Pagination handler(PageInfo<?> page) {
         this.setPageNum(page.getPageNum());
         this.setPageSize(page.getPageSize());
         this.setPageCount(page.getPages());

@@ -1,6 +1,8 @@
 package org.haozf.mybatis.model;
 
-public class Member {
+import java.io.Serializable;
+
+public class Member implements Serializable {
     private Integer id;
 
     private String username;
@@ -10,6 +12,8 @@ public class Member {
     private String openid;
 
     private String cellphone;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;

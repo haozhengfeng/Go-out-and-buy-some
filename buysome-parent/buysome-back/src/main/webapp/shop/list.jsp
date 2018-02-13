@@ -36,13 +36,13 @@
               <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
               
               <form action="list">
-              <!-- <div class="row">
+              <div class="row">
 	       		<div class="col-sm-12">
 		       		<div id="example1_filter" class="dataTables_filter">
 		       			<label><input type="search" class="form-control input-sm" placeholder="搜索" aria-controls="example1"></label>
 		       		</div>
 	       		</div>
-       		</div> -->
+       		  </div>
        		
        		<!-- <div class="row">
 	       		<div class="col-sm-12">
@@ -66,10 +66,10 @@
 	                	<tr role="row" class="odd">
 		                  <td>${a.name }</td>
 		                  <td>
-		                  	<c:if test="${sessionAdmin.roleid==0||sessionAdmin.id==a.id }">
+		                  	<c:if test="${sessionAdmin.roleid==0||sessionAdmin.id==a.adminid }">
 		                  		<a href="toedit?id=${a.id }">修</a>
 		                  	</c:if>
-		                  	<c:if test="${sessionAdmin.roleid==0||(sessionAdmin.roleid==1&&a.roleid==2) }">
+		                  	<c:if test="${sessionAdmin.roleid==0||(sessionAdmin.roleid==1) }">
 	                  			<a href="javascript:void(0);" onclick="status(${a.id })">${a.status==0?'启':'停' }</a>
 	                  		</c:if>
 		                  	<c:if test="${sessionAdmin.roleid==0 }">
@@ -85,7 +85,7 @@
               </div>
               <div class="row">
               	
-              	<div class="col-sm-5">
+              	<%-- <div class="col-sm-5">
               		<div class="dataTables_length" id="example1_length">
 					 <label>
 					 	显示 
@@ -97,8 +97,8 @@
 					 	条
 					 </label>
 					</div>
-              	</div>
-              	<div class="col-sm-7">
+              	</div> --%>
+              	<div class="col-sm-12">
               		<div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
               			<ul class="pagination">
 	              			<c:forEach var="p" begin="1" end="${page.pages}" step="1"> 
@@ -107,8 +107,8 @@
 		              					<a href="#" aria-controls="example1" data-dt-idx="Previous" tabindex="0">上一页</a>
 		              				</li>
 	              				</c:if>
-	              				<li class="paginate_button <c:if test="${p==page.pageNum }">active</c:if>">
-	              					<a href="#" aria-controls="example1" data-dt-idx="${p}" tabindex="0">${p}</a>
+	              				<li class="paginate_button">
+	              					<a <c:if test="${p==page.pageNum }">class="bg-green"</c:if>  href="#" aria-controls="example1" data-dt-idx="${p}" tabindex="0">${p}</a>
 	              				</li>
 	              				<c:if test="${p==page.pages }">
 		              				<li class="paginate_button next <c:if test="${page.pageNum==page.pages }">disabled</c:if>" id="example1_next">

@@ -8,8 +8,6 @@
   <title>后台管理系统 | 欢迎使用</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="../AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
@@ -22,7 +20,7 @@
 <body>
 <section class="content-header">
   <h1>
-    <small>店铺管理</small>
+    <small>商品管理</small>
   </h1>
 </section>
 <section class="content">
@@ -30,33 +28,41 @@
       	<div class="col-md-6">
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">修改</h3>
+              <h3 class="box-title">添加商品</h3>
             </div>
             <form id="myForm" role="form" enctype="multipart/form-data">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="name">店铺名称</label>
-                  <input id="name" name="name" class="form-control" placeholder="店铺名称" maxlength="10" value="${shop.name }">
+                  <label for="title">商品名称</label>
+                  <input id="title" name="title" class="form-control" placeholder="商品名称" maxlength="10">
                 </div>
                 <div class="form-group">
-				                  
-                  <label for="shopcover">店铺封面</label>
-                  <img class="img-responsive pad" src="${shop.shopcover }" onerror="this.src='../imgs/boxed-bg.jpg'" width="400px" height="300px">
-                  <input id="file" name="file" type="file" accept="image/*" placeholder="店铺封面" value="${shop.name }"/>
-                    
+                  <label for="goodscover">商品封面</label>
+                  <input id="file" name="file" type="file" accept="image/*" placeholder="商品封面"/>  
                 </div>
                 <div class="form-group">
-                  <label for="description">店铺描述</label>
-                  <textarea id="description" name="description" class="form-control" rows="3" placeholder="店铺描述" maxlength="100">${shop.description }</textarea>
+                  <label for="description">商品描述</label>
+                  <textarea id="description" name="description" class="form-control" rows="3" placeholder="商品描述"></textarea>
                 </div>
                 <div class="form-group">
-                  <label for="location">店铺位置</label>
-                  <input id="location" name="location" class="form-control" placeholder="店铺位置" maxlength="50" value="${shop.location }">
+                  <label for="hasgoods">是否有货</label>
+				  <select id="hasgoods" name="hasgoods" class="form-control">
+	               	  <option value="1">有货</option>
+	               	  <option value="0">无货</option>
+              	  </select>                
                 </div>
                 <div class="form-group">
-                  <label for="location">店主</label>
-                  ${admin.username }
-                  <input id="adminid" name="adminid" type="hidden" value="${admin.id }">
+                  <label for="categorycode">商品分类</label>
+				  <select id="categorycode" name="categorycode" class="form-control">
+	               	  <c:forEach items="${categorys }" var="a" >
+	                	<option value="${a.code }">${a.name }</option>
+	                </c:forEach>
+              	  </select>                
+                </div>
+                <div class="form-group">
+                  <label for="location">店铺</label>
+                  ${shop.name }
+                  <input id="shopid" name="shopid" type="hidden" value="${shop.id }">
                 </div>
                 <div class="form-group has-error">
 			      <span class="help-block hidden"></span>
@@ -87,9 +93,7 @@
 $("#myForm").ajaxForm({
     type: "post",  //提交方式  
     dataType: "json", //数据类型  
-    url: "edit", //请求url
-    data:{id:${shop.id}},
-    beforeSubmit: validate, // 提交前
+    url: "add", //请求url  
     success: function (data) { //提交成功的回调函数  
     	if(data.status=='yes'){
     		window.location.href='list';
@@ -99,9 +103,6 @@ $("#myForm").ajaxForm({
     	}
     }
 });
-
-function validate(){
-}
 </script>
 </body>
 </html>

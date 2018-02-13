@@ -6,7 +6,7 @@
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="goodscover" jdbcType="VARCHAR" property="goodscover" />
     <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="categoryid" jdbcType="INTEGER" property="categoryid" />
+    <result column="categorycode" jdbcType="INTEGER" property="categorycode" />
     <result column="shopid" jdbcType="INTEGER" property="shopid" />
     <result column="hasgoods" jdbcType="INTEGER" property="hasgoods" />
     <result column="status" jdbcType="INTEGER" property="status" />
@@ -44,7 +44,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, title, goodscover, description, categoryid, shopid, hasgoods, status, isdelete, 
+    id, title, goodscover, description, categorycode, shopid, hasgoods, status, isdelete, 
     addtime, picnum
   </sql>
   <select id="selectByExample" parameterType="org.haozf.mybatis.model.GoodsExample" resultMap="BaseResultMap">
@@ -74,11 +74,11 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.haozf.mybatis.model.Goods" useGeneratedKeys="true">
     insert into goods (title, goodscover, description, 
-      categoryid, shopid, hasgoods, 
+      categorycode, shopid, hasgoods, 
       status, isdelete, addtime, 
       picnum)
     values (#{title,jdbcType=VARCHAR}, #{goodscover,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{categoryid,jdbcType=INTEGER}, #{shopid,jdbcType=INTEGER}, #{hasgoods,jdbcType=INTEGER}, 
+      #{categorycode,jdbcType=INTEGER}, #{shopid,jdbcType=INTEGER}, #{hasgoods,jdbcType=INTEGER}, 
       #{status,jdbcType=INTEGER}, #{isdelete,jdbcType=INTEGER}, #{addtime,jdbcType=TIMESTAMP}, 
       #{picnum,jdbcType=INTEGER})
   </insert>
@@ -94,8 +94,8 @@
       <if test="description != null">
         description,
       </if>
-      <if test="categoryid != null">
-        categoryid,
+      <if test="categorycode != null">
+        categorycode,
       </if>
       <if test="shopid != null">
         shopid,
@@ -126,8 +126,8 @@
       <if test="description != null">
         #{description,jdbcType=VARCHAR},
       </if>
-      <if test="categoryid != null">
-        #{categoryid,jdbcType=INTEGER},
+      <if test="categorycode != null">
+        #{categorycode,jdbcType=INTEGER},
       </if>
       <if test="shopid != null">
         #{shopid,jdbcType=INTEGER},
@@ -167,8 +167,8 @@
       <if test="description != null">
         description = #{description,jdbcType=VARCHAR},
       </if>
-      <if test="categoryid != null">
-        categoryid = #{categoryid,jdbcType=INTEGER},
+      <if test="categorycode != null">
+        categorycode = #{categorycode,jdbcType=INTEGER},
       </if>
       <if test="shopid != null">
         shopid = #{shopid,jdbcType=INTEGER},
@@ -196,7 +196,7 @@
     set title = #{title,jdbcType=VARCHAR},
       goodscover = #{goodscover,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
-      categoryid = #{categoryid,jdbcType=INTEGER},
+      categorycode = #{categorycode,jdbcType=INTEGER},
       shopid = #{shopid,jdbcType=INTEGER},
       hasgoods = #{hasgoods,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},

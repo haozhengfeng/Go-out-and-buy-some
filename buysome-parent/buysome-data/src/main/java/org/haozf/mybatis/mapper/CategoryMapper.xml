@@ -3,6 +3,7 @@
 <mapper namespace="org.haozf.mybatis.mapper.CategoryMapper">
   <resultMap id="BaseResultMap" type="org.haozf.mybatis.model.Category">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="code" jdbcType="INTEGER" property="code" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="isdelete" jdbcType="INTEGER" property="isdelete" />
@@ -38,7 +39,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, status, isdelete, addtime
+    id, code, name, status, isdelete, addtime
   </sql>
   <select id="selectByExample" parameterType="org.haozf.mybatis.model.CategoryExample" resultMap="BaseResultMap">
     select
@@ -66,14 +67,17 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.haozf.mybatis.model.Category" useGeneratedKeys="true">
-    insert into category (name, status, isdelete, 
-      addtime)
-    values (#{name,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{isdelete,jdbcType=INTEGER}, 
-      #{addtime,jdbcType=TIMESTAMP})
+    insert into category (code, name, status, 
+      isdelete, addtime)
+    values (#{code,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{isdelete,jdbcType=INTEGER}, #{addtime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.haozf.mybatis.model.Category" useGeneratedKeys="true">
     insert into category
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="code != null">
+        code,
+      </if>
       <if test="name != null">
         name,
       </if>
@@ -88,6 +92,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="code != null">
+        #{code,jdbcType=INTEGER},
+      </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
@@ -111,6 +118,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="org.haozf.mybatis.model.Category">
     update category
     <set>
+      <if test="code != null">
+        code = #{code,jdbcType=INTEGER},
+      </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
@@ -128,7 +138,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="org.haozf.mybatis.model.Category">
     update category
-    set name = #{name,jdbcType=VARCHAR},
+    set code = #{code,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       isdelete = #{isdelete,jdbcType=INTEGER},
       addtime = #{addtime,jdbcType=TIMESTAMP}

@@ -13,11 +13,11 @@ import org.haozf.mybatis.mapper.AdminMapper;
 import org.haozf.mybatis.mapper.GoodsMapper;
 import org.haozf.mybatis.mapper.ShopMapper;
 import org.haozf.mybatis.model.Admin;
-import org.haozf.mybatis.model.AdminExample;
 import org.haozf.mybatis.model.Goods;
 import org.haozf.mybatis.model.GoodsExample;
 import org.haozf.mybatis.model.Shop;
 import org.haozf.mybatis.model.ShopExample;
+import org.haozf.mybatis.model.ShopExample.Criteria;
 import org.haozf.mybatis.service.ShopService;
 import org.haozf.security.manager.SecurityManager;
 import org.haozf.security.model.Realm;
@@ -104,9 +104,16 @@ public class BackShopService extends ShopService{
 	 * @param name
 	 * @return
 	 */
-	public Shop getShopByName(String name){
+	public Shop getShopByName(Shop shop){
 		ShopExample example = new ShopExample();
-		example.or().andNameEqualTo(name);
+		
+		Criteria or = example.or();
+		or.andNameEqualTo(shop.getName());
+		
+		if(shop.getId()!=null){
+		    or.andIdNotEqualTo(shop.getId());
+		}
+		
 		List<Shop> shops = shopMapper.selectByExample(example);
 		if(shops.size()==1){
 			return shops.get(0);
@@ -136,17 +143,17 @@ public class BackShopService extends ShopService{
 		}
 		
 		//判断店铺名称是否存在
-		Shop shopByName = getShopByName(shop.getName());
+		Shop shopByName = getShopByName(shop);
 		if(shopByName != null){
 			throw new RuntimeException("店铺名称已存在");
 		}
 		
 		shop.setAddtime(new Date());
-        int shopid = super.addShop(shop);
+        super.addShop(shop);
         
-        updateAdminShopid(shop.getAdminid(), shopid);
+        updateAdminShopid(shop.getAdminid(), shop.getId());
         
-        return shopid;
+        return shop.getId();
     }
 	
 	/**
@@ -166,7 +173,7 @@ public class BackShopService extends ShopService{
 	 * @return
 	 */
 	public String addShopCover(MultipartFile file){
-		if (!file.isEmpty()) {  
+		if (file!=null&&!file.isEmpty()) {  
         	return shopCover(file);
         }
 		return null;
@@ -244,6 +251,32 @@ public class BackShopService extends ShopService{
         	shop.setStatus(0);
         }
         super.updateShop(shop);
+    }
+	
+	/**
+	 * 店铺修改
+	 */
+	public int updateShop(Shop shop){
+	    
+	    Shop tshop = super.getShop(shop.getId());
+	    
+	    //后台验证
+        if(shop.getName()!=null&&!"".equals(shop.getName().trim())) tshop.setName(shop.getName());
+        if(shop.getShopcover()!=null&&!"".equals(shop.getShopcover().trim())){
+            File f = new File(shopCoverPath+tshop.getShopcover());
+            f.deleteOnExit();
+            tshop.setShopcover(shop.getShopcover());
+        } 
+        if(shop.getDescription()!=null&&!"".equals(shop.getDescription().trim())) tshop.setDescription(shop.getDescription());
+        if(shop.getLocation()!=null&&!"".equals(shop.getLocation().trim())) tshop.setLocation(tshop.getLocation());
+	    
+	    //判断店铺名称是否存在
+        Shop shopByName = getShopByName(shop);
+        if(shopByName != null){
+            throw new RuntimeException("店铺名称已存在");
+        }
+	    
+        return super.updateShop(tshop);
     }
 	
 }

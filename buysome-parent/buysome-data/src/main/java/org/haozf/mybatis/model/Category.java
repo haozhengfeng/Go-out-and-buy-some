@@ -6,6 +6,8 @@ import java.util.Date;
 public class Category implements Serializable {
     private Integer id;
 
+    private Integer code;
+
     private String name;
 
     private Integer status;
@@ -22,6 +24,14 @@ public class Category implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
     }
 
     public String getName() {

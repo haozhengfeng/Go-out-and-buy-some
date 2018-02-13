@@ -90,7 +90,11 @@
         </li> -->
         <li class="active">
           <a href="javascript:void(0);" href-url="admin/list">
-            <i class="fa fa-circle-o"></i><span>管理员管理</span>
+            <i class="fa fa-circle-o"></i>
+            <span>管理员管理</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">8</small>
+            </span>
           </a>
         </li>
         <li>
@@ -98,7 +102,7 @@
             <i class="fa fa-files-o"></i>
             <span>店铺管理</span>
             <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
+              <small class="label pull-right bg-green">8</small>
             </span>
           </a>
         </li>
@@ -107,7 +111,7 @@
             <i class="fa fa-th"></i> 
             <span>商品管理</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
+              <small class="label pull-right bg-green">8</small>
             </span>
           </a>
         </li>
@@ -116,8 +120,7 @@
             <i class="fa fa-calendar"></i> 
             <span>分类管理</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>
+              <small class="label pull-right bg-green">8</small>
             </span>
           </a>
         </li>

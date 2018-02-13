@@ -70,6 +70,7 @@ public class ShopController extends BaseController{
 			shop.setShopcover(shopCover);
 			backShopService.addShop(shop);
 		} catch (Exception e) {
+		    e.printStackTrace();
 			result.setStatus("no");
 	        result.setMessage(e.getMessage());
 	        return result;
@@ -96,9 +97,21 @@ public class ShopController extends BaseController{
 		return "shop/edit";
 	}
 	
-	@RequestMapping(value = "shop/edit")
+	@RequestMapping(value = "shop/edit",method=RequestMethod.POST)
     @ResponseBody
-    public JsonResult edit(Shop shop, Model model) {
+    public JsonResult edit(@RequestParam(value = "file", required = false)MultipartFile file,Shop shop, Model model) {
+	    
+	    try {
+	        String shopCover = backShopService.addShopCover(file);
+            shop.setShopcover(shopCover);
+            backShopService.updateShop(shop);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.setStatus("no");
+            result.setMessage(e.getMessage());
+            return result;
+        }
+	    
     	result.setStatus("yes");
         result.setMessage("修改成功");
         return result;
