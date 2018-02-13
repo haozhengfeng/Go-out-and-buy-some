@@ -38,14 +38,16 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="AdminLTE-2.4.2/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Admin</span>
+              <span class="hidden-xs">${sessionAdmin.username }</span>
             </a>
             <ul class="dropdown-menu">
               <!-- 用户头像 -->
               <li class="user-header">
                 <img src="AdminLTE-2.4.2/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 <p>
-                  Admin - 超级管理员
+                
+                
+                  ${sessionAdmin.username } - ${sessionAdmin.roleid==0?'超级管理员':sessionAdmin.roleid==1?'管理员':sessionAdmin.roleid==2?'用户':'' }
                   <small>欢迎登录后台管理系统</small>
                 </p>
               </li>
@@ -68,7 +70,7 @@
           <img src="AdminLTE-2.4.2/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Admin</p>
+          <p>${sessionAdmin.username }</p>
           <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
         </div>
       </div>

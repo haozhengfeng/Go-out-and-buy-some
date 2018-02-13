@@ -42,13 +42,17 @@
 	       		</div>
        		</div> -->
        		
-       		<div class="row">
-	       		<div class="col-sm-12">
-		       		<div class="dataTables_filter">
-		       			<button type="button" class="btn btn-success"  onclick="window.location.href='toadd'">添加</button>
+       		
+       		<c:if test="${sessionAdmin.roleid!=2 }">
+	       		<div class="row">
+		       		<div class="col-sm-12">
+			       		<div class="dataTables_filter">
+			       			<button type="button" class="btn btn-success"  onclick="window.location.href='toadd'">添加</button>
+			       		</div>
 		       		</div>
 	       		</div>
-       		</div>
+           	</c:if>
+       		
        		
        		<div class="row">
 	       		<div class="col-sm-12">
@@ -77,10 +81,30 @@
 		                  <td>${a.username }</td>
 		                  <td>${a.roleid==0?'超级管理员':a.roleid==1?'管理员':a.roleid==2?'用户':'' }</td>
 		                  <td>
-		                  	<a href="toedit?id=${a.id }">修</a>
+		                  
+		                  	<!-- 只有超级管理员允许修改管理员信息 -->
+		                  	<c:if test="${sessionAdmin.roleid==0||sessionAdmin.id==a.id }">
+		                  		<a href="toedit?id=${a.id }">修</a>
+		                  	</c:if>
+		                  	
+		                  	<c:if test="${sessionAdmin.id==a.id }">
+		                  		<c:if test="${sessionAdmin.id==a.id&&empty a.shopid }">
+		                  			<a href="../shop/toadd?id=${a.id }">店</a>
+		                  		</c:if>
+		                  		<c:if test="${sessionAdmin.id==a.id&&!empty a.shopid }">
+		                  			<a href="../shop/toedit?id=${a.shopid }">店</a>
+		                  		</c:if>
+		                  	</c:if>
+		                  	
+		                  	<!-- 非超级管理员用户允许修改 -->
 		                  	<c:if test="${a.roleid!=0 }">
-		                  		<a href="javascript:void(0);" onclick="status(${a.id })">${a.status==0?'启':'停' }</a>
-		                  		<a href="javascript:void(0);" onclick="del(${a.id })">删</a>  
+		                  		<c:if test="${sessionAdmin.roleid==0||(sessionAdmin.roleid==1&&a.roleid==2) }">
+		                  			<a href="javascript:void(0);" onclick="status(${a.id })">${a.status==0?'启':'停' }</a>
+		                  		</c:if>
+		                  		
+		                  		<c:if test="${sessionAdmin.roleid==0 }">
+			                  		<a href="javascript:void(0);" onclick="del(${a.id })">删</a>
+			                  	</c:if>
 		                  	</c:if>
 		                  </td>
 		                </tr>

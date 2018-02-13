@@ -764,20 +764,30 @@ throw new Error('AdminLTE requires jQuery')
     })
   }
 
+  var isMyAdd = "";
+  var isMyAddTwo = "";
+//modify by zhouyajing  控制显示/隐藏的开关事件 2018.2.13
   PushMenu.prototype.toggle = function () {
-    var windowWidth = $(window).width()
-    var isOpen      = !$('body').hasClass(ClassName.collapsed)
+    var windowWidth = $(window).width();
+    var isOpen      = !$('body').hasClass(ClassName.collapsed);
 
     if (windowWidth <= this.options.collapseScreenSize) {
-      isOpen = $('body').hasClass(ClassName.open)
+      isOpen = $('body').hasClass(ClassName.open);
     }
 
-    if (!isOpen) {
-      this.open()
-    } else {
-      this.close()
-    }
-  }
+    if(!isOpen && isMyAdd === "is_btn"){
+      this.open();
+    } else if(isOpen){
+        this.close();
+      } 
+
+
+      // if (isMyAdd === "is_body") {
+      //   this.open();
+      // } else if(isOpen){
+      //   this.close();
+      // }          
+  };
 
   PushMenu.prototype.open = function () {
     var windowWidth = $(window).width()
@@ -860,10 +870,20 @@ throw new Error('AdminLTE requires jQuery')
 
   // Data API
   // ========
+  //modify by zhouyajing 2018.2.13
+  //点击按钮展开/隐藏导航栏
   $(document).on('click', Selector.button, function (e) {
-    e.preventDefault()
-    Plugin.call($(this), 'toggle')
-  })
+    // isMyAdd = "is_body";
+    isMyAdd = "is_btn";
+    e.preventDefault();
+    Plugin.call($(this), 'toggle');
+  }).on('click', '.content-wrapper', function (e) {
+    // isMyAdd = "not_body";
+    isMyAdd = "is_body";
+    e.preventDefault();
+    Plugin.call($(this), 'toggle');
+  });
+  
   $(window).on('load', function () {
     Plugin.call($(Selector.button))
   })

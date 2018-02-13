@@ -35,13 +35,16 @@ public class LoginController extends BaseController{
     @ResponseBody
     public JsonResult login(Admin admin,HttpServletRequest request){
     	admin = backAdminService.check(admin);
-    	if(admin.getStatus()==0){
-    	    result.setStatus("no");
-            result.setMessage("用户已停用，请联系管理员");
-            return result;
-    	}
+    	
         //验证用户名密码
         if(admin != null){
+        	
+        	if(admin.getStatus()==0){
+        	    result.setStatus("no");
+                result.setMessage("用户已停用，请联系管理员");
+                return result;
+        	}
+        	
         	Realm realm = new Realm();
         	realm.setMember(admin);
             securityManager.login(realm);

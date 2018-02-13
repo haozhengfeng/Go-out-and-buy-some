@@ -36,38 +36,46 @@
               <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
               
               <form action="list">
-              <div class="row">
+              <!-- <div class="row">
 	       		<div class="col-sm-12">
 		       		<div id="example1_filter" class="dataTables_filter">
-		       			<label>Search:<input type="search" class="form-control input-sm" placeholder="搜索" aria-controls="example1"></label>
+		       			<label><input type="search" class="form-control input-sm" placeholder="搜索" aria-controls="example1"></label>
 		       		</div>
 	       		</div>
-       		</div>
+       		</div> -->
        		
-       		<div class="row">
+       		<!-- <div class="row">
 	       		<div class="col-sm-12">
 		       		<div id="example1_filter" class="dataTables_filter">
-		       			<button type="button" class="btn btn-success"  onclick="window.location.href='edit.jsp'">添加</button>
+		       			<button type="button" class="btn btn-success"  onclick="window.location.href='add.jsp'">添加</button>
 		       		</div>
 	       		</div>
-       		</div>
+       		</div> -->
        		
        		<div class="row">
 	       		<div class="col-sm-12">
 	              <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
 	                <thead>
 	                <tr role="row">
-	                	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 197px;">id</th>
-	                	<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 242px;">名称</th>
-	                	<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 216px;">操作</th>
+	                	<th>店铺名称</th>
+	                	<th>操作</th>
 	                </thead>
 	                <tbody>
 	                
 	                <c:forEach items="${shops }" var="a" >
 	                	<tr role="row" class="odd">
-		                  <td class="sorting_1">${a.id }</td>
 		                  <td>${a.name }</td>
-		                  <td></td>
+		                  <td>
+		                  	<c:if test="${sessionAdmin.roleid==0||sessionAdmin.id==a.id }">
+		                  		<a href="toedit?id=${a.id }">修</a>
+		                  	</c:if>
+		                  	<c:if test="${sessionAdmin.roleid==0||(sessionAdmin.roleid==1&&a.roleid==2) }">
+	                  			<a href="javascript:void(0);" onclick="status(${a.id })">${a.status==0?'启':'停' }</a>
+	                  		</c:if>
+		                  	<c:if test="${sessionAdmin.roleid==0 }">
+		                  		<a href="javascript:void(0);" onclick="del(${a.id })">删</a>
+		                  	</c:if>
+		                  </td>
 		                </tr>
 	                </c:forEach>
 	                
@@ -80,13 +88,13 @@
               	<div class="col-sm-5">
               		<div class="dataTables_length" id="example1_length">
 					 <label>
-					 	Show 
+					 	显示 
 					 	<select id="pageSize" name="pageSize" aria-controls="example1" class="form-control input-sm">
 					 		<option value="1" ${page.pageSize==1?'selected':''}>1</option>
 					 		<option value="2" ${page.pageSize==2?'selected':''}>2</option>
 					 		<option value="10" ${page.pageSize==10?'selected':''}>10</option>
 					 	</select> 
-					 	entries
+					 	条
 					 </label>
 					</div>
               	</div>
@@ -96,7 +104,7 @@
 	              			<c:forEach var="p" begin="1" end="${page.pages}" step="1"> 
 	              				<c:if test="${p==1 }">
 	              					<li class="paginate_button previous <c:if test="${page.pageNum==1 }">disabled</c:if>" id="example1_previous">
-		              					<a href="#" aria-controls="example1" data-dt-idx="Previous" tabindex="0">Previous</a>
+		              					<a href="#" aria-controls="example1" data-dt-idx="Previous" tabindex="0">上一页</a>
 		              				</li>
 	              				</c:if>
 	              				<li class="paginate_button <c:if test="${p==page.pageNum }">active</c:if>">
@@ -104,7 +112,7 @@
 	              				</li>
 	              				<c:if test="${p==page.pages }">
 		              				<li class="paginate_button next <c:if test="${page.pageNum==page.pages }">disabled</c:if>" id="example1_next">
-		              					<a href="#" aria-controls="example1" data-dt-idx="Next" tabindex="0">Next</a>
+		              					<a href="#" aria-controls="example1" data-dt-idx="Next" tabindex="0">下一页</a>
 		              				</li>
 	              				</c:if>
 							</c:forEach>
@@ -160,6 +168,41 @@ $(function(){
 		$("form:last").submit();
 	});
 });
+
+function del(id){
+	$.ajax({
+	    type: "post",  //提交方式  
+	    dataType: "json", //数据类型  
+	    data:{id:id},
+	    url: "delete", //请求url  
+	    success: function (data) { //提交成功的回调函数  
+	    	if(data.status=='yes'){
+	    		window.location.reload();
+	    	}else{
+	    		$(".help-block").html(data.message);
+	    		$(".help-block").removeClass("hidden");
+	    	}
+	    }
+	});
+}
+
+function status(id){
+	$.ajax({
+	    type: "post",  //提交方式  
+	    dataType: "json", //数据类型  
+	    data:{id:id},
+	    url: "status", //请求url  
+	    success: function (data) { //提交成功的回调函数  
+	    	if(data.status=='yes'){
+	    		window.location.reload();
+	    	}else{
+	    		$(".help-block").html(data.message);
+	    		$(".help-block").removeClass("hidden");
+	    	}
+	    }
+	});
+}
+
 </script>
 </body>
 </html>

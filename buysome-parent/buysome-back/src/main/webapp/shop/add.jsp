@@ -20,7 +20,7 @@
 <body>
 <section class="content-header">
   <h1>
-    <small>管理员管理</small>
+    <small>店铺管理</small>
   </h1>
 </section>
 <section class="content">
@@ -28,26 +28,30 @@
       	<div class="col-md-6">
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">添加管理员</h3>
+              <h3 class="box-title">开通店铺</h3>
             </div>
-            <form id="myForm" role="form">
+            <form id="myForm" role="form" enctype="multipart/form-data">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="username">用户名</label>
-                  <input id="username" name="username" class="form-control" placeholder="用户名" maxlength="10">
+                  <label for="name">店铺名称</label>
+                  <input id="name" name="name" class="form-control" placeholder="店铺名称" maxlength="10">
                 </div>
                 <div class="form-group">
-                  <label for="password">密码</label>
-                  <input id="password" name="password" type="password" class="form-control" placeholder="密码" maxlength="10">
+                  <label for="shopcover">店铺封面</label>
+                  <input id="file" name="file" type="file" accept="image/*" placeholder="店铺封面"/>  
                 </div>
                 <div class="form-group">
-                  <label for="roleid">角色</label>
-                  <select id="roleid" name="roleid" class="form-control">
-                  	<c:if test="${sessionAdmin.roleid==0 }">
-                  		<option value="1">管理员</option>
-                  	</c:if>
-                  	<option value="2">用户</option>
-                  </select>
+                  <label for="description">店铺描述</label>
+                  <textarea id="description" name="description" class="form-control" rows="3" placeholder="店铺描述"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="location">店铺位置</label>
+                  <input id="location" name="location" class="form-control" placeholder="店铺位置" maxlength="50">
+                </div>
+                <div class="form-group">
+                  <label for="location">店主</label>
+                  ${admin.username }
+                  <input id="adminid" name="adminid" type="hidden" value="${admin.id }">
                 </div>
                 <div class="form-group has-error">
 			      <span class="help-block hidden"></span>

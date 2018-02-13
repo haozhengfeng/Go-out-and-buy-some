@@ -100,8 +100,8 @@ public class BackAdminService extends AdminService{
         int id = 0;
         
         //后台验证
-        if(admin.getUsername()==null) throw new RuntimeException("请输入用户名");
-        if(admin.getPassword()==null) throw new RuntimeException("请输入密码");
+        if(admin.getUsername()==null||"".equals(admin.getUsername().trim())) throw new RuntimeException("请输入用户名");
+        if(admin.getPassword()==null||"".equals(admin.getPassword().trim())) throw new RuntimeException("请输入密码");
         
         //检查用户名是否存在
         Admin admin2 = checkAdminName(admin);
@@ -118,8 +118,14 @@ public class BackAdminService extends AdminService{
 
     @Override
     public int updateAdmin(Admin admin) {
-        // TODO Auto-generated method stub
-        return super.updateAdmin(admin);
+    	
+    	Admin tadmin = super.getAdmin(admin.getId());
+    	
+    	//修改允许修改的字段
+        if(admin.getUsername()!=null&&!"".equals(admin.getUsername().trim())) tadmin.setUsername(admin.getUsername()); 
+        if(admin.getPassword()!=null&&!"".equals(admin.getPassword().trim())) tadmin.setPassword(MD5(admin.getPassword()));
+    	
+        return super.updateAdmin(tadmin);
     }
     
     public void deleteAdmin(Admin admin){

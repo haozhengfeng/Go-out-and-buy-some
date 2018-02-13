@@ -28,15 +28,16 @@
       	<div class="col-md-6">
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">添加管理员</h3>
+              <h3 class="box-title">修改管理员</h3>
             </div>
             <form id="myForm" role="form">
               <div class="box-body">
                 <div class="form-group">
                   <label for="username">用户名</label>
-                  <input id="username" name="username" class="form-control" placeholder="用户名" maxlength="10" value="${username }">
+                  <input id="username" name="username" class="form-control" placeholder="用户名" maxlength="10" value="${admin.username }">
                 </div>
-                <div class="form-group">
+                <div class="form-group has-warning">
+                  <label class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i>密码为空时，不修改密码</label>
                   <label for="password">密码</label>
                   <input id="password" name="password" type="password" class="form-control" placeholder="密码" maxlength="10">
                 </div>
@@ -46,11 +47,15 @@
                 </div>
                 <div class="form-group">
                   <label for="roleid">角色</label>
-                  <select id="roleid" name="roleid" class="form-control">
-                  	<option value="0" ${roleid==0?'selected':'' }>超级管理员</option>
-                  	<option value="1" ${roleid==1?'selected':'' }>管理员</option>
-                  	<option value="2" ${roleid==2?'selected':'' }>用户</option>
-                  </select>
+                  <c:if test="${sessionAdmin.roleid==0 }">
+                  	超级管理员
+                  </c:if>
+                  <c:if test="${sessionAdmin.roleid==1 }">
+					  管理员
+                  </c:if>
+                  <c:if test="${sessionAdmin.roleid==2 }">
+					 用户
+                  </c:if>
                 </div>
                 <div class="form-group has-error">
 			      <span class="help-block hidden"></span>
@@ -81,7 +86,9 @@
 $("#myForm").ajaxForm({
     type: "post",  //提交方式  
     dataType: "json", //数据类型  
-    url: "edit", //请求url  
+    url: "edit", //请求url
+    data:{id:${admin.id}},
+    beforeSubmit: validate, // 提交前
     success: function (data) { //提交成功的回调函数  
     	if(data.status=='yes'){
     		window.location.href='list';
@@ -91,6 +98,20 @@ $("#myForm").ajaxForm({
     	}
     }
 });
+
+function validate(){
+	if($("#username").val().trim()==""){
+		$(".help-block").html("请输入用户名");
+		$(".help-block").removeClass("hidden");
+		return false;
+	}
+	
+	if($("#password").val().trim()!=""&&$("#confirm").val()==""){
+		$(".help-block").html("请确认密码");
+		$(".help-block").removeClass("hidden");
+		return false;
+	}
+}
 </script>
 </body>
 </html>
