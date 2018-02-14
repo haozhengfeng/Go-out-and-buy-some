@@ -21,4 +21,9 @@ $(function(){
 	
 	//$("#mainFrame").css('min-height', (parseInt($(".content-wrapper").css('min-height'))-16)+"px");
 	$("#mainFrame").css('min-height', ($(".content-wrapper").height()-16)+"px");
+//	$("#mainFrame").css({
+//		min-height:($(".content-wrapper").height()-16)+"px",
+//		position:"relative",
+//		z-index:"100"
+//	});
 });

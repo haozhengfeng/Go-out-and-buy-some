@@ -784,11 +784,9 @@ throw new Error('AdminLTE requires jQuery')
       this.open();
     } else if(isOpen){
         this.close();
-
-        //user-menu右上角弹窗关闭
-        $('.user-menu').removeClass("open");
       } 
-
+    //user-menu右上角弹窗关闭
+    $('.user-menu').removeClass("open");
 
   }
 
@@ -880,13 +878,18 @@ throw new Error('AdminLTE requires jQuery')
     isMyAdd = "is_btn";
     e.preventDefault();
     Plugin.call($(this), 'toggle');
+    return false;
   }).on('click', '.content-wrapper', function (e) {
     // isMyAdd = "not_body";
-	  alert(1);
     isMyAdd = "is_body";
     e.preventDefault();
     Plugin.call($(this), 'toggle');
+    return false;
   });
+  
+  $(document,"#mainFrame").on('click', "body", function (e) {
+    $('.content-wrapper',parent.document).trigger("click");
+  })
 
   $(window).on('load', function () {
     Plugin.call($(Selector.button));
