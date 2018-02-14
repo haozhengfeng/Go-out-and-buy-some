@@ -887,7 +887,7 @@ throw new Error('AdminLTE requires jQuery')
     return false;
   });
   
-  $(document,"#mainFrame").on('click', "body", function (e) {
+  $(document,"#mainFrame").on('click', "html", function (e) {
     $('.content-wrapper',parent.document).trigger("click");
   })
 
