@@ -150,4 +150,38 @@ public class BackGoodsService extends GoodsService{
         example.or().andShopidEqualTo(shopid).andIsdeleteEqualTo(0);
         return goodsMapper.selectByExample(example);
     }
+    
+    /**
+	 * 删除商品
+	 * @param shop
+	 */
+	public void deleteGoods(Goods goods){
+		goods = super.getGoods(goods.getId());
+        if(goods == null) return;
+        
+        //删除更新字段
+        goods.setIsdelete(1);
+        super.updateGoods(goods);
+    }
+	
+	/**
+	 * 上架下架商品
+	 * @param shop
+	 */
+	public void statusGoods(Goods goods){
+		goods = super.getGoods(goods.getId());
+        if(goods == null) return;
+        if(goods.getStatus()==0){
+        	goods.setStatus(1);
+        }else {
+        	goods.setStatus(0);
+        }
+        super.updateGoods(goods);
+    }
+	
+	public long total(){
+    	GoodsExample example = new GoodsExample();
+    	example.or().andIsdeleteEqualTo(0);
+    	return goodsMapper.countByExample(example);
+    }
 }

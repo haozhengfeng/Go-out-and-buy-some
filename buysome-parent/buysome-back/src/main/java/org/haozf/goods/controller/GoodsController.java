@@ -98,5 +98,25 @@ public class GoodsController extends BaseController{
         result.setMessage("添加成功");
         return result;
     }
+    
+    
+    
+    @RequestMapping(value = "goods/delete")
+    @ResponseBody
+    public JsonResult delete(Goods goods, Model model) {
+        backGoodsService.deleteGoods(goods);
+        result.setStatus("yes");
+        result.setMessage("删除成功");
+        return result;
+    }
+    
+    @RequestMapping(value = "goods/status")
+    @ResponseBody
+    public JsonResult status(Goods goods, Model model) {
+    	backGoodsService.statusGoods(goods);
+        result.setStatus("yes");
+        result.setMessage("修改成功");
+        return result;
+    }
 	
 }

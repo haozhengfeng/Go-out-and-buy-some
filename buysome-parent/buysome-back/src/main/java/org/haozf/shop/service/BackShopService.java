@@ -13,6 +13,7 @@ import org.haozf.mybatis.mapper.AdminMapper;
 import org.haozf.mybatis.mapper.GoodsMapper;
 import org.haozf.mybatis.mapper.ShopMapper;
 import org.haozf.mybatis.model.Admin;
+import org.haozf.mybatis.model.AdminExample;
 import org.haozf.mybatis.model.Goods;
 import org.haozf.mybatis.model.GoodsExample;
 import org.haozf.mybatis.model.Shop;
@@ -239,7 +240,7 @@ public class BackShopService extends ShopService{
 	
 	
 	/**
-	 * 启用停用店铺
+	 * 上架下架商品
 	 * @param shop
 	 */
 	public void statusShop(Shop shop){
@@ -279,4 +280,9 @@ public class BackShopService extends ShopService{
         return super.updateShop(tshop);
     }
 	
+	public long total(){
+    	ShopExample example = new ShopExample();
+    	example.or().andIsdeleteEqualTo(0);
+    	return shopMapper.countByExample(example);
+    }
 }

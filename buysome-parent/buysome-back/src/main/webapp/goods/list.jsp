@@ -57,7 +57,6 @@
 	              <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
 	                <thead>
 	                <tr role="row">
-	                	<th>id</th>
 	                	<th>名称</th>
 	                	<th>操作</th>
 	                </thead>
@@ -65,14 +64,13 @@
 	                
 	                <c:forEach items="${goodss }" var="a" >
 	                	<tr role="row" class="odd">
-		                  <td class="sorting_1">${a.id }</td>
 		                  <td>${a.title }</td>
 		                  <td>
 		                  	<c:if test="${sessionAdmin.roleid==0||sessionAdmin.id==a.adminid }">
 		                  		<a href="toedit?id=${a.id }">修</a>
 		                  	</c:if>
 		                  	<c:if test="${sessionAdmin.roleid==0||(sessionAdmin.roleid==1) }">
-	                  			<a href="javascript:void(0);" onclick="status(${a.id })">${a.status==0?'启':'停' }</a>
+	                  			<a href="javascript:void(0);" onclick="status(${a.id })">${a.status==0?'上':'下' }</a>
 	                  		</c:if>
 		                  	<c:if test="${sessionAdmin.roleid==0 }">
 		                  		<a href="javascript:void(0);" onclick="del(${a.id })">删</a>

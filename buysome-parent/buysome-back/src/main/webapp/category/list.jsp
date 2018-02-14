@@ -57,7 +57,6 @@
 	              <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
 	                <thead>
 	                <tr role="row">
-	                	<th>id</th>
 	                	<th>名称</th>
 	                	<th>操作</th>
 	                </thead>
@@ -65,7 +64,6 @@
 	                
 	                <c:forEach items="${categorys }" var="a" >
 	                	<tr role="row" class="odd">
-		                  <td>${a.id }</td>
 		                  <td>${a.name }</td>
 		                  <td>
 		                  	<c:if test="${sessionAdmin.roleid==0}">

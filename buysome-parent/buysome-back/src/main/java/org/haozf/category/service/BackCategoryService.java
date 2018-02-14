@@ -9,6 +9,7 @@ import org.haozf.mybatis.model.Category;
 import org.haozf.mybatis.model.CategoryExample;
 import org.haozf.mybatis.model.Goods;
 import org.haozf.mybatis.model.GoodsExample;
+import org.haozf.mybatis.model.ShopExample;
 import org.haozf.mybatis.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,9 +51,11 @@ public class BackCategoryService extends CategoryService{
         category = super.getCategory(category.getId());
         if(category == null) return;
         
-        //判断商品是否使用分类
-        List<Goods> goodsCategory = getGoodsCategory(category.getCode());
-        if(goodsCategory.size()>0) throw new RuntimeException("有商品使用此分类不能删除");
+        if(category.getCode()!=null){
+        	//判断商品是否使用分类
+        	List<Goods> goodsCategory = getGoodsCategory(category.getCode());
+        	if(goodsCategory.size()>0) throw new RuntimeException("有商品使用此分类不能删除");
+        }
         
         //删除更新字段
         category.setIsdelete(1);
@@ -85,4 +88,9 @@ public class BackCategoryService extends CategoryService{
         return goodsMapper.selectByExample(example);
     }
     
+    public long total(){
+    	CategoryExample example = new CategoryExample();
+    	example.or().andIsdeleteEqualTo(0);
+    	return categoryMapper.countByExample(example);
+    }
 }

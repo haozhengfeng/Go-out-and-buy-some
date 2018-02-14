@@ -175,5 +175,11 @@ public class BackAdminService extends AdminService{
         }  
     }  
     
+    public long total(){
+    	AdminExample example = new AdminExample();
+    	example.or().andIsdeleteEqualTo(0);
+    	return adminMapper.countByExample(example);
+    }
+    
 
 }
