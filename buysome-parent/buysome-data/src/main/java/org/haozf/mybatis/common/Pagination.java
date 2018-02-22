@@ -1,4 +1,4 @@
-package org.haozf.common;
+package org.haozf.mybatis.common;
 
 import com.github.pagehelper.PageInfo;
 

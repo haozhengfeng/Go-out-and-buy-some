@@ -9,7 +9,7 @@
 <title>首页</title>
 <link rel="stylesheet" href="style/weui.css"/>
 <link rel="stylesheet" href="example/example.css"/>
-<script type="text/javascript" src="example/zepto.min.js"></script>
+<script type="text/javascript" src="example/zepto.js"></script>
 </head>
 <body>
 <div class="container" id="container">
@@ -17,7 +17,6 @@
     <div class="page__bd" style="height: 100%;">
     	<!-- 外部框架 -->
         <div class="weui-tab">
-        	
             <div class="weui-tab__panel weui-tab__scoll">
             	<!-- 首页内容 -->
             	<!-- 搜索 -->

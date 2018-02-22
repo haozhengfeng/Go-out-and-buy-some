@@ -2,13 +2,14 @@ package org.haozf.mybatis.service;
 
 import java.util.List;
 
+import org.haozf.mybatis.common.BaseService;
 import org.haozf.mybatis.mapper.MemberMapper;
 import org.haozf.mybatis.model.Member;
 import org.haozf.mybatis.model.MemberExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
-public class MemberService {
+public class MemberService extends BaseService{
     @Autowired
     MemberMapper MemberMapper;
     

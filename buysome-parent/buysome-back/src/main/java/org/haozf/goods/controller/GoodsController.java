@@ -2,15 +2,20 @@ package org.haozf.goods.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.haozf.admin.service.BackAdminService;
 import org.haozf.category.service.BackCategoryService;
-import org.haozf.common.BaseController;
-import org.haozf.common.JsonResult;
-import org.haozf.common.Pagination;
+import org.haozf.goods.common.GoodsJsonResult;
+import org.haozf.goods.service.BackGoodsPicService;
 import org.haozf.goods.service.BackGoodsService;
+import org.haozf.mybatis.common.BaseController;
+import org.haozf.mybatis.common.JsonResult;
+import org.haozf.mybatis.common.Pagination;
 import org.haozf.mybatis.model.Admin;
 import org.haozf.mybatis.model.Category;
 import org.haozf.mybatis.model.Goods;
+import org.haozf.mybatis.model.GoodsPic;
 import org.haozf.mybatis.model.Shop;
 import org.haozf.security.manager.SecurityManager;
 import org.haozf.security.model.Realm;
@@ -44,6 +49,9 @@ public class GoodsController extends BaseController{
 	
 	@Autowired
 	BackCategoryService backCategoryService;
+	
+	@Autowired
+	BackGoodsPicService backGoodsPicService;
 	
 	@RequestMapping(value = "goods/list")
     public String list(Pagination pagination, Goods goods, Model model) {
@@ -82,11 +90,13 @@ public class GoodsController extends BaseController{
     
     @RequestMapping(value = "goods/add",method=RequestMethod.POST)
     @ResponseBody
-    public JsonResult add(@RequestParam(value = "file", required = false)MultipartFile file,Goods goods,Model model) {
+    public GoodsJsonResult add(@RequestParam(value = "file", required = false)MultipartFile file,Goods goods,Model model) {
+        GoodsJsonResult result = new GoodsJsonResult();
         try {
             String goodsCover = backGoodsService.addGoodsCover(file);
             goods.setGoodscover(goodsCover);
             backGoodsService.addGoods(goods);
+            result.setGoods(goods);
         } catch (Exception e) {
             e.printStackTrace();
             result.setStatus("no");
@@ -96,6 +106,53 @@ public class GoodsController extends BaseController{
         
         result.setStatus("yes");
         result.setMessage("添加成功");
+        return result;
+    }
+    
+    
+    @RequestMapping(value = "goods/toedit")
+    public String toedit(Goods goods, Model model) {
+        
+        goods = backGoodsService.getGoods(goods.getId());
+        model.addAttribute("goods", goods);
+        
+        //返回当前登录用户
+        Admin sessionAdmin = (Admin)securityManager.getSubject().getMember();
+        model.addAttribute("sessionAdmin", sessionAdmin);
+        
+        Shop shop = backShopService.getShop(goods.getShopid());
+        model.addAttribute("shop", shop);
+        
+        Admin admin = backAdminService.getAdmin(shop.getAdminid());
+        model.addAttribute("admin", admin);
+        
+        List<Category> categorys = backCategoryService.listCategory();
+        model.addAttribute("categorys", categorys);
+        
+        List<GoodsPic> goodsPics = backGoodsPicService.getGoodsPics(goods.getId());
+        model.addAttribute("goodsPics", goodsPics);
+        
+        return "goods/edit";
+    }
+    
+    @RequestMapping(value = "goods/edit",method=RequestMethod.POST)
+    @ResponseBody
+    public GoodsJsonResult edit(@RequestParam(value = "file", required = false)MultipartFile file,Goods goods, Model model) {
+        GoodsJsonResult result = new GoodsJsonResult();
+        try {
+            String goodsCover = backGoodsService.addGoodsCover(file);
+            goods.setGoodscover(goodsCover);
+            backGoodsService.updateGoods(goods);
+            result.setGoods(goods);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.setStatus("no");
+            result.setMessage(e.getMessage());
+            return result;
+        }
+        
+        result.setStatus("yes");
+        result.setMessage("修改成功");
         return result;
     }
     
@@ -119,4 +176,31 @@ public class GoodsController extends BaseController{
         return result;
     }
 	
+    
+    @RequestMapping(value = "goods/goodsPicUpload", method = RequestMethod.POST)
+    @ResponseBody
+    public JsonResult goodsPicUpload(@RequestParam(value = "file")  MultipartFile[] files,HttpServletRequest request ){
+        if(files!=null&&files.length>0){  
+            for(int i = 0;i<files.length;i++){  
+                MultipartFile file = files[i];  
+                if (!file.isEmpty()) {  
+                    try {
+                        GoodsPic goodsPic = new GoodsPic();
+                        goodsPic.setGoodsid(Integer.parseInt(request.getParameter("goodsid")));
+                        //处理上传的文件
+                        String diskfileName = backGoodsPicService.goodsCover(file);
+                        goodsPic.setPicpath(diskfileName);
+                        //处理文件对应的数据
+                        backGoodsPicService.addGoodsPic(goodsPic);
+                    } catch (Exception e) {  
+                        e.printStackTrace();  
+                    }
+                }
+            }  
+        }
+        result.setStatus("yes");
+        result.setMessage("上传商品图片成功");
+        return result;
+    }
+    
 }

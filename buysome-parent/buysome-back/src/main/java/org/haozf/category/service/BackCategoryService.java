@@ -9,7 +9,6 @@ import org.haozf.mybatis.model.Category;
 import org.haozf.mybatis.model.CategoryExample;
 import org.haozf.mybatis.model.Goods;
 import org.haozf.mybatis.model.GoodsExample;
-import org.haozf.mybatis.model.ShopExample;
 import org.haozf.mybatis.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,7 +38,14 @@ public class BackCategoryService extends CategoryService{
     
     
     public int addCategory(Category category) {
+        
+        //后台验证
+        if(category.getCode()==null||category.getCode()==0) throw new RuntimeException("请输入分类编号");
+        if(category.getName()==null||"".equals(category.getName().trim())) throw new RuntimeException("请输入分类名称");
+        
         category.setAddtime(new Date());
+        
+        
         return super.addCategory(category);
     }
     

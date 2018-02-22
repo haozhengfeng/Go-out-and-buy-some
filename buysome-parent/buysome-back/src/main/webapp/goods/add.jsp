@@ -9,13 +9,14 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../js/libs/AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../AdminLTE-2.4.2/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../js/libs/AdminLTE-2.4.2/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../AdminLTE-2.4.2/dist/css/AdminLTE.css">
-  <link rel="stylesheet" href="../AdminLTE-2.4.2/dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="../AdminLTE-2.4.2/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="../js/libs/AdminLTE-2.4.2/dist/css/AdminLTE.css">
+  <link rel="stylesheet" href="../js/libs/AdminLTE-2.4.2/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../js/libs/AdminLTE-2.4.2/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../js/libs/webuploader/webuploader.css">
 </head>
 <body>
 <section class="content-header">
@@ -64,6 +65,12 @@
                   ${shop.name }
                   <input id="shopid" name="shopid" type="hidden" value="${shop.id }">
                 </div>
+                <div class="form-group">
+	            	<div id="uploader">
+					    <div id="fileList" class="uploader-list"></div>
+					    <div id="goodspic">选择图片</div>
+					</div>
+                </div>
                 <div class="form-group has-error">
 			      <span class="help-block hidden"></span>
 			    </div>
@@ -79,30 +86,50 @@
 </section>
 
 <!-- jQuery 3 -->
-<script src="../AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../js/libs/AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="../AdminLTE-2.4.2/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/libs/AdminLTE-2.4.2/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
-<script src="../AdminLTE-2.4.2/bower_components/fastclick/lib/fastclick.js"></script>
-<script src="../AdminLTE-2.4.2/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../AdminLTE-2.4.2/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="../js/libs/AdminLTE-2.4.2/bower_components/fastclick/lib/fastclick.js"></script>
+<script src="../js/libs/AdminLTE-2.4.2/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../js/libs/AdminLTE-2.4.2/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../AdminLTE-2.4.2/dist/js/adminlte.js"></script>
-<script src="../js/jquery.form.min.js"></script>
+<script src="../js/libs/AdminLTE-2.4.2/dist/js/adminlte.js"></script>
+<script type="text/javascript" src="../js/libs/webuploader/webuploader.js"></script>
+<script type="text/javascript" src="../js/jquery.picupload.js"></script>
+<script type="text/javascript" src="../js/jquery.form.min.js"></script>
 <script type="text/javascript">
+var goodspic = $.initPicUpload({
+	pick: {
+		id:'#goodspic'
+	},
+	fileNumLimit:9
+});
+
 $("#myForm").ajaxForm({
     type: "post",  //提交方式  
     dataType: "json", //数据类型  
     url: "add", //请求url  
     success: function (data) { //提交成功的回调函数  
     	if(data.status=='yes'){
-    		window.location.href='list';
+    		
+    		goodspic.options.formData.goodsid=data.goods.id;
+    		goodspic.upload();
+    		
+    		if(window.fileCount<=0){
+    			window.location.href='list';
+    		}
+    		
+    		
     	}else{
     		$(".help-block").html(data.message);
     		$(".help-block").removeClass("hidden");
     	}
     }
 });
+
+
+
 </script>
 </body>
 </html>

@@ -11,13 +11,13 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../js/libs/AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../AdminLTE-2.4.2/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../js/libs/AdminLTE-2.4.2/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../AdminLTE-2.4.2/dist/css/AdminLTE.css">
-  <link rel="stylesheet" href="../AdminLTE-2.4.2/dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="../AdminLTE-2.4.2/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="../js/libs/AdminLTE-2.4.2/dist/css/AdminLTE.css">
+  <link rel="stylesheet" href="../js/libs/AdminLTE-2.4.2/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../js/libs/AdminLTE-2.4.2/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 </head>
 <body>
 <section class="content-header">
@@ -39,11 +39,15 @@
                   <input id="name" name="name" class="form-control" placeholder="店铺名称" maxlength="10" value="${shop.name }">
                 </div>
                 <div class="form-group">
-				                  
                   <label for="shopcover">店铺封面</label>
-                  <img class="img-responsive pad" src="${shop.shopcover }" onerror="this.src='../imgs/boxed-bg.jpg'" width="400px" height="300px">
+                  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					  <div class="carousel-inner" role="listbox">
+					    <div class="item active">
+					      <img src="${shop.shopcover }" alt="${shop.name }" onerror="this.src='../imgs/boxed-bg.jpg'">
+					    </div>
+					  </div>
+					</div>
                   <input id="file" name="file" type="file" accept="image/*" placeholder="店铺封面" value="${shop.name }"/>
-                    
                 </div>
                 <div class="form-group">
                   <label for="description">店铺描述</label>
@@ -73,15 +77,15 @@
 </section>
 
 <!-- jQuery 3 -->
-<script src="../AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../js/libs/AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="../AdminLTE-2.4.2/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/libs/AdminLTE-2.4.2/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
-<script src="../AdminLTE-2.4.2/bower_components/fastclick/lib/fastclick.js"></script>
-<script src="../AdminLTE-2.4.2/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../AdminLTE-2.4.2/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="../js/libs/AdminLTE-2.4.2/bower_components/fastclick/lib/fastclick.js"></script>
+<script src="../js/libs/AdminLTE-2.4.2/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../js/libs/AdminLTE-2.4.2/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../AdminLTE-2.4.2/dist/js/adminlte.js"></script>
+<script src="../js/libs/AdminLTE-2.4.2/dist/js/adminlte.js"></script>
 <script src="../js/jquery.form.min.js"></script>
 <script type="text/javascript">
 $("#myForm").ajaxForm({

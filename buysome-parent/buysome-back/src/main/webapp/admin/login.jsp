@@ -9,9 +9,9 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../js/libs/AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../AdminLTE-2.4.2/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../js/libs/AdminLTE-2.4.2/dist/css/AdminLTE.min.css">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -38,11 +38,11 @@
   </div>
 </div>
 <!-- jQuery 3 -->
-<script src="../AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../js/libs/AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="../AdminLTE-2.4.2/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/libs/AdminLTE-2.4.2/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- iCheck -->
-<script src="../AdminLTE-2.4.2/plugins/iCheck/icheck.min.js"></script>
+<script src="../js/libs/AdminLTE-2.4.2/plugins/iCheck/icheck.min.js"></script>
 <script src="../js/jquery.form.min.js"></script>
 <script type="text/javascript">
 $("#myForm").ajaxForm({

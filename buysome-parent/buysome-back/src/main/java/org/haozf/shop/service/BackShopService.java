@@ -13,7 +13,6 @@ import org.haozf.mybatis.mapper.AdminMapper;
 import org.haozf.mybatis.mapper.GoodsMapper;
 import org.haozf.mybatis.mapper.ShopMapper;
 import org.haozf.mybatis.model.Admin;
-import org.haozf.mybatis.model.AdminExample;
 import org.haozf.mybatis.model.Goods;
 import org.haozf.mybatis.model.GoodsExample;
 import org.haozf.mybatis.model.Shop;

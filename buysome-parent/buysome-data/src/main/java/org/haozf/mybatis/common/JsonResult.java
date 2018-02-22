@@ -1,4 +1,4 @@
-package org.haozf.common;
+package org.haozf.mybatis.common;
 
 public class JsonResult {
     

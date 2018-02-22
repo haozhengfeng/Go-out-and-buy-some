@@ -42,6 +42,12 @@ public class BackGoodsService extends GoodsService{
     @Value("${goods.goodsCover.url}")
     String goodsCoverUrl;
     
+    public Goods getGoods(int id){
+        Goods goods = goodsMapper.selectByPrimaryKey(id);
+        goods.setGoodscover(goodsCoverUrl + goods.getGoodscover());
+        return goods;
+    }
+    
     public List<Goods> listGoods(Goods goods) {
         GoodsExample example = new GoodsExample();
         example.or().andIsdeleteEqualTo(0);
@@ -183,5 +189,24 @@ public class BackGoodsService extends GoodsService{
     	GoodsExample example = new GoodsExample();
     	example.or().andIsdeleteEqualTo(0);
     	return goodsMapper.countByExample(example);
+    }
+	
+	/**
+     * 商品修改
+     */
+    public int updateGoods(Goods goods){
+        
+        Goods tgoods = super.getGoods(goods.getId());
+        
+        //后台验证
+        if(goods.getTitle()!=null&&!"".equals(goods.getTitle().trim())) tgoods.setTitle(goods.getTitle());
+        if(goods.getGoodscover()!=null&&!"".equals(goods.getGoodscover().trim())){
+            File f = new File(goodsCoverPath + tgoods.getGoodscover());
+            f.deleteOnExit();
+            tgoods.setGoodscover(goods.getGoodscover());
+        } 
+        if(goods.getDescription()!=null&&!"".equals(goods.getDescription().trim())) tgoods.setDescription(goods.getDescription());
+        
+        return super.updateGoods(tgoods);
     }
 }

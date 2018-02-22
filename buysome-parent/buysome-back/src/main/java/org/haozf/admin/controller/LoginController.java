@@ -3,8 +3,8 @@ package org.haozf.admin.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.haozf.admin.service.BackAdminService;
-import org.haozf.common.BaseController;
-import org.haozf.common.JsonResult;
+import org.haozf.mybatis.common.BaseController;
+import org.haozf.mybatis.common.JsonResult;
 import org.haozf.mybatis.model.Admin;
 import org.haozf.security.manager.SecurityManager;
 import org.haozf.security.model.Realm;
@@ -44,6 +44,8 @@ public class LoginController extends BaseController{
                 result.setMessage("用户已停用，请联系管理员");
                 return result;
         	}
+        	
+        	log.info("角色："+admin.getRoleid()+" 用户："+admin.getUsername()+"登录！");
         	
         	Realm realm = new Realm();
         	realm.setMember(admin);

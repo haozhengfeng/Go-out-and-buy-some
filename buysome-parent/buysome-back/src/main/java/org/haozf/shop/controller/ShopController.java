@@ -3,9 +3,9 @@ package org.haozf.shop.controller;
 import java.util.List;
 
 import org.haozf.admin.service.BackAdminService;
-import org.haozf.common.BaseController;
-import org.haozf.common.JsonResult;
-import org.haozf.common.Pagination;
+import org.haozf.mybatis.common.BaseController;
+import org.haozf.mybatis.common.JsonResult;
+import org.haozf.mybatis.common.Pagination;
 import org.haozf.mybatis.model.Admin;
 import org.haozf.mybatis.model.Shop;
 import org.haozf.security.manager.SecurityManager;

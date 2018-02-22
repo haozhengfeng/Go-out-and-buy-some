@@ -2,6 +2,7 @@ package org.haozf.mybatis.service;
 
 import java.util.List;
 
+import org.haozf.mybatis.common.BaseService;
 import org.haozf.mybatis.mapper.AdminMapper;
 import org.haozf.mybatis.model.Admin;
 import org.haozf.mybatis.model.AdminExample;
@@ -12,7 +13,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 
 @Service
-public class AdminService {
+public class AdminService extends BaseService{
     
     @Autowired
     AdminMapper adminMapper;

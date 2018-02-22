@@ -10,40 +10,40 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="js/libs/AdminLTE-2.4.2/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="AdminLTE-2.4.2/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="js/libs/AdminLTE-2.4.2/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="AdminLTE-2.4.2/dist/css/AdminLTE.css">
-  <link rel="stylesheet" href="AdminLTE-2.4.2/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="js/libs/AdminLTE-2.4.2/dist/css/AdminLTE.css">
+  <link rel="stylesheet" href="js/libs/AdminLTE-2.4.2/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body class="hold-transition skin-green-light sidebar-mini">
 <div class="wrapper">
   <header class="main-header">
     <!-- Logo -->
-    <a href="#" class="logo">
+    <a href="javascript:void(0);" class="logo">
       <span class="logo-mini"><b>后台</b></span>
       <span class="logo-lg"><b>后台管理系统</b></span>
     </a>
     <!-- 头部导航栏 -->
     <nav class="navbar navbar-static-top">
       <!-- 侧边栏切换按钮-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <a href="javascript:void(0);" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">侧边栏切换按钮</span>
       </a>
       <!-- 导航栏 右侧菜单 -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="AdminLTE-2.4.2/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="js/libs/AdminLTE-2.4.2/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">${sessionAdmin.username }</span>
             </a>
             <ul class="dropdown-menu">
               <!-- 用户头像 -->
               <li class="user-header">
-                <img src="AdminLTE-2.4.2/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="js/libs/AdminLTE-2.4.2/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 <p>
                 
                 
@@ -67,11 +67,11 @@
     <section class="sidebar">
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="AdminLTE-2.4.2/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="js/libs/AdminLTE-2.4.2/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>${sessionAdmin.username }</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
+          <a href="javascript:void(0);"><i class="fa fa-circle text-success"></i> 在线</a>
         </div>
       </div>
       <ul class="sidebar-menu" data-widget="tree">
@@ -93,7 +93,7 @@
             <i class="fa fa-circle-o"></i>
             <span>管理员管理</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-green">8</small>
+              <small class="label pull-right bg-green">${adminTotal }</small>
             </span>
           </a>
         </li>
@@ -102,7 +102,7 @@
             <i class="fa fa-files-o"></i>
             <span>店铺管理</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-green">8</small>
+              <small class="label pull-right bg-green">${shopTotal }</small>
             </span>
           </a>
         </li>
@@ -111,7 +111,7 @@
             <i class="fa fa-th"></i> 
             <span>商品管理</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-green">8</small>
+              <small class="label pull-right bg-green">${goodsTotal }</small>
             </span>
           </a>
         </li>
@@ -120,7 +120,7 @@
             <i class="fa fa-calendar"></i> 
             <span>分类管理</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-green">8</small>
+              <small class="label pull-right bg-green">${categoryTotal }</small>
             </span>
           </a>
         </li>
@@ -134,13 +134,13 @@
 </div>
 
 <!-- jQuery 3 -->
-<script src="AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="js/libs/AdminLTE-2.4.2/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="AdminLTE-2.4.2/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/libs/AdminLTE-2.4.2/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
-<script src="AdminLTE-2.4.2/bower_components/fastclick/lib/fastclick.js"></script>
+<script src="js/libs/AdminLTE-2.4.2/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="AdminLTE-2.4.2/dist/js/adminlte.js"></script>
+<script src="js/libs/AdminLTE-2.4.2/dist/js/adminlte.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

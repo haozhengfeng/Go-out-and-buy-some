@@ -2,6 +2,7 @@ package org.haozf.mybatis.service;
 
 import java.util.List;
 
+import org.haozf.mybatis.common.BaseService;
 import org.haozf.mybatis.mapper.ShopMapper;
 import org.haozf.mybatis.model.Shop;
 import org.haozf.mybatis.model.ShopExample;
@@ -9,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ShopService {
+public class ShopService extends BaseService{
     @Autowired
     ShopMapper shopMapper;
     
