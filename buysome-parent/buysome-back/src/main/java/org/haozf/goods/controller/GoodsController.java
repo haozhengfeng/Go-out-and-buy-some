@@ -67,6 +67,9 @@ public class GoodsController extends BaseController{
         Admin sessionAdmin = (Admin)securityManager.getSubject().getMember();
         model.addAttribute("sessionAdmin", sessionAdmin);
         
+        Shop shop = backShopService.getShopByAdmin(sessionAdmin.getId());
+        model.addAttribute("shop", shop);
+        
         return "goods/list";
     }
 	
@@ -76,7 +79,7 @@ public class GoodsController extends BaseController{
         Admin sessionAdmin = (Admin)securityManager.getSubject().getMember();
         model.addAttribute("admin", sessionAdmin);
         if(sessionAdmin.getShopid()==null){
-            return "shop/toadd";
+            return "redirect:/shop/toadd?id="+sessionAdmin.getId();
         }
         
         Shop shop = backShopService.getShop(sessionAdmin.getShopid());
@@ -198,6 +201,24 @@ public class GoodsController extends BaseController{
                 }
             }  
         }
+        result.setStatus("yes");
+        result.setMessage("上传商品图片成功");
+        return result;
+    }
+    
+    @RequestMapping(value = "goods/deleteGoodsPic", method = RequestMethod.POST)
+    @ResponseBody
+    public JsonResult deleteGoodsPic(int id,HttpServletRequest request ){
+        
+        try {
+            backGoodsPicService.deleteGoodsPic(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.setStatus("no");
+            result.setMessage(e.getMessage());
+            return result;
+        }
+        
         result.setStatus("yes");
         result.setMessage("上传商品图片成功");
         return result;

@@ -66,7 +66,7 @@
 	                	<tr role="row" class="odd">
 		                  <td>${a.title }</td>
 		                  <td>
-		                  	<c:if test="${sessionAdmin.roleid==0||sessionAdmin.id==a.adminid }">
+		                  	<c:if test="${sessionAdmin.roleid==0||sessionAdmin.id==shop.adminid }">
 		                  		<a href="toedit?id=${a.id }">修</a>
 		                  	</c:if>
 		                  	<c:if test="${sessionAdmin.roleid==0||(sessionAdmin.roleid==1) }">
@@ -75,6 +75,7 @@
 		                  	<c:if test="${sessionAdmin.roleid==0 }">
 		                  		<a href="javascript:void(0);" onclick="del(${a.id })">删</a>
 		                  	</c:if>
+		                  	<a href="javascript:void(0);" onclick="parent.location.href='http://www.haozf.org/goods/${a.id }'">看</a>
 		                  </td>
 		                </tr>
 	                </c:forEach>

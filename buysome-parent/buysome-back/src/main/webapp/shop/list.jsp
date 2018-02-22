@@ -36,13 +36,13 @@
               <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
               
               <form action="list">
-              <div class="row">
+              <!-- <div class="row">
 	       		<div class="col-sm-12">
 		       		<div id="example1_filter" class="dataTables_filter">
 		       			<label><input type="search" class="form-control input-sm" placeholder="搜索" aria-controls="example1"></label>
 		       		</div>
 	       		</div>
-       		  </div>
+       		  </div> -->
        		
        		<!-- <div class="row">
 	       		<div class="col-sm-12">
@@ -51,6 +51,16 @@
 		       		</div>
 	       		</div>
        		</div> -->
+       		
+       		<div class="row">
+	       		<div class="col-sm-12">
+		       		<div class="dataTables_filter">
+		       			<div class="form-group has-error">
+					      <span class="help-block hidden"></span>
+					    </div>
+			    	</div>
+	       		</div>
+       		</div>
        		
        		<div class="row">
 	       		<div class="col-sm-12">
@@ -75,6 +85,7 @@
 		                  	<c:if test="${sessionAdmin.roleid==0 }">
 		                  		<a href="javascript:void(0);" onclick="del(${a.id })">删</a>
 		                  	</c:if>
+		                  	<a href="javascript:void(0);" onclick="parent.location.href='http://www.haozf.org/shop/${a.id }'">看</a>
 		                  </td>
 		                </tr>
 	                </c:forEach>

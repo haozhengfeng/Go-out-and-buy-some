@@ -268,7 +268,7 @@ public class BackShopService extends ShopService{
             tshop.setShopcover(shop.getShopcover());
         } 
         if(shop.getDescription()!=null&&!"".equals(shop.getDescription().trim())) tshop.setDescription(shop.getDescription());
-        if(shop.getLocation()!=null&&!"".equals(shop.getLocation().trim())) tshop.setLocation(tshop.getLocation());
+        if(shop.getLocation()!=null&&!"".equals(shop.getLocation().trim())) tshop.setLocation(shop.getLocation());
 	    
 	    //判断店铺名称是否存在
         Shop shopByName = getShopByName(shop);
@@ -280,8 +280,20 @@ public class BackShopService extends ShopService{
     }
 	
 	public long total(){
+	    
+	    Realm subject = securityManager.getSubject();
+        Admin sAdmin = (Admin)subject.getMember();
+	    
     	ShopExample example = new ShopExample();
-    	example.or().andIsdeleteEqualTo(0);
+    	
+    	if(sAdmin.getRoleid()==0){
+            example.or().andIsdeleteEqualTo(0);
+        }else if (sAdmin.getRoleid()==1) {
+            example.or().andAdminidEqualTo(sAdmin.getId()).andIsdeleteEqualTo(0);
+        }else{
+            example.or().andAdminidEqualTo(sAdmin.getId()).andIsdeleteEqualTo(0);
+        }
+    	
     	return shopMapper.countByExample(example);
     }
 }

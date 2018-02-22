@@ -120,7 +120,14 @@ public class ShopController extends BaseController{
     @RequestMapping(value = "shop/delete")
     @ResponseBody
     public JsonResult delete(Shop shop, Model model) {
-        backShopService.deleteShop(shop);
+        try {
+            backShopService.deleteShop(shop);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.setStatus("no");
+            result.setMessage(e.getMessage());
+            return result;
+        }
         result.setStatus("yes");
         result.setMessage("删除成功");
         return result;
@@ -129,7 +136,14 @@ public class ShopController extends BaseController{
     @RequestMapping(value = "shop/status")
     @ResponseBody
     public JsonResult status(Shop shop, Model model) {
-        backShopService.statusShop(shop);
+        try {
+            backShopService.statusShop(shop);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.setStatus("no");
+            result.setMessage(e.getMessage());
+            return result;
+        }
         result.setStatus("yes");
         result.setMessage("修改成功");
         return result;

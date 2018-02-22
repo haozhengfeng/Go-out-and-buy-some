@@ -14,6 +14,7 @@ import org.haozf.mybatis.mapper.ShopMapper;
 import org.haozf.mybatis.model.Admin;
 import org.haozf.mybatis.model.Goods;
 import org.haozf.mybatis.model.GoodsExample;
+import org.haozf.mybatis.model.GoodsExample.Criteria;
 import org.haozf.mybatis.model.Shop;
 import org.haozf.mybatis.model.ShopExample;
 import org.haozf.mybatis.service.GoodsService;
@@ -50,7 +51,19 @@ public class BackGoodsService extends GoodsService{
     
     public List<Goods> listGoods(Goods goods) {
         GoodsExample example = new GoodsExample();
-        example.or().andIsdeleteEqualTo(0);
+        Criteria or = example.or();
+        or.andIsdeleteEqualTo(0);
+        
+        Admin admin = (Admin)securityManager.getSubject().getMember();
+        if(admin.getRoleid()==2){
+            Shop shop = getShopByAdmin(admin.getId());
+            if(shop!=null){
+                or.andShopidEqualTo(shop.getId());
+            }else{
+                return null;
+            }
+        }
+        
         List<Goods> goodss = goodsMapper.selectByExample(example);
         return goodss;
     }
@@ -187,7 +200,19 @@ public class BackGoodsService extends GoodsService{
 	
 	public long total(){
     	GoodsExample example = new GoodsExample();
-    	example.or().andIsdeleteEqualTo(0);
+    	 Criteria or = example.or();
+    	 or.andIsdeleteEqualTo(0);
+    	
+    	 Admin admin = (Admin)securityManager.getSubject().getMember();
+         if(admin.getRoleid()==2){
+             Shop shop = getShopByAdmin(admin.getId());
+             if(shop!=null){
+                 or.andShopidEqualTo(shop.getId());
+             }else{
+                 return 0;
+             }
+         }
+    	
     	return goodsMapper.countByExample(example);
     }
 	

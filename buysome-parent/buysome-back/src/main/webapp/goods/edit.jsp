@@ -156,6 +156,32 @@ $("#myForm").ajaxForm({
 
 function validate(){
 }
+
+
+$(".caption").on("click",function(){
+	//删除图片
+	var id = $(this).find(".id").val();
+	
+	if(confirm("您确定要删除吗？")){
+		$.ajax({
+			url: "deleteGoodsPic",
+			type:"post", 
+			data: {id: id},
+			dataType:"json",
+			cache: false,
+			success: function(data){
+				if(data.status=='yes'){
+					location.reload(true);
+				}else{
+					$(".help-block").html(data.message);
+		    		$(".help-block").removeClass("hidden");
+				}
+			}
+		});
+	}
+});
+
+
 </script>
 </body>
 </html>

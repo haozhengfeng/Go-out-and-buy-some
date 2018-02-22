@@ -210,34 +210,6 @@
 	        }
 	    });
 	    
-	    $caption.on("click",function(){
-	    	//删除图片
-	    	var id = $(this).find(".picid").val();
-	    	var filetype = $(this).find(".filetype").val();
-	    	
-			var del_con = '您确定要删除吗？';
-			layer.confirm(del_con, {offset: ['10%']}, function(){
-				$.ajax({
-					url: "../file/file_delete",
-					type:"post", 
-					data: {id: id,filetype:filetype},
-					dataType:"json",
-					cache: false,
-					success: function(data){
-						if( data.message=='' ){
-							$(this).parent(".manager").remove();
-							layer.closeAll();
-							location.reload(true);
-							return false;
-						}else{
-							layer.alert(data.message);
-						}
-					}
-				});
-			});
-	    	return false;
-	    });
-	    
     	return uploader;
 	}
 })(jQuery)

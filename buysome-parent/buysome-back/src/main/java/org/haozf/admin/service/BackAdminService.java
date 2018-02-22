@@ -176,8 +176,21 @@ public class BackAdminService extends AdminService{
     }  
     
     public long total(){
+        
+        Realm subject = securityManager.getSubject();
+        Admin sAdmin = (Admin)subject.getMember();
+        
     	AdminExample example = new AdminExample();
-    	example.or().andIsdeleteEqualTo(0);
+    	
+    	if(sAdmin.getRoleid()==0){
+            example.or().andIsdeleteEqualTo(0);
+        }else if (sAdmin.getRoleid()==1) {
+            example.or().andIdEqualTo(sAdmin.getId()).andIsdeleteEqualTo(0);
+            example.or().andRoleidEqualTo(2).andIsdeleteEqualTo(0);
+        }else{
+            example.or().andIsdeleteEqualTo(0).andIdEqualTo(sAdmin.getId());
+        }
+    	
     	return adminMapper.countByExample(example);
     }
     
