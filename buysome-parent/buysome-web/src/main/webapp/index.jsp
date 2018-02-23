@@ -1,14 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
 <title>首页</title>
+<link rel="shortcut icon" type="image/ico" href="/favicon.ico">
 <link rel="stylesheet" href="style/weui.css"/>
 <link rel="stylesheet" href="example/example.css"/>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="style/font-awesome/css/font-awesome.min.css">
 <script type="text/javascript" src="example/zepto.js"></script>
 </head>
 <body>
@@ -20,7 +22,7 @@
             <div class="weui-tab__panel weui-tab__scoll">
             	<!-- 首页内容 -->
             	<!-- 搜索 -->
-            	<div class="page__bd">
+            	<!-- <div class="page__bd">
 			        <div class="weui-search-bar" id="searchBar">
 			            <form class="weui-search-bar__form">
 			                <div class="weui-search-bar__box">
@@ -42,7 +44,7 @@
 			                </div>
 			            </div>
 			        </div>
-			    </div>
+			    </div> -->
 			    
 			    <div class="page__bd">
 	            	<div class="weui-navbar weui-navbar_scoll">
@@ -124,27 +126,26 @@
 			    </div>
             </div>
             <div class="weui-tabbar">
-                <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
-                    <span style="display: inline-block;position: relative;">
-                        <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
-                        <span class="weui-badge" style="position: absolute;top: -2px;right: -13px;">8</span>
-                    </span>
+                <a href="/" class="weui-tabbar__item weui-bar__item_on">
+                    <i class="fa fa-home fa-fw weui-tabbar__label" aria-hidden="true" style="font-size:26px;"></i>
                     <p class="weui-tabbar__label">首页</p>
                 </a>
                 <a href="javascript:;" class="weui-tabbar__item">
-                    <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                    <i class="fa fa-shopping-cart fa-fw weui-tabbar__label" aria-hidden="true" style="font-size:26px;"></i>
                     <p class="weui-tabbar__label">店铺</p>
                 </a>
-                <a href="javascript:;" class="weui-tabbar__item">
+                <!-- <a href="javascript:;" class="weui-tabbar__item">
                     <span style="display: inline-block;position: relative;">
                         <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
                         <span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>
                     </span>
                     <p class="weui-tabbar__label">发现</p>
-                </a>
-                <a href="javascript:;" class="weui-tabbar__item">
-                    <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
-                    <p class="weui-tabbar__label">关于</p>
+                </a> -->
+                <a href="about.jsp" class="weui-tabbar__item">
+                	<span style="display: inline-block;position: relative;">
+	                    <i class="fa fa-book fa-fw weui-tabbar__label" aria-hidden="true" style="font-size:26px;"></i>
+	                    <p class="weui-tabbar__label">关于</p>
+                    </span>
                 </a>
             </div>
         </div>

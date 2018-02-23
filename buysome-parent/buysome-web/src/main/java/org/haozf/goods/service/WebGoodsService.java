@@ -18,7 +18,9 @@ public class WebGoodsService extends GoodsService{
     
     public Goods getGoods(int id){
         Goods goods = goodsMapper.selectByPrimaryKey(id);
-        goods.setGoodscover(goodsCoverUrl + goods.getGoodscover());
+        if(goods!=null){
+        	goods.setGoodscover(goodsCoverUrl + goods.getGoodscover());
+        }
         return goods;
     }
 

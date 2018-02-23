@@ -537,3 +537,21 @@ supports (constant (safe-area-inset-top)){ .
 	padding-right: constant(safe-area-inset-right)
 }
 }
+
+.qrcode {
+	font-size: 26px!important;
+    color: #09BB07;
+    position: absolute;
+    right: 10px;
+}
+
+.qrcodeimg{
+	position: absolute;
+    width: 80px;
+    right: 10px;
+    height: 80px;
+    display:none;
+}
+
+
+   
