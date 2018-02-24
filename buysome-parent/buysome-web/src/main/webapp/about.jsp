@@ -22,11 +22,11 @@
 	            <div class="weui-panel weui-panel_access">
 			            <div class="weui-panel__hd">
 			            	关于我们
-			            	<i class="fa fa-qrcode fa-fw qrcode" aria-hidden="true"></i>
-	                    	<img class="qrcodeimg" src="images/mmqrcode1519374705908.png"/>
 			            </div>
 			            <div class="weui-panel__bd">
 			                <div class="weui-media-box weui-media-box_text">
+				                <i class="fa fa-qrcode fa-fw qrcode" aria-hidden="true"></i>
+		                    	<img class="qrcodeimg" src="images/qrcode_for_gh_d8d7461b9751_258.jpg"/>
 			                    <h4 class="weui-media-box__title">北京小米科技有限责任公司</h4>
 			                    <div class="weui-media-box_appmsg">
 			                        <img class="weui-media-box__thumb" src="//i1.mifile.cn/a4/xmad_1513304443358_gzjfM.jpg" srcset="//i1.mifile.cn/a4/xmad_15133044464271_MtLzl.jpg 2x">

@@ -34,8 +34,10 @@ public class WebShopService extends ShopService{
     
     public Shop getShop(int id){
         Shop shop = shopMapper.selectByPrimaryKey(id);
-        shop.setShopcover(shopCoverUrl + shop.getShopcover());
-        shop.setQrcode(qrcodeUrl + shop.getQrcode());
+        if(shop!=null){
+        	shop.setShopcover(shopCoverUrl + shop.getShopcover());
+        	shop.setQrcode(qrcodeUrl + shop.getQrcode());
+        }
         return shop;
     }
     
