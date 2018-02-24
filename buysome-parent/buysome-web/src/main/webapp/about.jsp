@@ -20,7 +20,11 @@
         <div class="weui-tab">
             <div class="weui-tab__panel weui-tab__scoll">
 	            <div class="weui-panel weui-panel_access">
-			            <div class="weui-panel__hd">关于我们</div>
+			            <div class="weui-panel__hd">
+			            	关于我们
+			            	<i class="fa fa-qrcode fa-fw qrcode" aria-hidden="true"></i>
+	                    	<img class="qrcodeimg" src="images/mmqrcode1519374705908.png"/>
+			            </div>
 			            <div class="weui-panel__bd">
 			                <div class="weui-media-box weui-media-box_text">
 			                    <h4 class="weui-media-box__title">北京小米科技有限责任公司</h4>
@@ -69,8 +73,15 @@
     });
 </script>
 </div>
-
-
-
+<script type="text/javascript">
+$(function(){
+	$(".qrcode").click(function(){
+		 $(".qrcodeimg").toggle();
+	});
+	$(".qrcodeimg").click(function(){
+		 $(".qrcodeimg").toggle();
+	});
+})
+</script>
 </body>
 </html>

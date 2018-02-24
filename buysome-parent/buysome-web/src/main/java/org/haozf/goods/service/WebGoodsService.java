@@ -1,7 +1,10 @@
 package org.haozf.goods.service;
 
+import java.util.List;
+
 import org.haozf.mybatis.mapper.GoodsMapper;
 import org.haozf.mybatis.model.Goods;
+import org.haozf.mybatis.model.GoodsExample;
 import org.haozf.mybatis.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +25,13 @@ public class WebGoodsService extends GoodsService{
         	goods.setGoodscover(goodsCoverUrl + goods.getGoodscover());
         }
         return goods;
+    }
+    
+    public List<Goods> listGoods(){
+        GoodsExample example = new GoodsExample();
+        example.or().andStatusEqualTo(1).andIsdeleteEqualTo(0);
+        example.setOrderByClause(" id desc ");
+        return goodsMapper.selectByExample(example);
     }
 
 }

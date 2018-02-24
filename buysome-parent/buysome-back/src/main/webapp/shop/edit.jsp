@@ -33,13 +33,25 @@
               <h3 class="box-title">修改</h3>
             </div>
             <form id="myForm" role="form" enctype="multipart/form-data">
+              <input type="hidden" id="id" name="id" value="${shop.id}"/>
               <div class="box-body">
                 <div class="form-group">
                   <label for="name">店铺名称</label>
                   <input id="name" name="name" class="form-control" placeholder="店铺名称" maxlength="10" value="${shop.name }">
                 </div>
                 <div class="form-group">
-                  <label for="shopcover">店铺封面</label>
+                  <label for="file1">微信二维码</label>
+                  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					  <div class="carousel-inner" role="listbox">
+					    <div class="item active">
+					      <img src="${shop.qrcode }" alt="${shop.name }" onerror="this.src='../imgs/boxed-bg.jpg'">
+					    </div>
+					  </div>
+				  </div>
+                  <input id="file1" name="file1" type="file" accept="image/*" placeholder="微信二维码"/>  
+                </div>
+                <div class="form-group">
+                  <label for="file">店铺封面</label>
                   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 					  <div class="carousel-inner" role="listbox">
 					    <div class="item active">
@@ -47,7 +59,7 @@
 					    </div>
 					  </div>
 					</div>
-                  <input id="file" name="file" type="file" accept="image/*" placeholder="店铺封面" value="${shop.name }"/>
+                  <input id="file" name="file" type="file" accept="image/*" placeholder="店铺封面"/>
                 </div>
                 <div class="form-group">
                   <label for="description">店铺描述</label>
@@ -92,8 +104,7 @@ $("#myForm").ajaxForm({
     type: "post",  //提交方式  
     dataType: "json", //数据类型  
     url: "edit", //请求url
-    data:{id:${shop.id}},
-    beforeSubmit: validate, // 提交前
+    //beforeSubmit: validate, // 提交前
     success: function (data) { //提交成功的回调函数  
     	if(data.status=='yes'){
     		window.location.href='list';

@@ -2,6 +2,8 @@ package org.haozf.shop.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.haozf.admin.service.BackAdminService;
 import org.haozf.mybatis.common.BaseController;
 import org.haozf.mybatis.common.JsonResult;
@@ -12,6 +14,7 @@ import org.haozf.security.manager.SecurityManager;
 import org.haozf.security.model.Realm;
 import org.haozf.shop.service.BackShopService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,11 +66,12 @@ public class ShopController extends BaseController{
 	
 	@RequestMapping(value = "shop/add",method=RequestMethod.POST)
 	@ResponseBody
-	public JsonResult add(@RequestParam(value = "file", required = false)MultipartFile file,Shop shop,Model model) {
-		
+	public JsonResult add(@RequestParam(value="file",required=false)MultipartFile file,@RequestParam(value="file1",required=false)MultipartFile file1,Shop shop,Model model,HttpServletRequest request) {
 		try {
 			String shopCover = backShopService.addShopCover(file);
 			shop.setShopcover(shopCover);
+			String code = backShopService.addQrcode(file1);
+	        shop.setQrcode(code);
 			backShopService.addShop(shop);
 		} catch (Exception e) {
 		    e.printStackTrace();
@@ -99,11 +103,13 @@ public class ShopController extends BaseController{
 	
 	@RequestMapping(value = "shop/edit",method=RequestMethod.POST)
     @ResponseBody
-    public JsonResult edit(@RequestParam(value = "file", required = false)MultipartFile file,Shop shop, Model model) {
+    public JsonResult edit(@RequestParam(value = "file",required=false)MultipartFile file,@RequestParam(value="file1",required=false)MultipartFile file1,Shop shop, Model model,HttpServletRequest request) {
 	    
 	    try {
 	        String shopCover = backShopService.addShopCover(file);
             shop.setShopcover(shopCover);
+            String code = backShopService.addQrcode(file1);
+            shop.setQrcode(code);
             backShopService.updateShop(shop);
         } catch (Exception e) {
             e.printStackTrace();

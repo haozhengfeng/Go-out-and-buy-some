@@ -37,7 +37,11 @@
                   <input id="name" name="name" class="form-control" placeholder="店铺名称" maxlength="10">
                 </div>
                 <div class="form-group">
-                  <label for="shopcover">店铺封面</label>
+                  <label for="file1">微信二维码</label>
+                  <input id="file1" name="file1" type="file" accept="image/*" placeholder="微信二维码"/>  
+                </div>
+                <div class="form-group">
+                  <label for="file">店铺封面</label>
                   <input id="file" name="file" type="file" accept="image/*" placeholder="店铺封面"/>  
                 </div>
                 <div class="form-group">

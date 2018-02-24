@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,8 @@
 <link rel="stylesheet" href="example/example.css"/>
 <!-- Font Awesome -->
 <link rel="stylesheet" href="style/font-awesome/css/font-awesome.min.css">
-<script type="text/javascript" src="example/zepto.js"></script>
+<link rel="stylesheet" href="style/zhouyajing.css"/>
+
 </head>
 <body>
 <div class="container" id="container">
@@ -45,85 +47,76 @@
 			            </div>
 			        </div>
 			    </div> -->
-			    
-			    <div class="page__bd">
-	            	<div class="weui-navbar weui-navbar_scoll">
-		                <div class="weui-navbar__item weui-bar__item_on">
-							推荐
-		                </div>
-		                <div class="weui-navbar__item">
-		                   	服饰
-		                </div>
-		                <div class="weui-navbar__item">
-		                  	百货
-		                </div>
-		            </div>
-	            </div>
-	            <!-- 首页内容  -->
 	            
+	            <div class="page__bd">
+		            <div class="wrapper weui-navbar weui-navbar_scoll" id="wrapper">
+					<div class="scroller" style="width: 1204px; transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);">
+						<ul class="clearfix">
+							<li class="cur" style="margin-left: 0px; margin-right: 0px;"><a href="javascript:void(0)">推荐</a></li>
+							<c:forEach items="${categorys }" var="a" >
+			            		<li style="margin-left: 0px; margin-right: 0px;"><a href="javascript:void(0)" code="${a.code }">${a.name }</a></li>
+			            	</c:forEach>
+						</ul>
+					</div>
+					</div>
+	            
+	            <!-- 首页内容  -->
 	            <div class="weui-panel weui-panel_access">
 			            <div class="weui-panel__hd">最新商品</div>
 			            <div class="weui-panel__bd">
 			                <div class="weui-media-box weui-media-box_text">
-			                    <h4 class="weui-media-box__title">红米5 plus 正式发布</h4>
+			                	<a href="goods/${latestGoods.id }" class="weui-cell_access">
+			                    <h4 class="weui-media-box__title">${latestGoods.title }</h4>
 			                    <div class="weui-media-box_appmsg">
-			                        <img class="weui-media-box__thumb" src="//i1.mifile.cn/a4/xmad_1513304443358_gzjfM.jpg" srcset="//i1.mifile.cn/a4/xmad_15133044464271_MtLzl.jpg 2x">
+			                        <img class="weui-media-box__thumb" src="${goodsCoverUrl }${latestGoods.goodscover }">
 			                    </div>			                    			                    
-			                    <p class="weui-media-box_appmsg">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+			                    <p class="weui-media-box_appmsg">${latestGoods.description }</p>
+			                    </a>
 			                    <p class="weui-media-box__desc">
-			                    	<a href="javascript:void(0);" class="weui-cell_access weui-cell_link">小米官网</a>
+			                    	<a href="shop/${latestGoods.shopid }" class="weui-cell_access weui-cell_link">进入店铺</a>
 			                    </p>
 			                </div>
-			                <div class="weui-media-box weui-media-box_text">
-			                    <h4 class="weui-media-box__title">标题二</h4>
-			                    <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-			                </div>
 			            </div>
-			            <div class="weui-panel__ft">
+			            <!-- <div class="weui-panel__ft">
 			                <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
 			                    <div class="weui-cell__bd">查看更多</div>
 			                    <span class="weui-cell__ft"></span>
 			                </a>    
-			            </div>
+			            </div> -->
 			        </div>
-				    
-				    
 			        <div class="weui-panel">
 			            <div class="weui-panel__hd">热门商品</div>
 			            <div class="weui-panel__bd">
-			                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+			            	<c:forEach items="${hotGoods }" var="a" >
+			            	<a href="goods/${a.id }" class="weui-media-box weui-media-box_appmsg">
 			                    <div class="weui-media-box__hd">
-			                    	<img class="weui-media-box__thumb" alt="小米MIX 2全系赠音箱" src="//i1.mifile.cn/a4/xmad_1496643954435_EcHtv.png" srcset="//i1.mifile.cn/a4/xmad_1496643954435_EcHtv.png 2x">
+			                    	<img class="weui-media-box__thumb" alt="${a.title }" src="${goodsCoverUrl }${a.goodscover }">
 			                    </div>
 			                    <div class="weui-media-box__bd">
-			                        <h4 class="weui-media-box__title">标题一</h4>
-			                        <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+			                        <h4 class="weui-media-box__title">${a.title }</h4>
+			                        <p class="weui-media-box__desc">${a.description }</p>
+			                        <ul class="weui-media-box__info">
+				                        <li class="weui-media-box__info__meta"><fmt:formatDate value="${a.addtime }" type="both" /></li>
+				                    </ul>
 			                    </div>
 			                </a>
-			                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-			                    <div class="weui-media-box__hd">
-			                    	<img class="weui-media-box__thumb" alt="小米MIX 2全系赠音箱" src="//i1.mifile.cn/a4/xmad_1496643954435_EcHtv.png" srcset="//i1.mifile.cn/a4/xmad_1496643954435_EcHtv.png 2x">
-			                    </div>
-			                    <div class="weui-media-box__bd">
-			                        <h4 class="weui-media-box__title">标题二</h4>
-			                        <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-			                    </div>
-			                </a>
+			            	</c:forEach>
 			            </div>
-			            <div class="weui-panel__ft">
+			            <!-- <div class="weui-panel__ft">
 			                <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
 			                    <div class="weui-cell__bd">查看更多</div>
 			                    <span class="weui-cell__ft"></span>
 			                </a>    
-			            </div>
+			            </div> -->
+			        </div>
 			        </div>
 			    <!-- 加载 -->
-			    <div class="page__bd">
+			    <!-- <div class="page__bd">
 			        <div class="weui-loadmore">
 			            <i class="weui-loading"></i>
 			            <span class="weui-loadmore__tips">正在加载</span>
 			        </div>
-			    </div>
+			    </div> -->
             </div>
             <div class="weui-tabbar">
                 <a href="/" class="weui-tabbar__item weui-bar__item_on">
@@ -151,6 +144,12 @@
         </div>
     </div>
 </div>
+
+</div>
+
+<script type="text/javascript" src="example/zepto.js"></script>
+
+<script ty
 <script type="text/javascript" class="tabbar js_show">
     $(function(){
         $('.weui-tabbar__item').on('click', function () {
@@ -204,9 +203,14 @@
         });
     });
 </script>
-</div>
 
-
-
+<script type="text/javascript" src="js/myjs/flexible.js"></script>
+<script type="text/javascript" src='js/myjs/iscroll.js'></script>
+<script type="text/javascript" src='js/myjs/navbarscroll.js'></script>
+<script type="text/javascript">
+$(function(){
+	$('#wrapper').navbarscroll();
+});
+</script>
 </body>
 </html>

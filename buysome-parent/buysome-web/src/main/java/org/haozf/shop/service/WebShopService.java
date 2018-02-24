@@ -28,10 +28,14 @@ public class WebShopService extends ShopService{
     
     @Value("${goods.goodsCover.url}")
     String goodsCoverUrl;
+	
+	@Value("${shop.qrcode.url}")
+	String qrcodeUrl;
     
     public Shop getShop(int id){
         Shop shop = shopMapper.selectByPrimaryKey(id);
         shop.setShopcover(shopCoverUrl + shop.getShopcover());
+        shop.setQrcode(qrcodeUrl + shop.getQrcode());
         return shop;
     }
     

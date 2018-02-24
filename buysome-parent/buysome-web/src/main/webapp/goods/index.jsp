@@ -28,9 +28,9 @@
 					            <div class="weui-media-box_appmsg">
 					                <div>
 						               <i class="fa fa-qrcode fa-fw qrcode" aria-hidden="true"></i>
-					                    <img class="qrcodeimg" src="../images/mmqrcode1519374705908.png"/>
+					                    <img class="qrcodeimg" src="${shop.qrcode }"/>
 								        <h1 class="page__title">${goods.title }</h1>
-								        <p class="page__desc">${goods.description }</p>
+								        <p class="page__desc"><pre style="white-space: pre-wrap;word-wrap: break-word;">${goods.description }</pre></p>
 								        <%-- <p class="page__desc">
 								        	<a href="../shop/${goods.shopid }" class="weui-cell_link">
 							                    <div class="weui-cell__bd">进入店铺</div>
@@ -47,8 +47,8 @@
             		<c:forEach items="${goodsPics }" var="a" >
 					    <div class="weui-panel__bd">
 					        <div class="weui-media-box weui-media-box_text">
-					            <div class="weui-media-box_appmsg">
-					                <img src="${a.picurl }" style="width: 100%;"/>
+					            <div class="weui-media-box_appmsg thumbnail">
+					                <img src="${a.picurl }"/>
 					            </div>			                    			                    
 					        </div>
 					    </div>

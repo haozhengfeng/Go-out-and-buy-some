@@ -16,6 +16,7 @@ public class GoodsService extends BaseService{
     
     public List<Goods> listGoods(){
         GoodsExample example = new GoodsExample();
+        example.setOrderByClause(" id desc ");
         return goodsMapper.selectByExample(example);
     }
     

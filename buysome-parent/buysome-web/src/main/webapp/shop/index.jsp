@@ -27,7 +27,7 @@
 					            <div class="weui-media-box_appmsg">
 					                <div>
 						                <i class="fa fa-qrcode fa-fw qrcode" aria-hidden="true"></i>
-	                    				<img class="qrcodeimg" src="../images/mmqrcode1519374705908.png"/>
+	                    				<img class="qrcodeimg" src="${shop.qrcode }"/>
 										<h1 class="page__title">${shop.name }</h1>
 										<p class="page__desc">${shop.description }</p>
 									</div>

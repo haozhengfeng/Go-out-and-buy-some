@@ -51,6 +51,8 @@
 	<context:component-scan base-package="org.haozf" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
+	
+	<context:property-placeholder ignore-unresolvable="true" location="classpath:application.properties" />  
 
 	<!-- 完成请求和注解POJO的映射 -->
 	<bean id="jsonConverter"

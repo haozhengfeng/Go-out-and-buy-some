@@ -48,9 +48,16 @@ public class BackShopService extends ShopService{
 	@Value("${shop.shopCover.url}")
 	String shopCoverUrl;
 	
+	@Value("${shop.qrcode.path}")
+	String qrcodePath;
+	
+	@Value("${shop.qrcode.url}")
+	String qrcodeUrl;
+	
 	public Shop getShop(int id){
 		Shop shop = shopMapper.selectByPrimaryKey(id);
 		shop.setShopcover(shopCoverUrl + shop.getShopcover());
+		shop.setQrcode(qrcodeUrl + shop.getQrcode());
         return shop;
     }
 	
@@ -210,6 +217,48 @@ public class BackShopService extends ShopService{
 	}
 	
 	/**
+	 * 添加二维码
+	 * @param file
+	 * @return
+	 */
+	public String addQrcode(MultipartFile file){
+		if (file!=null&&!file.isEmpty()) {  
+        	return qrcode(file);
+        }
+		return null;
+	}
+	
+	/**
+	 * 处理二维码
+	 * @param file
+	 * @return
+	 */
+	public String qrcode(MultipartFile file){
+		String diskfileName = Calendar.getInstance().getTimeInMillis() + new Random().nextInt(10000) + ".jpg";
+		
+        File f = new File(qrcodePath);
+        if (!f.exists())
+            f.mkdirs();
+        
+        String picPath = qrcodePath + diskfileName;
+        
+		try {
+			// 转存文件
+			file.transferTo(new File(picPath));
+
+			//图片进行压缩
+			Thumbnails.of(picPath)   
+				        .size(300, 300)  
+				        .toFile(picPath);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}  
+		return diskfileName;
+	}
+	
+	/**
 	 * 删除店铺
 	 * @param shop
 	 */
@@ -262,6 +311,11 @@ public class BackShopService extends ShopService{
 	    
 	    //后台验证
         if(shop.getName()!=null&&!"".equals(shop.getName().trim())) tshop.setName(shop.getName());
+        if(shop.getQrcode()!=null&&!"".equals(shop.getQrcode().trim())){
+            File f = new File(qrcodePath + tshop.getQrcode());
+            f.deleteOnExit();
+            tshop.setQrcode(shop.getQrcode());
+        } 
         if(shop.getShopcover()!=null&&!"".equals(shop.getShopcover().trim())){
             File f = new File(shopCoverPath+tshop.getShopcover());
             f.deleteOnExit();

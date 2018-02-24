@@ -1,0 +1,6 @@
+.wrapper {position:relative;height: 1rem;width: 100%;overflow: hidden;margin:0 auto;}
+.wrapper .scroller {position:absolute}
+.wrapper .scroller li {height: 1rem;color:#333;float: left;line-height: 1rem;font-size: .4rem;text-align: center}
+.wrapper .scroller li a{color:#333;display:block;margin:0 .3rem}
+.wrapper .scroller li.cur{background:#09BB07}
+.wrapper .scroller li.cur a{color:#fff;}

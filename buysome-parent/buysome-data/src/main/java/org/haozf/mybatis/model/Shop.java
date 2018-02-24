@@ -8,6 +8,8 @@ public class Shop implements Serializable {
 
     private String name;
 
+    private String qrcode;
+
     private String shopcover;
 
     private String description;
@@ -46,6 +48,14 @@ public class Shop implements Serializable {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public String getQrcode() {
+        return qrcode;
+    }
+
+    public void setQrcode(String qrcode) {
+        this.qrcode = qrcode == null ? null : qrcode.trim();
     }
 
     public String getShopcover() {

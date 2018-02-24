@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="org.haozf.mybatis.model.Shop">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="qrcode" jdbcType="VARCHAR" property="qrcode" />
     <result column="shopcover" jdbcType="VARCHAR" property="shopcover" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="adminid" jdbcType="INTEGER" property="adminid" />
@@ -46,7 +47,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, shopcover, description, adminid, lon, lat, location, status, isdelete, 
+    id, name, qrcode, shopcover, description, adminid, lon, lat, location, status, isdelete, 
     addtime, goodsnum, picnum
   </sql>
   <select id="selectByExample" parameterType="org.haozf.mybatis.model.ShopExample" resultMap="BaseResultMap">
@@ -75,22 +76,25 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.haozf.mybatis.model.Shop" useGeneratedKeys="true">
-    insert into shop (name, shopcover, description, 
-      adminid, lon, lat, 
-      location, status, isdelete, 
-      addtime, goodsnum, picnum
-      )
-    values (#{name,jdbcType=VARCHAR}, #{shopcover,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{adminid,jdbcType=INTEGER}, #{lon,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR}, 
-      #{location,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{isdelete,jdbcType=INTEGER}, 
-      #{addtime,jdbcType=TIMESTAMP}, #{goodsnum,jdbcType=INTEGER}, #{picnum,jdbcType=INTEGER}
-      )
+    insert into shop (name, qrcode, shopcover, 
+      description, adminid, lon, 
+      lat, location, status, 
+      isdelete, addtime, goodsnum, 
+      picnum)
+    values (#{name,jdbcType=VARCHAR}, #{qrcode,jdbcType=VARCHAR}, #{shopcover,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{adminid,jdbcType=INTEGER}, #{lon,jdbcType=VARCHAR}, 
+      #{lat,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{isdelete,jdbcType=INTEGER}, #{addtime,jdbcType=TIMESTAMP}, #{goodsnum,jdbcType=INTEGER}, 
+      #{picnum,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.haozf.mybatis.model.Shop" useGeneratedKeys="true">
     insert into shop
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="name != null">
         name,
+      </if>
+      <if test="qrcode != null">
+        qrcode,
       </if>
       <if test="shopcover != null">
         shopcover,
@@ -129,6 +133,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        #{qrcode,jdbcType=VARCHAR},
       </if>
       <if test="shopcover != null">
         #{shopcover,jdbcType=VARCHAR},
@@ -177,6 +184,9 @@
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="qrcode != null">
+        qrcode = #{qrcode,jdbcType=VARCHAR},
+      </if>
       <if test="shopcover != null">
         shopcover = #{shopcover,jdbcType=VARCHAR},
       </if>
@@ -216,6 +226,7 @@
   <update id="updateByPrimaryKey" parameterType="org.haozf.mybatis.model.Shop">
     update shop
     set name = #{name,jdbcType=VARCHAR},
+      qrcode = #{qrcode,jdbcType=VARCHAR},
       shopcover = #{shopcover,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
       adminid = #{adminid,jdbcType=INTEGER},

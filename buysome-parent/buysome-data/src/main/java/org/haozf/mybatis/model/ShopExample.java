@@ -235,6 +235,76 @@ public class ShopExample {
             return (Criteria) this;
         }
 
+        public Criteria andQrcodeIsNull() {
+            addCriterion("qrcode is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQrcodeIsNotNull() {
+            addCriterion("qrcode is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQrcodeEqualTo(String value) {
+            addCriterion("qrcode =", value, "qrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andQrcodeNotEqualTo(String value) {
+            addCriterion("qrcode <>", value, "qrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andQrcodeGreaterThan(String value) {
+            addCriterion("qrcode >", value, "qrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andQrcodeGreaterThanOrEqualTo(String value) {
+            addCriterion("qrcode >=", value, "qrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andQrcodeLessThan(String value) {
+            addCriterion("qrcode <", value, "qrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andQrcodeLessThanOrEqualTo(String value) {
+            addCriterion("qrcode <=", value, "qrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andQrcodeLike(String value) {
+            addCriterion("qrcode like", value, "qrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andQrcodeNotLike(String value) {
+            addCriterion("qrcode not like", value, "qrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andQrcodeIn(List<String> values) {
+            addCriterion("qrcode in", values, "qrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andQrcodeNotIn(List<String> values) {
+            addCriterion("qrcode not in", values, "qrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andQrcodeBetween(String value1, String value2) {
+            addCriterion("qrcode between", value1, value2, "qrcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andQrcodeNotBetween(String value1, String value2) {
+            addCriterion("qrcode not between", value1, value2, "qrcode");
+            return (Criteria) this;
+        }
+
         public Criteria andShopcoverIsNull() {
             addCriterion("shopcover is null");
             return (Criteria) this;
