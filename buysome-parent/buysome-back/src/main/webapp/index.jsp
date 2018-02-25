@@ -21,6 +21,7 @@
 </head>
 <body class="hold-transition skin-green-light sidebar-mini">
 <div class="wrapper">
+	<img src="images/43b7ac8d697683d3b78902a115b80d09_300_300.jpg" style="display:none;"/>
   <header class="main-header">
     <!-- Logo -->
     <a href="javascript:void(0);" class="logo">

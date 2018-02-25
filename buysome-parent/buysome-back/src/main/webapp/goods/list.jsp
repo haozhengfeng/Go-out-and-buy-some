@@ -66,7 +66,7 @@
 	                	<tr role="row" class="odd">
 		                  <td>${a.title }</td>
 		                  <td>
-		                  	<c:if test="${sessionAdmin.roleid==0||sessionAdmin.id==shop.adminid }">
+		                  	<c:if test="${sessionAdmin.roleid==0||a.shopid==shop.id }">
 		                  		<a href="toedit?id=${a.id }">修</a>
 		                  	</c:if>
 		                  	<c:if test="${sessionAdmin.roleid==0||(sessionAdmin.roleid==1) }">

@@ -65,7 +65,7 @@
                   <label for="categorycode">商品分类</label>
 				  <select id="categorycode" name="categorycode" class="form-control">
 	               	  <c:forEach items="${categorys }" var="a" >
-	                	<option value="${a.code }" ${goods.categorycode==0?'selected':'' }>${a.name }</option>
+	                	<option value="${a.code }" ${goods.categorycode==a.code?'selected':'' }>${a.name }</option>
 	                </c:forEach>
               	  </select>                
                 </div>

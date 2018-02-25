@@ -24,7 +24,7 @@ public class BackCategoryService extends CategoryService{
     
     public List<Category> listCategory() {
         CategoryExample example = new CategoryExample();
-        example.or().andIsdeleteEqualTo(0);
+        example.or().andIsdeleteEqualTo(0).andStatusEqualTo(1);
         List<Category> Categorys = categoryMapper.selectByExample(example);
         return Categorys;
     }

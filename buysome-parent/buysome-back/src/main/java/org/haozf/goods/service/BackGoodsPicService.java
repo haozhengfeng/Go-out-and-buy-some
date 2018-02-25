@@ -9,7 +9,9 @@ import java.util.Random;
 
 import net.coobird.thumbnailator.Thumbnails;
 
+import org.haozf.mybatis.mapper.GoodsMapper;
 import org.haozf.mybatis.mapper.GoodsPicMapper;
+import org.haozf.mybatis.model.Goods;
 import org.haozf.mybatis.model.GoodsPic;
 import org.haozf.mybatis.model.GoodsPicExample;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class BackGoodsPicService {
     
     @Autowired
     GoodsPicMapper goodsPicMapper;
+    
+    @Autowired
+    GoodsMapper goodsMapper;
 
     @Value("${goods.goods.path}")
     String goodsPath;
@@ -41,6 +46,17 @@ public class BackGoodsPicService {
      * @return
      */
     public int addGoodsPic(GoodsPic goodsPic){
+        
+        //判断商品图片上线
+        Goods goods = goodsMapper.selectByPrimaryKey(goodsPic.getGoodsid());
+
+        GoodsPicExample example = new GoodsPicExample();
+        example.or().andGoodsidEqualTo(goodsPic.getGoodsid());
+        long pic = goodsPicMapper.countByExample(example);
+        if(pic >= goods.getPicnum()){
+            throw new RuntimeException("商品图片已达上限！");
+        }
+        
         goodsPic.setAddtime(new Date());
         goodsPic.setPicurl(goodsUrl + goodsPic.getPicpath());
         goodsPicMapper.insertSelective(goodsPic);
@@ -91,7 +107,7 @@ public class BackGoodsPicService {
     
             //图片进行压缩
             Thumbnails.of(picPath)   
-                        .size(400, 300)  
+                        .size(800, 600)  
                         .toFile(picPath);
         } catch (IllegalStateException e) {
             e.printStackTrace();

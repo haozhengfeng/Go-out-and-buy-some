@@ -51,6 +51,7 @@ public class BackGoodsService extends GoodsService{
     
     public List<Goods> listGoods(Goods goods) {
         GoodsExample example = new GoodsExample();
+        example.setOrderByClause(" addtime desc ");
         Criteria or = example.or();
         or.andIsdeleteEqualTo(0);
         
@@ -101,7 +102,7 @@ public class BackGoodsService extends GoodsService{
 
             //图片进行压缩
             Thumbnails.of(picPath)   
-                        .size(400, 300)  
+                        .size(800, 600)  
                         .toFile(picPath);
         } catch (IllegalStateException e) {
             e.printStackTrace();
@@ -134,7 +135,7 @@ public class BackGoodsService extends GoodsService{
         
         //获取店铺商品数量
         List<Goods> goodsShop = getGoodsShop(shopByAdmin.getId());
-        if(goodsShop.size()>=shopByAdmin.getGoodsnum()) throw new RuntimeException("店铺商品已达上线");
+        if(goodsShop.size()>=shopByAdmin.getGoodsnum()) throw new RuntimeException("店铺商品已达上线！");
         
         goods.setAddtime(new Date());
         super.addGoods(goods);
@@ -231,6 +232,10 @@ public class BackGoodsService extends GoodsService{
             tgoods.setGoodscover(goods.getGoodscover());
         } 
         if(goods.getDescription()!=null&&!"".equals(goods.getDescription().trim())) tgoods.setDescription(goods.getDescription());
+        
+        
+        if(goods.getStatus()!=null) tgoods.setStatus(goods.getStatus());
+        if(goods.getCategorycode()!=null) tgoods.setCategorycode(goods.getCategorycode());
         
         return super.updateGoods(tgoods);
     }

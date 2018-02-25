@@ -34,7 +34,7 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="name">店铺名称</label>
-                  <input id="name" name="name" class="form-control" placeholder="店铺名称" maxlength="10">
+                  <input id="name" name="name" class="form-control" placeholder="店铺名称" maxlength="50">
                 </div>
                 <div class="form-group">
                   <label for="file1">微信二维码</label>

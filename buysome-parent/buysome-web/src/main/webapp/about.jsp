@@ -27,15 +27,15 @@
 			                <div class="weui-media-box weui-media-box_text">
 				                <i class="fa fa-qrcode fa-fw qrcode" aria-hidden="true"></i>
 		                    	<img class="qrcodeimg" src="images/qrcode_for_gh_d8d7461b9751_258.jpg"/>
-			                    <h4 class="weui-media-box__title">北京小米科技有限责任公司</h4>
-			                    <div class="weui-media-box_appmsg">
+			                    <h4 class="weui-media-box__title">好致富金服网</h4>
+			                    <!-- <div class="weui-media-box_appmsg">
 			                        <img class="weui-media-box__thumb" src="//i1.mifile.cn/a4/xmad_1513304443358_gzjfM.jpg" srcset="//i1.mifile.cn/a4/xmad_15133044464271_MtLzl.jpg 2x">
-			                    </div>			                    			                    
+			                    </div>		 -->	                    			                    
 			                    <p class="weui-media-box_appmsg">
-			                    	　　北京小米科技有限责任公司成立2010年4月，是一家专注于智能硬件和电子产品研发的移动互联网公司。“为发烧而生”是小米的产品概念。小米公司创造了用互联网模式开发手机操作系统、发烧友参与开发改进的模式。小米还是继苹果、三星、华为之后第四家拥有手机芯片自研能力的科技公司。
+			                    	 每个人都有一颗当老板的心，为用户提供免费共享平台。　　
 			                    </p>
 			                    <p class="weui-media-box__desc">
-			                    	<a href="/" class="weui-cell_access weui-cell_link">小米官网</a>
+			                    	<a href="/" class="weui-cell_access weui-cell_link">进入首页</a>
 			                    </p>
 			                </div>
 			            </div>
@@ -46,7 +46,7 @@
                     <i class="fa fa-home fa-fw weui-tabbar__label" aria-hidden="true" style="font-size:26px;"></i>
                     <p class="weui-tabbar__label">首页</p>
                 </a>
-                <a href="javascript:;" class="weui-tabbar__item">
+                <a href="shop/list" class="weui-tabbar__item">
                     <i class="fa fa-shopping-cart fa-fw weui-tabbar__label" aria-hidden="true" style="font-size:26px;"></i>
                     <p class="weui-tabbar__label">店铺</p>
                 </a>

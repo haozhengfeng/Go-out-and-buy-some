@@ -54,7 +54,7 @@
 						<ul class="clearfix">
 							<li class="cur" style="margin-left: 0px; margin-right: 0px;"><a href="javascript:void(0)">推荐</a></li>
 							<c:forEach items="${categorys }" var="a" >
-			            		<li style="margin-left: 0px; margin-right: 0px;"><a href="javascript:void(0)" code="${a.code }">${a.name }</a></li>
+			            		<li style="margin-left: 0px; margin-right: 0px;"><a href="goods/list?categorycode=${a.code }" code="${a.code }">${a.name }</a></li>
 			            	</c:forEach>
 						</ul>
 					</div>
@@ -90,7 +90,7 @@
 			            	<c:forEach items="${hotGoods }" var="a" >
 			            	<a href="goods/${a.id }" class="weui-media-box weui-media-box_appmsg">
 			                    <div class="weui-media-box__hd">
-			                    	<img class="weui-media-box__thumb" alt="${a.title }" src="${goodsCoverUrl }${a.goodscover }">
+			                    	<img class="weui-media-box__thumb" alt="${a.title }" src="${goodsCoverUrl }${a.goodscover }" style="vertical-align: middle;">
 			                    </div>
 			                    <div class="weui-media-box__bd">
 			                        <h4 class="weui-media-box__title">${a.title }</h4>
@@ -123,7 +123,7 @@
                     <i class="fa fa-home fa-fw weui-tabbar__label" aria-hidden="true" style="font-size:26px;"></i>
                     <p class="weui-tabbar__label">首页</p>
                 </a>
-                <a href="javascript:;" class="weui-tabbar__item">
+                <a href="shop/list" class="weui-tabbar__item">
                     <i class="fa fa-shopping-cart fa-fw weui-tabbar__label" aria-hidden="true" style="font-size:26px;"></i>
                     <p class="weui-tabbar__label">店铺</p>
                 </a>
@@ -149,7 +149,6 @@
 
 <script type="text/javascript" src="example/zepto.js"></script>
 
-<script ty
 <script type="text/javascript" class="tabbar js_show">
     $(function(){
         $('.weui-tabbar__item').on('click', function () {

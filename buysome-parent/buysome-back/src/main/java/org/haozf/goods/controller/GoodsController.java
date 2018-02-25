@@ -197,6 +197,9 @@ public class GoodsController extends BaseController{
                         backGoodsPicService.addGoodsPic(goodsPic);
                     } catch (Exception e) {  
                         e.printStackTrace();  
+                        result.setStatus("no");
+                        result.setMessage(e.getMessage());
+                        return result;
                     }
                 }
             }  

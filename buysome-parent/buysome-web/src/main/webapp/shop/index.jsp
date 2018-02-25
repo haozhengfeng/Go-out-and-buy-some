@@ -12,6 +12,7 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../style/font-awesome/css/font-awesome.min.css">
 <script type="text/javascript" src="../example/zepto.js"></script>
+<link rel="stylesheet" href="../style/zhouyajing.css"/>
 </head>
 <body>
 <div class="container" id="container">
@@ -21,6 +22,18 @@
         <div class="weui-tab">
             <div class="weui-tab__panel weui-tab__scoll">
 			    <div class="page__bd">
+			    
+			    	<div class="wrapper weui-navbar weui-navbar_scoll" id="wrapper">
+					<div class="scroller" style="width: 1204px; transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);">
+						<ul class="clearfix">
+							<li class="cur" style="margin-left: 0px; margin-right: 0px;"><a href="javascript:void(0)">推荐</a></li>
+							<c:forEach items="${categorys }" var="a" >
+			            		<li style="margin-left: 0px; margin-right: 0px;"><a href="../goods/list?categorycode=${a.code }" code="${a.code }">${a.name }</a></li>
+			            	</c:forEach>
+						</ul>
+					</div>
+					</div>
+			    
 			        <div class="weui-panel_access">		    
 						<div class="weui-panel__bd">
 					        <div class="weui-media-box weui-media-box_text">
@@ -68,7 +81,7 @@
                     <i class="fa fa-home fa-fw weui-tabbar__label" aria-hidden="true" style="font-size:26px;"></i>
                     <p class="weui-tabbar__label">首页</p>
                 </a>
-                <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
+                <a href="list" class="weui-tabbar__item weui-bar__item_on">
                     <i class="fa fa-shopping-cart fa-fw weui-tabbar__label" aria-hidden="true" style="font-size:26px;"></i>
                     <p class="weui-tabbar__label">店铺</p>
                 </a>
@@ -96,7 +109,15 @@ $(function(){
 	$(".qrcodeimg").click(function(){
 		 $(".qrcodeimg").toggle();
 	});
-})
+});
+</script>
+<script type="text/javascript" src="../js/myjs/flexible.js"></script>
+<script type="text/javascript" src='../js/myjs/iscroll.js'></script>
+<script type="text/javascript" src='../js/myjs/navbarscroll.js'></script>
+<script type="text/javascript">
+$(function(){
+	$('#wrapper').navbarscroll();
+});
 </script>
 </body>
 </html>

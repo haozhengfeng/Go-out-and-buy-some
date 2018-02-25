@@ -71,6 +71,7 @@ public class BackShopService extends ShopService{
         Admin sAdmin = (Admin)subject.getMember();
         
         ShopExample example = new ShopExample();
+        example.setOrderByClause("addtime desc");
         
         //超级管理员显示所有  
         //管理员查询当前管理员和用户
@@ -206,7 +207,7 @@ public class BackShopService extends ShopService{
 
 			//图片进行压缩
 			Thumbnails.of(picPath)   
-				        .size(400, 300)  
+				        .size(800, 600)  
 				        .toFile(picPath);
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
@@ -248,7 +249,7 @@ public class BackShopService extends ShopService{
 
 			//图片进行压缩
 			Thumbnails.of(picPath)   
-				        .size(300, 300)  
+				        .size(800, 600)  
 				        .toFile(picPath);
 		} catch (IllegalStateException e) {
 			e.printStackTrace();

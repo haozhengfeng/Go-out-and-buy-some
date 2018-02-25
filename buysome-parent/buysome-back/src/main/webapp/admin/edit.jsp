@@ -39,11 +39,13 @@
                 <div class="form-group has-warning">
                   <label class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i>密码为空时，不修改密码</label>
                   <label for="password">密码</label>
-                  <input id="password" name="password" type="password" class="form-control" placeholder="密码" maxlength="10">
+                  <input id="txtpassword" name="txtpassword" type="text" class="form-control" placeholder="密码" maxlength="10"/>
+                  <input id="password" name="password" type="password" class="form-control" style="display: none" placeholder="密码" maxlength="10" readonly="true" />
                 </div>
                 <div class="form-group">
                   <label for="password">确认密码</label>
-                  <input id="confirm" name="confirm" type="password" class="form-control" placeholder="确认密码" maxlength="10">
+                  <input id="txtconfirm" name="txtconfirm" type="text" class="form-control" placeholder="确认密码" maxlength="10">
+                  <input id="confirm" name="confirm" type="password" class="form-control" style="display: none" placeholder="确认密码" maxlength="10" readonly="true">
                 </div>
                 <div class="form-group">
                   <label for="roleid">角色</label>
@@ -112,6 +114,24 @@ function validate(){
 		return false;
 	}
 }
+
+$("[name=txtpassword]").focus(function () {
+    /*当前文本框隐藏*/
+    $(this).hide();
+    /*隐藏的密码框显示并且获取焦点 只读属性去掉*/
+    $('#password').show().attr('readonly', false).focus();
+    $('#txtconfirm').hide();
+    $('#confirm').show().attr('readonly', false).focus();
+});
+$("[name=txtconfirm]").focus(function () {
+    /*当前文本框隐藏*/
+    $(this).hide();
+    /*隐藏的密码框显示并且获取焦点 只读属性去掉*/
+    $('#txtpassword').hide();
+    $('#password').show().attr('readonly', false).focus();
+    $('#confirm').show().attr('readonly', false).focus();
+});
+
 </script>
 </body>
 </html>

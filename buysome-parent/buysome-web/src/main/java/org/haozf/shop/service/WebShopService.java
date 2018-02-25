@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.haozf.mybatis.mapper.GoodsMapper;
 import org.haozf.mybatis.mapper.ShopMapper;
+import org.haozf.mybatis.model.Admin;
 import org.haozf.mybatis.model.Goods;
 import org.haozf.mybatis.model.GoodsExample;
 import org.haozf.mybatis.model.Shop;
 import org.haozf.mybatis.model.ShopExample;
 import org.haozf.mybatis.model.ShopExample.Criteria;
 import org.haozf.mybatis.service.ShopService;
+import org.haozf.security.model.Realm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -31,6 +33,18 @@ public class WebShopService extends ShopService{
 	
 	@Value("${shop.qrcode.url}")
 	String qrcodeUrl;
+	
+	/**
+     * 店铺列表
+     */
+    public List<Shop> listShop(Shop shop) {
+        
+        ShopExample example = new ShopExample();
+        example.setOrderByClause("addtime desc");
+        List<Shop> shops = shopMapper.selectByExample(example);
+        
+        return shops;
+    }
     
     public Shop getShop(int id){
         Shop shop = shopMapper.selectByPrimaryKey(id);
@@ -91,6 +105,7 @@ public class WebShopService extends ShopService{
      */
     public List<Goods> getShopGoods(int shopid){
         GoodsExample example = new GoodsExample();
+        example.setOrderByClause("addtime desc");
         example.or().andShopidEqualTo(shopid)
                     .andIsdeleteEqualTo(0)
                     .andStatusEqualTo(1);

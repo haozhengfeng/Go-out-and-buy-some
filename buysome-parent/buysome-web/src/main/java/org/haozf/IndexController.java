@@ -52,6 +52,7 @@ public class IndexController extends BaseController{
         	
     	//加载热门商品
         if(goods!=null){
+            goods.remove(0);
         	model.addAttribute("hotGoods", goods);
         }
         model.addAttribute("goodsCoverUrl", goodsCoverUrl);	

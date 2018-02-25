@@ -81,7 +81,8 @@
                         }
                     }
                 }
-                $this_obj.addClass(_opt.className).siblings('li').removeClass(_opt.className);
+                //$this_obj.addClass(_opt.className).siblings('li').removeClass(_opt.className);
+                //$this_obj.siblings('li').removeClass(_opt.className);
                 _opt.endClickScroll.call(this,$this_obj);
             }
         });

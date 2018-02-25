@@ -35,7 +35,7 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="title">商品名称</label>
-                  <input id="title" name="title" class="form-control" placeholder="商品名称" maxlength="10">
+                  <input id="title" name="title" class="form-control" placeholder="商品名称" maxlength="50">
                 </div>
                 <div class="form-group">
                   <label for="goodscover">商品封面</label>
