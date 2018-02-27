@@ -3,7 +3,7 @@ package org.haozf.security.manager;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.haozf.common.BaseLogger;
+import org.haozf.mybatis.common.BaseLogger;
 import org.haozf.security.model.Realm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

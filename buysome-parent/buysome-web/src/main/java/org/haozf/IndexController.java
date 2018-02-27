@@ -7,8 +7,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.haozf.category.service.WebCategoryService;
-import org.haozf.common.BaseController;
 import org.haozf.goods.service.WebGoodsService;
+import org.haozf.mybatis.common.BaseController;
 import org.haozf.mybatis.model.Category;
 import org.haozf.mybatis.model.Goods;
 import org.haozf.mybatis.service.MemberService;

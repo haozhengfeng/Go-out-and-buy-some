@@ -3,7 +3,7 @@ package org.haozf.shop.controller;
 import java.util.List;
 
 import org.haozf.category.service.WebCategoryService;
-import org.haozf.common.BaseController;
+import org.haozf.mybatis.common.BaseController;
 import org.haozf.mybatis.common.Pagination;
 import org.haozf.mybatis.model.Category;
 import org.haozf.mybatis.model.Goods;

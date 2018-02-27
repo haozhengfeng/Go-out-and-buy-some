@@ -2,8 +2,8 @@ package org.haozf.member.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.haozf.common.BaseController;
 import org.haozf.member.model.Member;
+import org.haozf.mybatis.common.BaseController;
 import org.haozf.security.manager.SecurityManager;
 import org.haozf.security.model.Realm;
 import org.springframework.beans.factory.annotation.Autowired;

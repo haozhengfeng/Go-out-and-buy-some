@@ -5,7 +5,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.haozf.common.BaseLogger;
+import org.haozf.mybatis.common.BaseLogger;
 import org.haozf.security.model.Realm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -87,4 +87,4 @@
             }
         });
     };
-})(Zepto);
+})(window.Zepto || window.jQuery);
