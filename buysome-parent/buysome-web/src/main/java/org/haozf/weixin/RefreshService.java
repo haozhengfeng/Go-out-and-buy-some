@@ -20,8 +20,15 @@ public class RefreshService {
 	@Scheduled(fixedRate = 1000 * 7000)
     public void refreshAll(){
 	    System.out.println("获取微信accesstoken");
-		AccessToken token = tokenService.token();
-		WeiXinContext.setAccessToken(token);
+		try {
+			AccessToken token = tokenService.token();
+			WeiXinContext.setAccessToken(token);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new RuntimeException("获取微信accesstoken失败");
+		}
+		
 		Ticket ticket = ticketService.ticket();
     	WeiXinContext.setJsapi_ticket(ticket);
     }

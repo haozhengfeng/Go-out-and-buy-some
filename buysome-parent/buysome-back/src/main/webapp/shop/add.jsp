@@ -53,6 +53,11 @@
                   <input id="location" name="location" class="form-control" placeholder="店铺位置" maxlength="50">
                 </div>
                 <div class="form-group">
+                	<input type="hidden" id="lon" name="lon"/>
+                	<input type="hidden" id="lat" name="lat"/>
+					<div id="container" class="col-sm-12" style="height:300px"></div>
+	       		</div>
+                <div class="form-group">
                   <label for="location">店主</label>
                   ${admin.username }
                   <input id="adminid" name="adminid" type="hidden" value="${admin.id }">
@@ -96,6 +101,71 @@ $("#myForm").ajaxForm({
     	}
     }
 });
+</script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.4&key=49e9419b8d4734505992b6a69cfb9302"></script> 
+<script type="text/javascript">
+    var map = new AMap.Map('container',{
+        resizeEnable: true,
+        zoom: 15,
+        center: [116.480983, 40.0958]
+    });
+    
+    AMap.plugin(['AMap.ToolBar','AMap.Scale'],
+   	    function(){
+   	        map.addControl(new AMap.ToolBar());
+   	        map.addControl(new AMap.Scale());
+   	    }
+    );
+    
+    var marker = new AMap.Marker({
+        map:map,
+        bubble:true
+    })
+    
+    map.on('click',function(e){
+        marker.setPosition(e.lnglat);
+        $("#lon").val(e.lnglat.lng);
+        $("#lat").val(e.lnglat.lat);
+        
+        AMap.service('AMap.Geocoder',function(){//回调函数
+            //实例化Geocoder
+            geocoder = new AMap.Geocoder({
+                city: "010"//城市，默认：“全国”
+            });
+            //TODO: 使用geocoder 对象完成相关功能
+            
+            geocoder.getAddress(e.lnglat, function(status, result) {
+                if (status === 'complete' && result.info === 'OK') {
+                   //获得了有效的地址信息:
+               	   $("#location").val(result.regeocode.formattedAddress);
+                }else{
+                   //获取地址失败
+                   alert("获取地址失败");
+                }
+            });  
+        })
+    })
+    
+    map.plugin('AMap.Geolocation', function() {
+        var geolocation = new AMap.Geolocation({
+            buttonPosition:'RB'
+        });
+        map.addControl(geolocation);
+        geolocation.getCurrentPosition();
+        AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
+        AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
+    });
+    
+    //解析定位结果
+    function onComplete(data) {
+        marker.setPosition(data.position);
+        $("#lon").val(data.position.lng);
+        $("#lat").val(data.position.lat);
+    }
+    //解析定位错误信息
+    function onError(data) {
+        alert('定位失败');
+    }
 </script>
 </body>
 </html>

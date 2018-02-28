@@ -142,6 +142,7 @@ public class BackShopService extends ShopService{
 		if(shop.getShopcover()==null||"".equals(shop.getShopcover().trim())) throw new RuntimeException("请输入店铺封面");
 		if(shop.getDescription()==null||"".equals(shop.getDescription().trim())) throw new RuntimeException("请输入店铺描述");
 		if(shop.getLocation()==null||"".equals(shop.getLocation().trim())) throw new RuntimeException("请输入店铺位置");
+		if(shop.getLon()==null||shop.getLat()==null) throw new RuntimeException("请输入店铺位置");
 		if(shop.getAdminid()==null) throw new RuntimeException("店主为空");
 		
 		//判断用户是否开店
@@ -324,6 +325,8 @@ public class BackShopService extends ShopService{
         } 
         if(shop.getDescription()!=null&&!"".equals(shop.getDescription().trim())) tshop.setDescription(shop.getDescription());
         if(shop.getLocation()!=null&&!"".equals(shop.getLocation().trim())) tshop.setLocation(shop.getLocation());
+        if(shop.getLon()!=null&&!"".equals(shop.getLon().trim())) tshop.setLon(shop.getLon());
+        if(shop.getLat()!=null&&!"".equals(shop.getLat().trim())) tshop.setLat(shop.getLat());
 	    
 	    //判断店铺名称是否存在
         Shop shopByName = getShopByName(shop);

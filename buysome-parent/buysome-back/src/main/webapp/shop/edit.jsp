@@ -27,7 +27,7 @@
 </section>
 <section class="content">
       <div class="row">
-      	<div class="col-md-6">
+      	<div class="col-md-12">
           <div class="box box-success">
             <div class="box-header with-border">
               <h3 class="box-title">修改</h3>
@@ -69,6 +69,11 @@
                   <label for="location">店铺位置</label>
                   <input id="location" name="location" class="form-control" placeholder="店铺位置" maxlength="50" value="${shop.location }">
                 </div>
+                <div class="form-group">
+                	<input type="hidden" id="lon" name="lon" value="${shop.lon }"/>
+                	<input type="hidden" id="lat" name="lat" value="${shop.lat }"/>
+					<div id="container" class="col-sm-12" style="height:300px"></div>
+	       		</div>
                 <div class="form-group">
                   <label for="location">店主</label>
                   ${admin.username }
@@ -117,6 +122,73 @@ $("#myForm").ajaxForm({
 
 function validate(){
 }
+</script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.4&key=49e9419b8d4734505992b6a69cfb9302"></script> 
+<script type="text/javascript">
+$(function(){
+
+	var lon = $("#lon").val();
+	var lat = $("#lat").val();
+	
+    var map = new AMap.Map('container',{
+        resizeEnable: true,
+        zoom: 15,
+        center: [lon, lat]
+    });
+    
+    AMap.plugin(['AMap.ToolBar','AMap.Scale'],
+   	    function(){
+   	        map.addControl(new AMap.ToolBar());
+   	        map.addControl(new AMap.Scale());
+   	    }
+    );
+    
+    var marker = new AMap.Marker({
+        map:map,
+        bubble:true
+    })
+    
+    map.on('click',function(e){
+        marker.setPosition(e.lnglat);
+        $("#lon").val(e.lnglat.lng);
+        $("#lat").val(e.lnglat.lat);
+        
+        AMap.service('AMap.Geocoder',function(){//回调函数
+            geocoder = new AMap.Geocoder({
+                city: "010"//城市，默认：“全国”
+            });
+            geocoder.getAddress(e.lnglat, function(status, result) {
+                if (status === 'complete' && result.info === 'OK') {
+               	   $("#location").val(result.regeocode.formattedAddress);
+                }else{
+                   alert("获取地址失败");
+                }
+            });  
+        })
+    })
+    
+    if(!lat||!lon){
+    	map.plugin('AMap.Geolocation', function() {
+            var geolocation = new AMap.Geolocation({
+                buttonPosition:'RB'
+            });
+            map.addControl(geolocation);
+            geolocation.getCurrentPosition();
+            AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
+            AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
+        });
+        
+        //解析定位结果
+        function onComplete(data) {
+            /* $("#lon").val(data.position.lng);
+            $("#lat").val(data.position.lat); */
+        }
+        //解析定位错误信息
+        function onError(data) {
+            alert('定位失败');
+        }
+    }
+})
 </script>
 </body>
 </html>
