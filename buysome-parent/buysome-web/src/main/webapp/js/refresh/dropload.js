@@ -53,13 +53,12 @@
         if(me.opts.loadDownFn != ''){
             me.$element.append('<div class="'+me.opts.domDown.domClass+'">'+me.opts.domDown.domRefresh+'</div>');
             me.$domDown = $('.'+me.opts.domDown.domClass);
-           
         }
 
         // 计算提前加载距离
         if(!!me.$domDown && me.opts.threshold === ''){
             // 默认滑到加载区2/3处时加载
-            me._threshold = Math.floor(me.$domDown.height()*1/3); 
+            me._threshold = Math.floor(me.$domDown.height()*1/3);
         }else{
             me._threshold = me.opts.threshold;
         }
@@ -110,10 +109,10 @@
         // 加载下方
         me.$scrollArea.on('scroll',function(){
             me._scrollTop = me.$scrollArea.scrollTop();
-//			alert("滚动了");
+			
             // 滚动页面触发加载数据
             if(me.opts.loadDownFn != '' && !me.loading && !me.isLockDown && (me._scrollContentHeight - me._threshold) <= (me._scrollWindowHeight + me._scrollTop)){
-                loadDown(me);
+                loadDown(me);alert("滚动了");
             }
         });
     };

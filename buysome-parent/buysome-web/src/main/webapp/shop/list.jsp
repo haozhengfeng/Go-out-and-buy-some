@@ -13,7 +13,8 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../style/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="../style/zhouyajing.css"/>
-
+<link rel="stylesheet" href="../js/refresh/dropload.css"/>
+<link rel="stylesheet" href="../style/my_refresh.css"/>
 </head>
 <body>
 <div class="container" id="container">
@@ -33,10 +34,12 @@
 						</ul>
 					</div>
 					</div>
-			        <div class="weui-panel">
+			        <div class="weui-panel outer">
+			        	<div class="inner">
 			            <div class="weui-panel__hd">热门店铺</div>
 			            <div class="weui-panel__bd">
-			            	<c:forEach items="${shops }" var="a" >
+			            	<div class = 'lists'>
+			            	<%-- <c:forEach items="${shops }" var="a" >
 			            	<a href="${a.id }" class="weui-media-box weui-media-box_appmsg">
 			                    <div class="weui-media-box__hd">
 			                    	<img class="weui-media-box__thumb" alt="${a.name }" src="${shopCoverUrl }${a.shopcover }" style="vertical-align: middle;"/>
@@ -46,7 +49,9 @@
 			                        <p class="weui-media-box__desc">${a.description }</p>
 			                    </div>
 			                </a>
-			            	</c:forEach>
+			            	</c:forEach> --%>
+			            	</div>
+			            </div>
 			            </div>
 			        </div>
 			        </div>
@@ -88,6 +93,84 @@
 $(function(){
 	$('#wrapper').navbarscroll();
 });
+</script>
+<script type="text/javascript" src="../js/refresh/dropload.js"></script>
+<script type="text/javascript">
+var shopCoverUrl = '${shopCoverUrl }';
+</script>
+<script type="text/javascript">
+$(function(){
+	
+	var pageNum = 1;
+	
+    var dropload = $('.inner').dropload({
+    	domUp : {
+            domClass   : 'dropload-up',
+            domRefresh : '<div class="dropload-refresh">↓下拉刷新</div>',
+            domUpdate  : '<div class="dropload-update">↑释放更新</div>',
+            domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
+        },
+        domDown : {
+            domClass   : 'dropload-down',
+            domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',
+            domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+            domNoData  : '<div class="dropload-noData">没有更多了</div>'
+        },
+        loadUpFn : function(me){
+        	window.location.reload();
+        },
+        loadDownFn : function(me){
+        	$.ajax({
+                type: 'GET',
+                url: 'ajaxlist',
+                data:{pageNum:pageNum++},
+                dataType: 'json',
+                success: function(data){
+                	
+                	if(data.shops.length==0){
+                        me.lock();
+                        me.noData(true);
+                        me.resetload();
+                        return ;
+                	}
+                	
+                	if(data.status=='yes'){
+                		var result = '';
+                        for(var i = 0; i < data.shops.length; i++){
+                        	
+                        	result +=   '<a href="'+data.shops[i].id+'" class="weui-media-box weui-media-box_appmsg">'
+                        	+'<div class="weui-media-box__hd">'
+                        	+'<img class="weui-media-box__thumb" alt="'+data.shops[i].name+'" src="'+shopCoverUrl+data.shops[i].shopcover+'" style="vertical-align: middle;"/>'
+                        	+'</div>'
+                        	+'<div class="weui-media-box__bd">'
+                        	+'<h4 class="weui-media-box__title">'+data.shops[i].name+'</h4>'
+                        	+'<p class="weui-media-box__desc">'+data.shops[i].description+'</p>'
+                        	+'</div>'
+                        	+'</a>';
+                        	
+                        }
+                        
+                        $('.lists').append(result);
+                        
+                        me.unlock();
+                        me.noData(false);
+                        
+                        // 每次数据加载完，必须重置
+                        dropload.resetload();
+        	    	}else{
+        	    		alert('加载错误!');
+                        dropload.resetload();
+        	    	}
+                },
+                error: function(xhr, type){
+                    alert('加载错误!');
+                    // 即使加载出错，也得重置
+                    dropload.resetload();
+                }
+            });
+        }
+    });
+})
 </script>
 </body>
 </html>

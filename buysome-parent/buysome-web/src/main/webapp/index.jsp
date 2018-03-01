@@ -13,7 +13,8 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="style/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="style/zhouyajing.css"/>
-
+<link rel="stylesheet" href="js/refresh/dropload.css"/>
+<link rel="stylesheet" href="style/my_refresh.css"/>
 </head>
 <body>
 <div class="container" id="container">
@@ -60,55 +61,58 @@
 					</div>
 					</div>
 	            
-	            <!-- 首页内容  -->
-	            <div class="weui-panel weui-panel_access">
-			            <div class="weui-panel__hd">最新商品</div>
-			            <div class="weui-panel__bd">
-			                <div class="weui-media-box weui-media-box_text">
-			                	<a href="goods/${latestGoods.id }" class="weui-cell_access">
-			                    <h4 class="weui-media-box__title">${latestGoods.title }</h4>
-			                    <div class="weui-media-box_appmsg">
-			                        <img class="weui-media-box__thumb" src="${goodsCoverUrl }${latestGoods.goodscover }">
-			                    </div>			                    			                    
-			                    <p class="weui-media-box_appmsg">${latestGoods.description }</p>
-			                    </a>
-			                    <p class="weui-media-box__desc">
-			                    	<a href="shop/${latestGoods.shopid }" class="weui-cell_access weui-cell_link">进入店铺</a>
-			                    </p>
-			                </div>
-			            </div>
-			            <!-- <div class="weui-panel__ft">
-			                <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
-			                    <div class="weui-cell__bd">查看更多</div>
-			                    <span class="weui-cell__ft"></span>
-			                </a>    
-			            </div> -->
-			        </div>
-			        <div class="weui-panel">
-			            <div class="weui-panel__hd">热门商品</div>
-			            <div class="weui-panel__bd">
-			            	<c:forEach items="${hotGoods }" var="a" >
-			            	<a href="goods/${a.id }" class="weui-media-box weui-media-box_appmsg">
-			                    <div class="weui-media-box__hd">
-			                    	<img class="weui-media-box__thumb" alt="${a.title }" src="${goodsCoverUrl }${a.goodscover }" style="vertical-align: middle;">
-			                    </div>
-			                    <div class="weui-media-box__bd">
-			                        <h4 class="weui-media-box__title">${a.title }</h4>
-			                        <p class="weui-media-box__desc">${a.description }</p>
-			                        <ul class="weui-media-box__info">
-				                        <li class="weui-media-box__info__meta"><fmt:formatDate value="${a.addtime }" type="both" /></li>
-				                    </ul>
-			                    </div>
-			                </a>
-			            	</c:forEach>
-			            </div>
-			            <!-- <div class="weui-panel__ft">
-			                <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
-			                    <div class="weui-cell__bd">查看更多</div>
-			                    <span class="weui-cell__ft"></span>
-			                </a>    
-			            </div> -->
-			        </div>
+		            <!-- 首页内容  -->
+		            	<div class="weui-panel_access outer">
+		            	<div class="inner">
+	            		<div class="weui-panel weui-panel_access">
+				            <div class="weui-panel__hd">最新商品</div>
+				            <div class="weui-panel__bd">
+				                <div class="weui-media-box weui-media-box_text">
+				                	<a href="goods/${latestGoods.id }" class="weui-cell_access">
+				                    <h4 class="weui-media-box__title">${latestGoods.title }</h4>
+				                    <div class="weui-media-box_appmsg">
+				                        <img class="weui-media-box__thumb" src="${goodsCoverUrl }${latestGoods.goodscover }">
+				                    </div>			                    			                    
+				                    <p class="weui-media-box_appmsg">${latestGoods.description }</p>
+				                    </a>
+				                    <p class="weui-media-box__desc">
+				                    	<a href="shop/${latestGoods.shopid }" class="weui-cell_access weui-cell_link">进入店铺</a>
+				                    </p>
+				                </div>
+				            </div>
+				            <!-- <div class="weui-panel__ft">
+				                <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+				                    <div class="weui-cell__bd">查看更多</div>
+				                    <span class="weui-cell__ft"></span>
+				                </a>    
+				            </div> -->
+				        </div>
+				        <div class="weui-panel">
+				            <div class="weui-panel__hd">热门商品</div>
+				            <div class="weui-panel__bd">
+				            	<c:forEach items="${hotGoods }" var="a" >
+				            	<a href="goods/${a.id }" class="weui-media-box weui-media-box_appmsg">
+				                    <div class="weui-media-box__hd">
+				                    	<img class="weui-media-box__thumb" alt="${a.title }" src="${goodsCoverUrl }${a.goodscover }" style="vertical-align: middle;">
+				                    </div>
+				                    <div class="weui-media-box__bd">
+				                        <h4 class="weui-media-box__title">${a.title }</h4>
+				                        <p class="weui-media-box__desc">${a.description }</p>
+				                        <ul class="weui-media-box__info">
+					                        <li class="weui-media-box__info__meta"><fmt:formatDate value="${a.addtime }" type="both" /></li>
+					                    </ul>
+				                    </div>
+				                </a>
+				            	</c:forEach>
+				            </div>
+				            <!-- <div class="weui-panel__ft">
+				                <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+				                    <div class="weui-cell__bd">查看更多</div>
+				                    <span class="weui-cell__ft"></span>
+				                </a>    
+				            </div> -->
+		            	</div>
+		            	</div>
 			        </div>
 			    <!-- 加载 -->
 			    <!-- <div class="page__bd">
@@ -210,6 +214,29 @@
 $(function(){
 	$('#wrapper').navbarscroll();
 });
+</script>
+<script type="text/javascript" src="js/refresh/dropload.js"></script>
+<script type="text/javascript">
+$(function(){
+    var dropload = $('.inner').dropload({
+    	domUp : {
+            domClass   : 'dropload-up',
+            domRefresh : '<div class="dropload-refresh">↓下拉刷新</div>',
+            domUpdate  : '<div class="dropload-update">↑释放更新</div>',
+            domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
+        },
+        domDown : {
+            domClass   : 'dropload-down',
+            domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',
+            domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+            domNoData  : '<div class="dropload-noData">没有更多了</div>'
+        },
+        loadUpFn : function(me){
+        	window.location.reload();
+        },
+        autoLoad : false,  
+    });
+})
 </script>
 </body>
 </html>

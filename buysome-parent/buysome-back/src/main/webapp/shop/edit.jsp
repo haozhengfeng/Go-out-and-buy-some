@@ -138,8 +138,8 @@ $(function(){
     
     AMap.plugin(['AMap.ToolBar','AMap.Scale'],
    	    function(){
-   	        map.addControl(new AMap.ToolBar());
-   	        map.addControl(new AMap.Scale());
+	    	map.addControl(new AMap.ToolBar({ position: 'LT'}));
+	        map.addControl(new AMap.Scale({ position: 'LB'}));
    	    }
     );
     
@@ -167,26 +167,25 @@ $(function(){
         })
     })
     
-    if(!lat||!lon){
-    	map.plugin('AMap.Geolocation', function() {
-            var geolocation = new AMap.Geolocation({
-                buttonPosition:'RB'
-            });
-            map.addControl(geolocation);
-            geolocation.getCurrentPosition();
-            AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
-            AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
-        });
-        
-        //解析定位结果
-        function onComplete(data) {
-            /* $("#lon").val(data.position.lng);
-            $("#lat").val(data.position.lat); */
+	map.plugin('AMap.Geolocation', function() {
+        var geolocation = new AMap.Geolocation({buttonPosition: 'RB'});
+        map.addControl(geolocation);
+        if(!lat||!lon){
+         geolocation.getCurrentPosition();
+         AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
+         AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
         }
-        //解析定位错误信息
-        function onError(data) {
-            alert('定位失败');
-        }
+    });
+    
+    //解析定位结果
+    function onComplete(data) {
+        /* $("#lon").val(data.position.lng);
+        $("#lat").val(data.position.lat); */
+    }
+    
+    //解析定位错误信息
+    function onError(data) {
+        alert('定位失败');
     }
 })
 </script>

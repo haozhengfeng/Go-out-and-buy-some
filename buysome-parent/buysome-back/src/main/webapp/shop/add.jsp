@@ -106,14 +106,13 @@ $("#myForm").ajaxForm({
 <script type="text/javascript">
     var map = new AMap.Map('container',{
         resizeEnable: true,
-        zoom: 15,
-        center: [116.480983, 40.0958]
+        zoom: 15
     });
     
     AMap.plugin(['AMap.ToolBar','AMap.Scale'],
    	    function(){
-   	        map.addControl(new AMap.ToolBar());
-   	        map.addControl(new AMap.Scale());
+	    	map.addControl(new AMap.ToolBar({ position: 'LT'}));
+	        map.addControl(new AMap.Scale({ position: 'LB'}));
    	    }
     );
     
@@ -147,9 +146,7 @@ $("#myForm").ajaxForm({
     })
     
     map.plugin('AMap.Geolocation', function() {
-        var geolocation = new AMap.Geolocation({
-            buttonPosition:'RB'
-        });
+        var geolocation = new AMap.Geolocation({buttonPosition:'RB'});
         map.addControl(geolocation);
         geolocation.getCurrentPosition();
         AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
@@ -158,9 +155,6 @@ $("#myForm").ajaxForm({
     
     //解析定位结果
     function onComplete(data) {
-        marker.setPosition(data.position);
-        $("#lon").val(data.position.lng);
-        $("#lat").val(data.position.lat);
     }
     //解析定位错误信息
     function onError(data) {

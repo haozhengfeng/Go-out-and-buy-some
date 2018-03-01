@@ -72,6 +72,11 @@
 				                </a>
 			            	</c:forEach>
 			            </div>
+			            <div class="weui-panel__bd">
+					        <div class="weui-media-box weui-media-box_text">
+					        	<div id="amapcontainer" class="col-sm-12" style="height:300px"></div>
+					        </div>
+					    </div>
 			        </div>
 			    </div>
     		</div>
@@ -118,6 +123,37 @@ $(function(){
 $(function(){
 	$('#wrapper').navbarscroll();
 });
+</script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.4&key=49e9419b8d4734505992b6a69cfb9302"></script> 
+<script type="text/javascript">
+$(function(){
+
+	var lon = '${shop.lon}';
+	var lat = '${shop.lat}';
+	
+    var map = new AMap.Map('amapcontainer',{
+        resizeEnable: true,
+        zoom: 15,
+        center: [lon, lat]
+    });
+    
+    AMap.plugin(['AMap.ToolBar','AMap.Scale'],
+   	    function(){
+    		map.addControl(new AMap.ToolBar({ position: 'LT'}));
+	        map.addControl(new AMap.Scale({ position: 'LB'}));
+   	    }
+    );
+    
+    var marker = new AMap.Marker({
+        map:map,
+        bubble:true
+    })
+    
+   	map.plugin('AMap.Geolocation', function() {
+	    var geolocation = new AMap.Geolocation({buttonPosition: 'RB'});
+	    map.addControl(geolocation);
+    });
+})
 </script>
 </body>
 </html>

@@ -13,37 +13,8 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../style/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="../style/zhouyajing.css"/>
-<link rel="stylesheet" href="../js/refresh/dropload.css">
-<style type="text/css">
-.outer{
-	margin-top: 0px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction:column;
-    -webkit-box-orient:vertical;
-    box-orient:vertical;
-    -webkit-flex-direction:column;
-    flex-direction:column;
-}
-.inner{
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    background-color: #fff;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-    margin-bottom: 48px;
-    margin-top: 40px;
-}
-</style>
+<link rel="stylesheet" href="../js/refresh/dropload.css"/>
+<link rel="stylesheet" href="../style/my_refresh.css"/>
 </head>
 <body>
 <div class="container" id="container">
@@ -68,7 +39,7 @@
 			            <div class="weui-panel__hd">热门商品</div>
 			            <div class="weui-panel__bd ">
 			            	<div class = 'lists'>
-			            	<c:forEach items="${goodss }" var="a" >
+			            	<%-- <c:forEach items="${goodss }" var="a" >
 			            	<a href="${a.id }" class="weui-media-box weui-media-box_appmsg">
 			                    <div class="weui-media-box__hd">
 			                    	<img class="weui-media-box__thumb" alt="${a.title }" src="${goodsCoverUrl }${a.goodscover }" style="vertical-align: middle;"/>
@@ -78,7 +49,7 @@
 			                        <p class="weui-media-box__desc">${a.description }</p>
 			                    </div>
 			                </a>
-			            	</c:forEach>
+			            	</c:forEach> --%>
 			            	</div>
 			            </div>
 			            </div>
@@ -124,10 +95,16 @@ $(function(){
 	$('#wrapper').navbarscroll();
 })
 </script>
-
 <script type="text/javascript" src="../js/refresh/dropload.js"></script>
 <script type="text/javascript">
+var goodsCoverUrl = '${goodsCoverUrl }';
+var categorycode = '${categorycode}';
+</script>
+<script type="text/javascript">
 $(function(){
+	
+	var pageNum = 1;
+	
     var dropload = $('.inner').dropload({
     	domUp : {
             domClass   : 'dropload-up',
@@ -139,9 +116,8 @@ $(function(){
             domClass   : 'dropload-down',
             domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',
             domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
-            domNoData  : '<div class="dropload-noData">没有更多信息</div>'
+            domNoData  : '<div class="dropload-noData">没有更多了</div>'
         },
-    	autoLoad : false,
         loadUpFn : function(me){
         	window.location.reload();
         },
@@ -149,10 +125,16 @@ $(function(){
         	$.ajax({
                 type: 'GET',
                 url: 'ajaxlist',
+                data:{pageNum:pageNum++,categorycode:categorycode},
                 dataType: 'json',
                 success: function(data){
                 	
-                	var goodsCoverUrl = '${goodsCoverUrl }';
+                	if(data.goods.length==0){
+                        me.lock();
+                        me.noData(true);
+                        me.resetload();
+                        return ;
+                	}
                 	
                 	if(data.status=='yes'){
                 		var result = '';
@@ -169,8 +151,12 @@ $(function(){
                         }
                         
                         $('.lists').append(result);
+                        
+                        me.unlock();
+                        me.noData(false);
+                        
                         // 每次数据加载完，必须重置
-                        //dropload.resetload();
+                        dropload.resetload();
         	    	}else{
         	    		alert('加载错误!');
                         dropload.resetload();
@@ -186,6 +172,5 @@ $(function(){
     });
 })
 </script>
-
 </body>
 </html>
