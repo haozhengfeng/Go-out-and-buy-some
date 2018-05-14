@@ -34,7 +34,7 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="username">用户名</label>
-                  <input id="username" name="username" class="form-control" placeholder="用户名" maxlength="10">
+                  <input id="username" name="username" class="form-control" placeholder="用户名" maxlength="20">
                 </div>
                 <div class="form-group">
                   <label for="password">密码</label>
